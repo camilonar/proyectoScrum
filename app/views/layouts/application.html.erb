@@ -3,7 +3,7 @@
 <head>
   <title>ProyectoScrum</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -15,13 +15,13 @@
 
 		<!-- Header -->
 			<header id="headerId">
-				<h1><a href="index.html">Scrum Manager</a></h1>
+				<h1><a href="/">ScrumMaster</a></h1>
 				<nav id="nav">
 					<ul>
 						<li><%= link_to "Inicio" , "/" %> </li>
 						<li><%= link_to "Acerca De" , "/about" %></li>
 						<li><%= link_to "Novedades" , "/news" %></li>
-						<li><%= link_to "Regístrate" , "/register", class: "button special" %></li>
+						<li><%= link_to "Iniciar sesion" , "/login", class: "button special" %></li>
 					</ul>
 				</nav>
 			</header>

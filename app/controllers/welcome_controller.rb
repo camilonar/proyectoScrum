@@ -8,6 +8,6 @@ class WelcomeController < ApplicationController
   def news
   end
 
-  def register
+  def login
   end
 end
