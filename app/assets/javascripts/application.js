@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-= require_tree .
+//= require skel.min
+//= require skel-layers.min.js
+//= require_tree .
