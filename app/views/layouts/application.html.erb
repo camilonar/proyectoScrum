@@ -22,14 +22,20 @@
 						<li><%= link_to "Inicio" , "/" %> </li>
 						<li><%= link_to "Acerca De" , "/about" %></li>
 						<li><%= link_to "Novedades" , "/news" %></li>
-						<li><%= link_to "Iniciar sesion" , "/login", class: "button special" %></li>
+						<li><%= link_to "Iniciar sesión" , "/users/sign_in", class: "button special" %></li>
 					</ul>
 				</nav>
 			</header>
 
 		<!-- Main -->
+			
 			<div id="skel-layers-wrapper" style="position: relative; left: 0px; right: 0px; top: 0px; backface-visibility: hidden; transition: -webkit-transform 0.5s ease, opacity 0.5s ease;">
-				
+						<% if notice %>
+  						<p class="alert alert-success"><%= notice %></p>
+						<% end %>
+						<% if alert %>
+						  <p class="alert alert-danger"><%= alert %></p>
+						<% end %>
 						<%= yield %>
 				
 			</div>
