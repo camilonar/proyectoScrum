@@ -1,0 +1,38 @@
+
+
+<section id="three" class="wrapper style1 special">
+        <div align="center" style="margin:0 auto 0 auto;" class="container 50%">
+        <section class="box " style="margin:0 auto 0 auto; ">
+          <header class="major">
+            <h2>Iniciar sesión</h2>
+            <p> </p>
+          </header>
+        
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div>
+              <div class="6u 12u$(small)">
+                <%= f.email_field :email, autofocus: true, placeholder:"Correo electrónico" %>
+              </div>
+              <br>
+              <div class="6u$ 12u$(small)">
+                <%= f.password_field :password, autocomplete: "off", placeholder:"Contraseña" %>
+              </div>
+              <br>
+              <% if devise_mapping.rememberable? -%>
+                <div class="6u 12u$(3)">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end -%>
+              <div class="12u$">
+               <div class="actions">
+                <%= f.submit "Iniciar Sesión"%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </section>
+        </div>
+        <%= render "users/shared/links" %>
+      </section>
+
