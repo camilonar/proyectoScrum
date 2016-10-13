@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   #Sin esto se toman los controladores de devise por defecto
+  
   devise_for :users, controllers: { 
       sessions: 'user/sessions',
       passwords: 'user/passwords',
       registrations: 'user/registrations',
   }
+
   #get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -16,7 +18,9 @@ Rails.application.routes.draw do
    get 'about' => 'welcome#about'
    get 'news'  => 'welcome#news'
    get 'login' => 'users#index'
-
+   get 'proyects/index' => 'proyects#index'
+   get 'proyects/new' => 'proyects#new'
+   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
