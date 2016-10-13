@@ -1,35 +1,58 @@
-<section id="main" class="wrapper">
-  <div class="container">
+<section id="main" class="wrapper style1 special claseRegistro" >
+  <div id="formRegistro" align="center" style="margin:0 auto 0 auto " class="container 50%">
+ 
+    
+              <header class="major">
+                <h2 align="center"  class="textoBlanco">Registro</h2>
+                <p> </p>
+              </header>
 
-<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+
+  <div class="field  6u 12u$(small)" ><br/>
+    <%= f.label :"Nombre(s):" , class:"textoBlanco" %>
+    <%= f.text_field :nombres, autofocus: true ,placeholder:"Nombre(s) ", style:" text-align: center;"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field  6u 12u$(small)" ><br/>
+    <%= f.label :"Apellido(s):" , class:"textoBlanco" %>
+    <%= f.text_field :apellidos, autofocus: true ,placeholder:"Apellido(s)", style:" text-align: center;" %>
+  </div>
+
+  <div class="field  6u 12u$(small)" ><br/>
+    <%= f.label :"Apodo:" , class:"textoBlanco" %>
+    <%= f.text_field :apodo, autofocus: true ,placeholder:"Apodo" ,style:" text-align: center;"%>
+  </div>
+
+
+ <div class="field  6u 12u$(small)" ><br/>
+    <%= f.label :"correo electronico" , class:"textoBlanco" %>
+    <%= f.email_field :email, autofocus: true ,placeholder:"Correo electronico" ,style:" text-align: center;"%>
+  </div>
+
+  <div class="field 6u 12u$(small)"><br/>
+    <%= f.label :"Contraseña" , class:"textoBlanco"%>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <em class="textoBlanco">(<%= @minimum_password_length %> caracteres como minimo) </em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off",placeholder:"Contraseña" ,style:" text-align: center;" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="field 6u 12u$(small)"><br/>
+    <%= f.label :"Confirme su contraseña" , class:"textoBlanco" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder:"confirmar contraseña" ,style:" text-align: center;" %>
   </div>
 
-  <div class="actions">
+  <div class="actions"><br/>
+    <br/>
     <%= f.submit "Registrarse" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+
 
   </div>
 </section>
