@@ -1,4 +1,4 @@
-<section id="one" class="wrapper " >
+<section id="one" class="wrapper " style="background-color:#e3e3e9">
 	<div class="container" >	
 	   <header class="major">
 	   	<h2>Nuevo Proyecto</h2>
@@ -6,16 +6,20 @@
               <div class="row uniform 50%">
 					
 					<div class="6u 12u$(4)">
-                        <div class="container 50%">
-						 
-						 <span class="image left"><%=image_tag("logoproyecto.jpg")%>
-						 	<a href="#" class="button">Subir Logo</a>
-						 </span>
-
+                       
+                        <div style="text-align:center" >
+							 <%=image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+							<div>
+							<a href="#" class="button">Subir Logo</a>	
+							</div>
 						 </div>
-										<input type="text" name="nombre" id="name" value="" placeholder="Nombre Proyecto">
+						 <br>
+
+
+
+										<input type="text" name="nombre" id="name" value="" placeholder="Nombre Proyecto" style="background-color:white;">
 										<br>
-										<textarea name="descripcion" id="message" placeholder="Descripcion" rows="6"></textarea>
+										<textarea name="descripcion" id="message" placeholder="Descripcion" rows="6" style="background-color:white;"></textarea>
 					</div>	
 					<div class="6u 12u$(4)">
 									<ul class="actions fit small">
