@@ -6,4 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Proyecto.create(proy_nombre:"Prueba",proy_descripcion:"Proyecto de prueba",proy_estado:"Abierto")
+
+Proyecto.create(proy_nombre:"Hora saludable Unicauca",proy_descripcion:"Hora saludable para unicauca",proy_estado:"Abierto")
+Proyecto.create(proy_nombre:"SIMCA para profesores",proy_descripcion:"Simca para profesores",proy_estado:"Abierto")
+Proyecto.create(proy_nombre:"Registro de fotocopias FIET",proy_descripcion:"Registra las fotocopias realizadas",proy_estado:"Abierto")
+Proyecto.create(proy_nombre:"Centro reclusion",proy_descripcion:"Registra todo lo relacionado a los presos",proy_estado:"Abierto")
+Proyecto.create(proy_nombre:"Campanario registro",proy_descripcion:"Registra todas las compras de campanario",proy_estado:"Abierto")
