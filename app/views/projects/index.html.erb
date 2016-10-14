@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+	Transit by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<header class="major">
+					<h2>Proyectos</h2>
+				</header>
+				<div class="container">
+					<div id="botonesProyecto" >	
+						<div align="right"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>
+						Buscar:<input type="text" name="buscarProyecto" id="buscarProyecto" value="" placeholder="escriba el proyecto">
+						<br>
+						<br>						
+					</div>
+					<!-- Table -->
+						<section>
+						<div class="content2">
+							<div class="table-wrapper">
+								<table>
+									<tbody>									
+										<% for proyecto in @proyectos %>
+											<tr>
+												<td>
+													<div class="row">
+													  <%=image_tag("profile_placeholder.gif")%>
+													  <strong><%= proyecto.proy_nombre%></strong><br>
+													  <span><%= proyecto.proy_descripcion%>
+													</div>
+												</td>
+						  						<td>
+						  						<%= button_to "Editar" ,{:controller => :proyects,
+						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+						 						<%= button_to "Eliminar" ,{:controller => :proyects,
+						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+						      					</td>
+											</tr>
+										<% end %>	
+									</tbody>
+								</table>
+							</div>
+						</div>
+								<div align="center">
+								<%= will_paginate @proyectos %>
+						</div>
+						</section>			
+			</section>
+		<div>
+			
+		</div>	
