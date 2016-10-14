@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-  stored_location_for(resource) || login_path
+  stored_location_for(resource) || projects_index_path
 	end
 
  before_filter :configure_permitted_parameters, if: :devise_controller?
@@ -16,6 +16,5 @@ class ApplicationController < ActionController::Base
         def configure_permitted_parameters
             devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :nombres, :apellidos, :apodo)}
         end
-
   
 end

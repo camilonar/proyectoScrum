@@ -18,8 +18,8 @@ Rails.application.routes.draw do
    get 'about' => 'welcome#about'
    get 'news'  => 'welcome#news'
    get 'login' => 'users#index'
-   get 'proyects/index' => 'proyects#index'
-   get 'proyects/new' => 'proyects#new'
+   get 'projects/index' => 'projects#index'
+   get 'projects/new' => 'projects#new'
    
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
