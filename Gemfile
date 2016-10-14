@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'devise'
+gem 'will_paginate'
 
 gem 'coffee-script-source', '1.8.0'
 gem 'rails-skeleton'

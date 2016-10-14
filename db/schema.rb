@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011042545) do
+ActiveRecord::Schema.define(version: 20161013231111) do
+
+  create_table "proyectos", force: :cascade do |t|
+    t.string   "proy_nombre"
+    t.text     "proy_descripcion"
+    t.date     "proy_fechainicio"
+    t.date     "proy_fechafinalizacion"
+    t.string   "proy_estado"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

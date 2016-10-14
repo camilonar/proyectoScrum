@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proy_nombre: MyString
+  proy_descripcion: MyText
+  proy_fechainicio: 2016-10-13
+  proy_fechafinalizacion: 2016-10-13
+  proy_estado: MyString
+
+two:
+  proy_nombre: MyString
+  proy_descripcion: MyText
+  proy_fechainicio: 2016-10-13
+  proy_fechafinalizacion: 2016-10-13
+  proy_estado: MyString
