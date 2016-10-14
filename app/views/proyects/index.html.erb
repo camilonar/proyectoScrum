@@ -5,8 +5,12 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html lang="en">
+<head>
+    <style>
+      .content {background-color: #f5f5f5;border-radius: 25px;border: 2px solid;}    
+   </style>
+</head>
 	<body>
-		
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
@@ -22,7 +26,7 @@
 					</div>
 					<!-- Table -->
 						<section>
-						<div>
+						<div class="content2">
 							<div class="table-wrapper">
 								<table>
 									<tbody>									
@@ -45,10 +49,10 @@
 										<% end %>	
 									</tbody>
 								</table>
-								<div align="center">
-									<%= will_paginate @proyectos %>
-								</div>
 							</div>
+						</div>
+								<div align="center">
+								<%= will_paginate @proyectos %>
 						</div>
 						</section>			
 			</section>
