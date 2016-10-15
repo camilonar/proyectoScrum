@@ -4,6 +4,7 @@
     display: block;
     padding: 20px;
     border-left: 5px solid;
+    width: 100%; /*Con esto las notificaciones ocupan todo el ancho de la pantalla*/
 }
 
 .alert-success {
