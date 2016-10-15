@@ -45,10 +45,10 @@
 			
 			<div id="skel-layers-wrapper" style="position: relative; left: 0px; right: 0px; top: 0px; backface-visibility: hidden; transition: -webkit-transform 0.5s ease, opacity 0.5s ease;">
 						<% if notice %>
-  						<p class="alert alert-success"><%= notice %></p>
+  						<p class="alert alert-success" id="flash"><%= notice %></p>
 						<% end %>
 						<% if alert %>
-						  <p class="alert alert-error"><%= alert %></p>
+						  <p class="alert alert-error" id="flash"><%= alert %></p>
 						<% end %>
 						<%= yield %>
 				
