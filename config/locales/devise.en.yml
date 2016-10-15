@@ -4,7 +4,7 @@ es:
   devise:
     confirmations:
       confirmed: "Su cuenta ha sido confirmada."
-      send_instructions: "Recibira un correo electrónico en unos minutos con instrucciones sobre cómo restablecer su contraseña."
+      send_instructions: "Recibirá un correo electrónico en unos minutos con instrucciones sobre cómo restablecer su contraseña."
       send_paranoid_instructions: "Si su correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar su contraseña."
     failure:
       already_authenticated: "Ya ha sido identificado."
