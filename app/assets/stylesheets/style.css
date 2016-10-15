@@ -53,9 +53,9 @@
 		font-style: italic;
 	}
 
-	p {
+	/*p {
 		margin: 0 0 2em 0;
-	}
+	}*/ /*Se remueve para que las alertas se vean bien*/
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #474747;
