@@ -23,6 +23,16 @@ Rails.application.routes.draw do
 
    post 'projects/index' => 'projects#index' #TODO: modificar ruta cuando se creen los servicios de editar y eliminar
    
+   #TODO: paola
+   get 'miembros/index' =>'miembros#index'
+   #get 'miembros/editar' =>'miembros#editar'
+   get 'miembros/registrar' =>'miembros#registrar'
+   post 'miembros/index' =>'miembros#index'
+   post 'miembros/registrar' =>'miembros#registrar'
+   
+    
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
