@@ -1,7 +1,7 @@
 <section id="main" class="wrapper style1 special claseRegistro" >
   <div  align="center" style="margin:0 auto 0 auto " class="container 50% contact_form">
  
-    
+    <%= devise_error_messages! %>
               <header class="major">
                 <h2 align="center"  class="textoBlanco">Registro</h2>
                 <p class="textoBlanco">Creará una cuenta de usuario en ScrumMaster , por favor complete los siguientes campos : </p>
@@ -26,7 +26,7 @@
 
   <%= f.label :"Correo electronico:" , class:"textoBlanco item"%> 
   <div class="flex-container"><br/>
-     <%= f.email_field :email, autofocus: true ,placeholder:"Correo electronico" ,:required => true,style:" text-align: center; ", class:"item" , pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"%>
+     <%= f.email_field :email, autofocus: true ,placeholder:"Correo electrónico" ,:required => true,style:" text-align: center; ", class:"item" , pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"%>
 
       <span class="form_hint">Formato correcto: "sucorreo@correo.com"</span>
   </div>
@@ -35,18 +35,17 @@
   <div class="flex-container"><br/>
     <%= f.password_field :password, autocomplete: "off",placeholder:"Contraseña",:required => true,style:" text-align: center;" ,class:"item" , pattern:".{6,}"%>
      <% if @minimum_password_length %>
-       <span class="form_hint">(<%= @minimum_password_length %> caracteres como minimo)</span>
+       <span class="form_hint">(<%= @minimum_password_length %> caracteres como mínimo)</span>
     <% end %>
-     <%= f.password_field :password_confirmation, autocomplete: "off" ,:required => true,placeholder:"confirmar contraseña" ,style:" text-align: center;" ,class:"item" ,pattern:".{6,}" %>
+     <%= f.password_field :password_confirmation, autocomplete: "off" ,:required => true,placeholder:"Confirmar contraseña" ,style:" text-align: center;" ,class:"item" ,pattern:".{6,}" %>
       <% if @minimum_password_length %>
-       <span class="form_hint">(<%= @minimum_password_length %> caracteres como minimo)</span>
+       <span class="form_hint">(<%= @minimum_password_length %> caracteres como mínimo)</span>
     <% end %>
   </div>
   <div class="actions"><br/>
     
     <%= f.submit "Registrarse" %>
   </div>
-    <%= devise_error_messages! %>
 <% end %>
 
 
