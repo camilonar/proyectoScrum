@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   #Sin esto se toman los controladores de devise por defecto
-  
+   
+  resources :projects
+
   devise_for :users, controllers: { 
       sessions: 'user/sessions',
       passwords: 'user/passwords',
