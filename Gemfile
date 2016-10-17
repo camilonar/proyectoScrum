@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'dotenv-rails'
 gem 'devise'
 gem 'will_paginate'
 gem 'skeleton-rails'
