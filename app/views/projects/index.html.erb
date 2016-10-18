@@ -26,7 +26,11 @@
 											<tr>
 											<div class="row">
 												<td>
-													  <%= image_tag proyecto.photo.url %>
+													  <% if proyecto.photo.exists?%>
+													  	<%= image_tag proyecto.photo.url %>
+													  <%else %>
+													  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+													  <% end %>
 													  <strong><%= proyecto.proy_nombre %></strong><br>
 													  <span><%= proyecto.proy_descripcion%></span> <br>
 													  <%= proyecto.proy_estado%>
