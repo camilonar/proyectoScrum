@@ -9,13 +9,13 @@
 
 	   			 <div class="form-group">
 		   			<%= f.label :photo, "Foto" %>
-		   			<%= f.file_field :photo %>
+		   			<%= f.file_field :photo, onchange:"readURL(this);" %>
 	   			</div>
 	   			
 	   			<div class ="row">
 					<div class="6u 12u$(4)">
                         <div style="text-align:center" >
-							 <%=image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+							 <%=image_tag("logoproyecto.jpg", id:"img_prev",:class => 'logoImage')%>
 							<div>
 							<a href="#" class="button">Subir Logo</a>	
 							</div>

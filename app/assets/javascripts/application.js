@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require skel.min
 //= require skel-layers.min
+//= require preview_image
 //= require_tree .
