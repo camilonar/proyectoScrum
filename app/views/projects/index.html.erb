@@ -26,12 +26,14 @@
 											<tr>
 											<div class="row">
 												<td>
-													  <% if proyecto.photo.exists?%>
-													  	<%= image_tag proyecto.photo.url %>
-													  <%else %>
-													  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+													  <%= link_to  project_details_path(:id => proyecto.id) do %>
+														  <% if proyecto.photo.exists?%>
+															 <%= image_tag proyecto.photo.url %>
+														  <%else %>
+														  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+														  <% end %>
 													  <% end %>
-													  <strong><%= proyecto.proy_nombre %></strong><br>
+													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong><br>
 													  <span><%= proyecto.proy_descripcion%></span> <br>
 													  <%= proyecto.proy_estado%>
 													

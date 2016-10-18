@@ -32,6 +32,8 @@ Rails.application.routes.draw do
    get 'miembros/registrar' =>'miembros#registrar'
    post 'miembros/index' =>'miembros#index'
    post 'miembros/registrar' =>'miembros#registrar'
+
+   get 'project/details' => 'projects#details'
    
     
 

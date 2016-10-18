@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+#gem 'paperclip-dimension-validator'
 gem 'paperclip'
 gem 'dotenv-rails'
 gem 'devise'
