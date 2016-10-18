@@ -24,12 +24,13 @@
 									<tbody>									
 										<% for proyecto in @proyectos %>
 											<tr>
+											<div class="row">
 												<td>
-													<div class="row">
-													  <%=image_tag("profile_placeholder.gif")%>
+													  <%= image_tag proyecto.photo.url %>
 													  <strong><%= proyecto.proy_nombre%></strong><br>
-													  <span><%= proyecto.proy_descripcion%>
-													</div>
+													  <span><%= proyecto.proy_descripcion%></span> <br>
+													  <%= proyecto.proy_estado%>
+													
 												</td>
 						  						<td>
 						  						<%= button_to "Editar" ,{:controller => :projects,
@@ -37,6 +38,7 @@
 						 						<%= button_to "Eliminar" ,{:controller => :projects,
 						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
 						      					</td>
+						      					</div>
 											</tr>
 										<% end %>	
 									</tbody>

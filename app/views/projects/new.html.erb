@@ -4,8 +4,13 @@
 	   <header class="major">
 	   	<h2>Nuevo Proyecto</h2>
 	   </header>	
-	   		<form action="/projects" method="post">
+	   		<%= form_for :proyecto, :html => { :multipart => true } do |f| %>
 	   			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+	   			 <div class="form-group">
+		   			<%= f.label :photo, "Foto" %>
+		   			<%= f.file_field :photo %>
+	   			</div>
 	   			
 	   			<div class ="row">
 					<div class="6u 12u$(4)">
@@ -16,9 +21,9 @@
 							</div>
 						 </div>
 						 <br>
-										<input type="text" name="nombre" id="name" value="" placeholder="Nombre Proyecto" style="background-color:white;" required="true">
+						 <%= f.text_field :proy_nombre, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, style:"background-color:white;" , class:"item" %>
 										<br>
-										<textarea name="descripcion" id="message" placeholder="Descripcion" rows="9" style="background-color:white;" required="true"></textarea>		    
+						<%= f.text_area :proy_descripcion, rows:9, autofocus: true ,placeholder:"Descripcion " ,:required => true, style:"background-color:white;" , class:"item" %>		    
 					</div>	
 
 					<div class="6u 12u$(4)">
@@ -109,8 +114,11 @@
 			</div>
 		</div>
             <br>
-			<input value="Crear" class="special big" type="submit" style="">
-		</form>
+			<div class="actions"><br/>
+    
+    			<%= f.submit "Crear", class: "special big" %>
+  			</div>
+		<%end %>
 	</div>
 				
 </section>

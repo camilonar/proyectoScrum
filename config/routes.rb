@@ -24,6 +24,7 @@ Rails.application.routes.draw do
    get 'projects/new' => 'projects#new'
 
    post 'projects/index' => 'projects#index' #TODO: modificar ruta cuando se creen los servicios de editar y eliminar
+   post 'projects/new' => 'projects#create'
    
    #TODO: paola
    get 'miembros/index' =>'miembros#index'

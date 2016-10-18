@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'paperclip'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'will_paginate'
