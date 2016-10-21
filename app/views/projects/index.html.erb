@@ -28,7 +28,8 @@
 												<td>
 													<div class="row">
  													
- 													 <div class="6u 12u$(4)">
+ 													 <div class="8u 12u$(4)">
+ 													 <div>
 													  <%= link_to  project_details_path(:id => proyecto.id) do %>
 														  <% if proyecto.photo.exists?%>
 															 <%= image_tag proyecto.photo.url ,:class => 'logoImage'%>
@@ -39,13 +40,17 @@
 													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong>
 													  <br>
 													  <span><%= proyecto.proy_descripcion%></span> 
-													  <br><br><br>
-													  <span><%= proyecto.proy_estado%></span>
+													  </div>
+														<br>
+													  <div>
+													  Estado:
+													  <h4 style="color:#3cadd4;"> <%= proyecto.proy_estado%> </h4>
+													  </div>
 													</div>
 
 													<div class="3u 8u$(4)" style="float:right">
 
-													 <ul class="actions fit" style="vertical-align: middle; ">
+													 <ul class="actions fit">
 												         <li>
 								  						<%= button_to "Editar" ,{:controller => :projects,
 								      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
