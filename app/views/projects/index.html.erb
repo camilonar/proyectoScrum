@@ -24,27 +24,49 @@
 									<tbody>									
 										<% for proyecto in @proyectos %>
 											<tr>
-											<div class="row">
+												
 												<td>
+													<div class="row">
+ 													
+ 													 <div class="8u 12u$(4)">
+ 													 <div>
 													  <%= link_to  project_details_path(:id => proyecto.id) do %>
 														  <% if proyecto.photo.exists?%>
-															 <%= image_tag proyecto.photo.url %>
+															 <%= image_tag proyecto.photo.url ,:class => 'logoImage float_left'%>
 														  <%else %>
-														  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+														  	<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
 														  <% end %>
 													  <% end %>
-													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong><br>
-													  <span><%= proyecto.proy_descripcion%></span> <br>
-													  <%= proyecto.proy_estado%>
-													
-												</td>
-						  						<td>
-						  						<%= button_to "Editar" ,{:controller => :projects,
-						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
-						 						<%= button_to "Eliminar" ,{:controller => :projects,
-						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
-						      					</td>
-						      					</div>
+													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong>
+													  <br>
+													  <span><%= proyecto.proy_descripcion%></span> 
+													  </div>
+														<br>
+													  <div>
+													  Estado:
+													  <h4 style="color:#3cadd4;"> <%= proyecto.proy_estado%> </h4>
+													  </div>
+													</div>
+
+													<div class="3u 8u$(4)" style="float:right">
+
+													 <ul class="actions fit">
+												         <li>
+								  						<%= button_to "Editar" ,{:controller => :projects,
+								      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+								      					</li>
+
+								      					<li>
+								 						<%= button_to "Eliminar" ,{:controller => :projects,
+								      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+								      					</li>
+							      					</ul>
+							      					</div>
+
+							      					</div>
+							      				   </td>
+						      					<div>
+
 											</tr>
 										<% end %>	
 									</tbody>
