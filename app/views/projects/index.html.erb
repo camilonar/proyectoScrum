@@ -26,8 +26,6 @@
 											<tr>
 											<div class="row">
 												<td>
-												<div align="center">
-																	  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong><br>								
 													  <%= link_to  project_details_path(:id => proyecto.id) do %>
 														  <% if proyecto.photo.exists?%>
 															 <%= image_tag proyecto.photo.url %>
@@ -35,17 +33,16 @@
 														  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
 														  <% end %>
 													  <% end %>
-													  <br>
-													  <strong>Descripcion: </strong><span><%= proyecto.proy_descripcion%></span> <br>
-													  <strong>Estado: </strong><%= proyecto.proy_estado%>
-												</div>	
+													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong><br>
+													  <span><%= proyecto.proy_descripcion%></span> <br>
+													  <%= proyecto.proy_estado%>
+													
 												</td>
 						  						<td>
-						  						<br><br>
 						  						<%= button_to "Editar" ,{:controller => :projects,
-						      					:action => 'edit', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
 						 						<%= button_to "Eliminar" ,{:controller => :projects,
-						      					:action => 'destroy', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+						      					:action => 'index', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
 						      					</td>
 						      					</div>
 											</tr>

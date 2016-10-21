@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-    layout "user"
-    before_action :authenticate_user!
+layout "user"
+before_action :authenticate_user!
 
 #Se visualiza la lista de proyectos
 def index
@@ -13,34 +13,14 @@ def new
 
 end 
 
-def edit
-    @proyecto= Proyecto.find(params[:id])
-end
-
 #Se crea un proyecto
 def create
 	@proyecto = current_user.proyectos.new(proyecto_params)
 	if @proyecto.save
-     redirect_to projects_path
- else 
-     render 'new'
- end
-end
-
-def update
-    @proyecto= Proyecto.find(params[:id])
-
-    if @proyecto.update(proyecto_params)
-        redirect_to  '/projects'
-    else
-        render :edit
+    	redirect_to projects_path
+    else 
+    	render 'new'
     end
-end
-
-def destroy
-    @proyecto=Proyecto.find(params[:id])
-    @proyecto.destroy()
-    redirect_to "/projects"
 end
 
 #Se visualizan los detalles de un proyecto
@@ -50,7 +30,7 @@ end
 
 #Parametros en la creacion de un proyecto
 def proyecto_params
-  params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado)
-end
+      params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado)
+    end
 
 end 
