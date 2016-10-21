@@ -535,6 +535,11 @@
 		display: inline-block;
 		position: relative;
 		max-width: 40%;
+		width: 150px;
+		height: 150px;
+		float: left;
+			padding: 0 1.5em 1em 0;
+			top: 0.25em;
 	}
 
 	.image {
