@@ -537,9 +537,8 @@
 		max-width: 40%;
 		width: 150px;
 		height: 150px;
-		float: left;
-			padding: 0 1.5em 1em 0;
-			top: 0.25em;
+		padding: 0 1.5em 1em 0;
+		top: 0.25em;
 	}
 
 	.image {
@@ -1229,3 +1228,15 @@
 		.grid-demo .row.flush > div:last-child span {
 			border-radius: 0 4px 4px 0;
 		}
+
+
+/*Elemento escondido*/
+	.hidden_element {
+		height:0px;
+		overflow:hidden;
+	}
+
+/*Elemento que flota a la izquierda*/
+	.float_left {
+		float: left;
+	}

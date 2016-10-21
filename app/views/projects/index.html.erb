@@ -32,9 +32,9 @@
  													 <div>
 													  <%= link_to  project_details_path(:id => proyecto.id) do %>
 														  <% if proyecto.photo.exists?%>
-															 <%= image_tag proyecto.photo.url ,:class => 'logoImage'%>
+															 <%= image_tag proyecto.photo.url ,:class => 'logoImage float_left'%>
 														  <%else %>
-														  	<%= image_tag("logoproyecto.jpg",:class => 'logoImage')%>
+														  	<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
 														  <% end %>
 													  <% end %>
 													  <strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong>
