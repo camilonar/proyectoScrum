@@ -48,9 +48,16 @@ def details
     @proyecto = Proyecto.find(params[:id])
 end
 
+#Se permitira ver en detalle los miembors de un proyecto.
+def miembros
+    @q = params[:id]
+    @miembros=Miembro.where(:proyecto_id => @q)
+end
+
 #Parametros en la creacion de un proyecto
 def proyecto_params
       params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado)
     end
+
 
 end 

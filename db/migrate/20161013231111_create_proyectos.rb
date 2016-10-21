@@ -6,7 +6,6 @@ class CreateProyectos < ActiveRecord::Migration
       t.date :proy_fechainicio
       t.date :proy_fechafinalizacion
       t.string :proy_estado
-
       t.timestamps null: false
     end
   end

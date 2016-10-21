@@ -1,6 +1,12 @@
 <section id="main" class="wrapper">
 				<header class="major">
+				  
+					<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>
+
 					<h2><%= @proyecto.proy_nombre %></h2>
 					<p><%= @proyecto.proy_descripcion %></p>
+					  <h1>Hola aqui mostrare los miembors del proyecto!</h1>
+					<%= button_to "Equipo de trabajo" ,{:controller => :projects,
+														:action => 'miembros', :id => @proyecto.id }, :method => "post" , class:"largePadding"%>
 				</header>
 </section>
