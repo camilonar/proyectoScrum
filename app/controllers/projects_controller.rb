@@ -23,6 +23,26 @@ def create
     end
 end
 
+def edit
+    @proyecto= Proyecto.find(params[:id])
+end
+
+def destroy
+    @proyecto=Proyecto.find(params[:id])
+    @proyecto.destroy()
+    redirect_to "/projects"
+end
+
+def update
+    @proyecto= Proyecto.find(params[:id])
+
+    if @proyecto.update(proyecto_params)
+        redirect_to  '/projects'
+    else
+        render :edit
+    end
+end
+
 #Se visualizan los detalles de un proyecto
 def details
     @proyecto = Proyecto.find(params[:id])
