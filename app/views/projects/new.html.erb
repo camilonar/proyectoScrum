@@ -15,7 +15,7 @@
                         <div style="text-align:center" >
 							 <%=image_tag("logo_proyecto.png", id:"img_prev",:class => 'logoImage')%>
 							<div>
-							<a onclick="chooseFile()" class="button">Subir Logo</a>	
+							<a onclick="chooseFile()" class="button styleIcon">Subir Logo<%= image_tag("ic_insert_photo_white.png", :class => "iconImage")%></a>	
 							</div>
 						 </div>
 						 <br>
@@ -50,7 +50,7 @@
 												 
 												 
 												  <!-- Trigger the modal with a button -->
-												<button type="button" align="right" class="button" data-toggle="modal" data-target="#myModal">Nuevo Miembro +</button>
+												<button type="button" align="right" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>
 												 <!-- Modal -->
 												 
 												<div class="modal fade" id="myModal" role="dialog">
@@ -133,7 +133,6 @@
 		</div>
             <br>
 			<div class="actions"><br/>
-    
     			<%= f.submit "Crear", class: "special big" %>
   			</div>
 		<%end %>

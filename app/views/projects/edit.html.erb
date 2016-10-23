@@ -16,7 +16,7 @@
                         <div style="text-align:center" >
 							 <%=image_tag("logo_proyecto.png", id:"img_prev",:class => 'logoImage')%>
 							<div>
-							<a onclick="chooseFile()" class="button">Subir Logo</a>	
+							<a onclick="chooseFile()" class="button">Subir Logo<%= image_tag("ic_insert_photo_white.png", :class => "iconImage")%></a>	
 							</div>
 						 </div>
 						 <br>
@@ -51,7 +51,7 @@
 													<%=image_tag("profile_placeholder.png")%>
 													<h4> jhon</h4>
 													<p>Doe</p>
-												</div>
+												</div>
 											<td>
 								       </tr>
 								       <% end %>
@@ -60,9 +60,10 @@
 			</div>
 		</div>
             <br>
-			<div class="actions">
-    
-    			<%= f.submit "Guardar", class: "special big" %>
+			<div class="actions">	
+    			<%= button_tag("Guardar", :class => "button special big styleIcon") do %>
+    			Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+    			<% end %>
   			</div>
 		<%end %>
 	</div>
