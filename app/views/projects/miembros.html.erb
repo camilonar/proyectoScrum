@@ -1,11 +1,41 @@
 	 
-<h2>Miembros del proyecto</h2>
-<%@miembros.each do |user| %>
-						 <%iduser=user.user_id
-						 miembro= User.find(iduser)%>	
-	  					<h3>Miembro</h3>
-	  					<h6><%=miembro.nombres%></h6>
-						<h6><%=miembro.apellidos%></h6>
-					  	<h6><%=miembro.email%></h6>
-					  	
-	<%end %>
+<h2 align="center">Miembros del proyecto</h2>
+
+	<section>
+	 <div  style="width:60%; height:450px; overflow:auto; margin:0 auto 0 auto;">
+					<table cellspacing="0" cellpadding="0" border="1" width="500" >
+
+
+						<tr>
+    				<th>   Imagen de perfil</th>	
+    				<th>Detalles usuario</th>
+    				<th>Rol Desempeñado<th>
+    				<th>Opciones<th>
+
+			  		</tr>
+
+						<tbody>									
+							<% for user in @miembros %>
+							 <%iduser=user.user_id
+								 miembro= User.find(iduser)%>	
+	  					
+							<tr>
+								<td>
+								<%=image_tag("profile_placeholder.png", :class => "profileImage")%>
+								</td>
+								<td class="largePadding styleIcon"><p>Nombre: <%=miembro.nombres %>	
+	  								<%=miembro.apellidos%></p>
+	  								<p>Correo:<%=miembro.email%></p>	
+	  							</td>
+	  							<td style="padding-top: 0px;"><%rol=Rol.find(user.rol_id) %>	
+	  							<%=rol.rol_nombre%>    
+	  								
+	  							</td>
+	  							<td> <button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button></td>
+	  							<td> <button type="button"  class="button" data-dismiss="modal">Eliminar <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button></td>
+							</tr>
+							<% end %>										
+						</tbody>
+					</table>
+				</div>
+	</section>			
