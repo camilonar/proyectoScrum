@@ -1,10 +1,10 @@
 <section id="one" class="wrapper " style="background-color:#e3e3e9">
-	<div class="container" style="text-align:center">	
+	<div class="container contact_form" style="text-align:center">	
 
 	   <header class="major">
 	   	<h2>Editar Proyecto</h2>
 	   </header>	
-	   		<%= form_for :proyecto, :html => { :multipart => true } do |f| %>
+	   		<%= form_for :proyecto, :html => { :multipart => true, method: :put } do |f| %>
 	   			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
 	   			 <div class="form-group hidden_element">
@@ -22,7 +22,15 @@
 						 <br>
 						 <%= f.text_field :proy_nombre, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, style:"background-color:white;" , class:"item" %>
 										<br>
-						<%= f.text_area :proy_descripcion, rows:9, autofocus: true ,placeholder:"Descripcion " ,:required => true, style:"background-color:white;" , class:"item" %>		    
+						<%= f.text_area :proy_descripcion, rows:9, autofocus: true ,placeholder:"Descripcion " ,:required => true, style:"background-color:white;" , class:"item" %>
+						<br>	
+						<div class=" flex-container" >
+						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						<p style="padding: 13px;">hasta</p> 
+						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						</div>	 	    
+							<%lista1=["Abierto","Cerrado"]%>
+							<%=f.label :proy_estado, "Estado: "%> <%=f.select :proy_estado, lista1, :required => true, style:"width: 50%;"%>
 					</div>	
 
 					<div class="6u 12u$(4)">
@@ -52,9 +60,9 @@
 			</div>
 		</div>
             <br>
-			<div class="actions"><br/>
+			<div class="actions">
     
-    			<%= f.submit "Editar", class: "special big" %>
+    			<%= f.submit "Guardar", class: "special big" %>
   			</div>
 		<%end %>
 	</div>

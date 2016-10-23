@@ -1,6 +1,5 @@
 <section id="one" class="wrapper " style="background-color:#e3e3e9">
-	<div class="container" style="text-align:center">	
-
+	<div class="container  contact_form" style="text-align:center">	
 	   <header class="major">
 	   	<h2>Nuevo Proyecto</h2>
 	   </header>	
@@ -20,9 +19,15 @@
 							</div>
 						 </div>
 						 <br>
-						 <%= f.text_field :proy_nombre, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, style:"background-color:white;" , class:"item" %>
-										<br>
-						<%= f.text_area :proy_descripcion, rows:9, autofocus: true ,placeholder:"Descripcion " ,:required => true, style:"background-color:white;" , class:"item" %>		    
+						 <%= f.text_field :proy_nombre, autofocus: true ,placeholder:"Nombre Proyecto" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<br>
+						<%= f.text_area :proy_descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<br>	
+						<div class=" flex-container" >
+						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						<p style="padding: 13px;">hasta</p> 
+						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						</div>	    
 					</div>	
 
 					<div class="6u 12u$(4)">
@@ -36,8 +41,7 @@
                                           <head>
 												  <title>Bootstrap Example</title>
 												  <meta charset="utf-8">
-												  
-												  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+												  <meta name="viewport" content="width=device-width, initial-scale=1">
 												  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 												</head>
 												<body>
@@ -116,7 +120,7 @@
 								       <tr>
 								       		<td>
 								              <div class="row">
-													<%=image_tag("profile_placeholder.png")%>
+													<%=image_tag("profile_placeholder.png", :class => "profileImage")%>
 													<h4> jhon</h4>
 													<p>Doe</p>
 												</div>

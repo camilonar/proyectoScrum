@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
    get 'projects/edit' => 'projects#edit' #TODO: modificar ruta cuando se creen los servicios de editar y eliminar
    post 'projects/:id/edit' => 'projects#edit'
+   put 'projects/:id/edit' => 'projects#update'
    post 'projects/:id' => 'projects#destroy'
    
    #TODO: paola

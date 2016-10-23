@@ -62,7 +62,7 @@ end
 
 #Parametros en la creacion de un proyecto
 def proyecto_params
-      params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado)
+      params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado, :proy_fechainicio, :proy_fechafinalizacion)
     end
 
 

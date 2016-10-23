@@ -66,7 +66,11 @@
 											<br>
 											<div>
 												Estado:
+												<% if proyecto.proy_estado=="Abierto"%>
 												<h4 style="color:#3cadd4;"> <%= proyecto.proy_estado%> </h4>
+												<% else %>
+												<h4 style="color:#E82C1D;"> <%= proyecto.proy_estado%> </h4>
+												<% end %>
 											</div>
 										</div>
 

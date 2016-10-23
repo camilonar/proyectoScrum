@@ -193,7 +193,7 @@
 
 	header.major {
 		text-align: center;
-		margin-bottom: 4em;
+		margin-bottom: 2em;
 	}
 
 		header.major h2 {
@@ -537,7 +537,7 @@
 		max-width: 40%;
 		width: 150px;
 		height: 150px;
-		padding: 0 1.5em 1em 0;
+		padding: 1em 1.5em 1em 1.5em;
 		top: 0.25em;
 	}
 
@@ -1070,7 +1070,7 @@
 /* Wrapper */
 
 	.wrapper {
-		padding: 6em 0em 4em;
+		padding: 2em 0em 4em;
 		/* Style 1 Wrapper */
 		/* Style 2 Wrapper */
 		/* Style 3 Wrapper */
@@ -1250,4 +1250,11 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 body {
 	padding-right: 0px !important;
     overflow-y: auto;
+}
+
+.profileImage {
+	max-width: 40%;
+	max-height: 40%;
+	width: 105px;
+	height: 80px;
 }
