@@ -30,8 +30,81 @@
 										<li><h2>Equipo inicial</h2></li>
 										
 									    <li>
-									    
-									      <%=render "miembros/agregar" %>
+
+
+									    <!--Modificando Pao-->
+                                          <head>
+												  <title>Bootstrap Example</title>
+												  <meta charset="utf-8">
+												  <meta name="viewport" content="width=device-width, initial-scale=1">
+												  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+												  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+												  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+												</head>
+												<body>
+												 
+												<div class="container">
+												 
+												 
+												  <!-- Trigger the modal with a button -->
+												<button type="button" align="right" class="button" data-toggle="modal" data-target="#myModal">Nuevo Miembro +</button>
+												 <!-- Modal -->
+												 
+												<div class="modal fade" id="myModal" role="dialog">
+												 
+												<div class="modal-dialog">
+												      <!-- Modal content-->
+												 
+												<div class="modal-content">
+												 
+												<div class="modal-header">
+
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												 
+												<h4 class="modal-title">  Nuevo Miembro</h4>
+												 
+												</div>
+												 
+												<div class="modal-body">
+
+												        <% correos={}%>
+												        <% @nombre_correos.each do |correo|%>
+												        <%correos[correo.email]=correo.id%>
+												        <%end%>
+												        <%lista=correos.sort%>
+												        <%=f.label :"seleccione el Correo Electrónico:"%>
+												        <%=f.select :user_id, lista%>
+												        <br>
+
+												        <% nombres_rol={}%>
+												        <% @nombre_rols.each do |rol|%>
+												        <%nombres_rol[rol.rol_nombre]=rol.id%>
+												        <%end%>
+												        <%lista1=nombres_rol.sort%>
+												        <%=f.label :"seleccione el Rol:"%>
+												        <%=f.select :user_id, lista1%>
+												       <br>
+
+												</div>
+												 
+												 
+												          <div class="modal-footer">
+												          <button type="button"  class="button" data-dismiss="modal">Registrar</button> 
+												        </div>
+												 
+												      </div>
+												 
+												    </div>
+												 
+												  </div>
+												 
+												</div>
+												 
+												 
+												</body>
+
+
+                                         <!-- Termina de Modificar Paola-->
 
 									    </li>
 

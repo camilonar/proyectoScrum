@@ -10,7 +10,9 @@ end
 #Se visualiza la vista de crear un proyecto
 def new
 	@proyecto = Proyecto.new
-
+    # modificando datos  para mostrar datos del rol 
+    @nombre_correos= User.all()
+    @nombre_rols= Rol.all()
 end 
 
 #Se crea un proyecto
@@ -19,7 +21,8 @@ def create
 	if @proyecto.save
     	redirect_to projects_path
     else 
-    	render 'new'
+       #mofifico paola
+      render 'new'
     end
 end
 
@@ -53,6 +56,9 @@ def miembros
     @q = params[:id]
     @miembros=Miembro.where(:proyecto_id => @q)
 end
+
+#  mostrar Inforacion relacionada al miembro
+
 
 #Parametros en la creacion de un proyecto
 def proyecto_params
