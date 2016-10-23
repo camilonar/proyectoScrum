@@ -1240,3 +1240,14 @@
 	.float_left {
 		float: left;
 	}
+
+/*Evita que se cree un espacio en blanco al usar el Modal*/
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+    padding-right: 0px !important;
+    overflow-y: auto;
+}
+
+body {
+	padding-right: 0px !important;
+    overflow-y: auto;
+}
