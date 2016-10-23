@@ -21,9 +21,20 @@ $('#btnYes').click(function() {
     // handle deletion here
   	var id = $('#myModal').data('id');
    
-   alert("se elimino "+id);
-
-  	
+   $.ajax(
+{
+  url : '/projects/'+id,
+  type: "POST",
+})
+  .done(function(data) {
+    $("#respuesta").html(data);
+  })
+  .fail(function(data) {
+    
+  })
+  .always(function(data) {
+   
+  });  	
 });
 
 
@@ -91,9 +102,10 @@ $('#btnYes').click(function() {
 													</li>
 
 													<li>
-														<button type="button" class="confirm-delete button styleIcon" >Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
+												
 
-														<a href="#" class="confirm-delete" data-id="<%= proyecto.id %>">Delete</a><br>
+														<a href="#" class="confirm-delete button styleIcon" data-id="<%= proyecto.id %>">Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+														</a>
 
 
 												      </li>														
