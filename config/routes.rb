@@ -27,7 +27,6 @@ Rails.application.routes.draw do
    post 'proyects/miembrosp' => 'projects#miembros'
    
 
-
    post 'projects/index' => 'projects#index' #TODO: modificar ruta cuando se creen los servicios de editar y eliminar
    post 'projects/new' => 'projects#create'
 
@@ -36,6 +35,10 @@ Rails.application.routes.draw do
    post 'projects/:id' => 'projects#destroy'
    
    #TODO: paola
+   
+   resources:miembros
+
+
    get 'miembros/index' =>'miembros#index'
    #get 'miembros/editar' =>'miembros#editar'
    get 'miembros/registrar' =>'miembros#registrar'
@@ -43,6 +46,8 @@ Rails.application.routes.draw do
    post 'miembros/registrar' =>'miembros#registrar'
 
    get 'project/details' => 'projects#details'
+
+   
    
     
 

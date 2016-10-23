@@ -3,14 +3,30 @@
         <section class="box " style="margin:0 auto 0 auto">
           <header class="major">
             <h3>Agregar Miembro</h3>
-           </header>
-
+            
+          </header>
+           <%= form_for @miembro do |m| %>
+            
+              <br>
+         <!--<input type="text" name="nombre" id="name" value="" placeholder="Correo del miembro" required="true">-->
 
         <br>
-				<input type="text" name="nombre" id="name" value="" placeholder="Correo del miembro" required="true">
-			  <br>
-			  
-			  
+
+        <% nombres_rol={}%>
+        <% @nombre_roles.each do |rol|%>
+        <%nombres_rol[rol.rol_nombre]=rol.id%>
+        <%end%>
+        <%lista=nombres_rol.sort%>
+        <%=m.label :" seleccione el Rol:"%>
+        <%=m.select :rol_id, lista%>
+
+        <br>
+
+        <div>
+        <%=m.submit "Agregar", class:"button"%>
+
+        </div>
+        <% end %>
               
         </div>
         </section>
