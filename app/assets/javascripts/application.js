@@ -16,4 +16,5 @@
 //= require skel.min
 //= require skel-layers.min
 //= require preview_image
+//= require jquery-ui
 //= require_tree .
