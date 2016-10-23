@@ -21,7 +21,10 @@
 
 	$(document).ready(function() {
     // Configure/customize these variables.
+    var showChar = 190;  // How many characters are shown by default
     var ellipsestext = "...";
+    var moretext = "Leer mas";
+    var lesstext = "Cerrar";
     
 
     $('.more').each(function() {
@@ -32,6 +35,7 @@
     		var c = content.substr(0, showChar);
     		var h = content.substr(showChar, content.length - showChar);
 
+    		var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink" style="color: #3030FF">' + moretext + '</a></span>';
 
     		$(this).html(html);
     	}
