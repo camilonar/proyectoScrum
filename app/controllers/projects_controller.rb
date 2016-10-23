@@ -5,6 +5,7 @@ before_action :authenticate_user!
 #Se visualiza la lista de proyectos
 def index
 	@proyectos = current_user.proyectos.paginate(:page => params[:page], :per_page => 10)
+    
 end
 
 #Se visualiza la vista de crear un proyecto
