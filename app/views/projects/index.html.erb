@@ -3,6 +3,31 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+<script type="text/javascript">
+$('#myModal').on('show', function() {
+    var id = $(this).data('id'),
+        removeBtn = $(this).find('.danger');
+})
+
+
+$('.confirm-delete').on('click', function(e) {
+    e.preventDefault();
+
+    var id = $(this).data('id');
+   $('#myModal').data('id', id).modal('show');
+});
+
+$('#btnYes').click(function() {
+    // handle deletion here
+  	var id = $('#myModal').data('id');
+   
+   alert("se elimino "+id);
+
+  	
+});
+
+
+</script>
 
 <!-- Main -->
 <section id="main" class="wrapper">
@@ -88,10 +113,34 @@
 													</li>
 
 													<li>
-														<button type="button" class="button styleIcon" data-toggle="modal" data-target="#myModal">Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
-														
-															<div class="container">
-															  <!-- Trigger the modal with a button -->
+														<button type="button" class="confirm-delete button styleIcon" >Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
+
+														<a href="#" class="confirm-delete" data-id="<%= proyecto.id %>">Delete</a><br>
+
+
+												      </li>														
+													</ul>
+												</div>
+
+											</div>
+										</td>
+										<div>
+
+										</tr>
+										<% end %>	
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div align="center">
+							<%= will_paginate @proyectos %>
+						</div>
+					</section>			
+				</section>
+				<div>
+					
+				</div>	
+
 															
 															 <!-- Modal -->
 															 
@@ -114,12 +163,9 @@
 															       <h1> Seguro desea eliminar este proyecto ?  </h1>
 															</div>											 
 															          <div class="modal-footer">
+																	       	<a href="#" id="btnYes" class="btn danger">Si</a>
 
-															          <%= button_to "Eliminar" ,{:controller => :projects,
-															:action => 'destroy', :id => proyecto.id }, :method => "post" , class:"button" 
-															      %>
-															      
-															          <button type="button"  class="button" data-dismiss="modal">Cancelar</button>
+																		      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
 
 															        </div>
 															 
@@ -128,27 +174,7 @@
 															    </div>
 															 
 															  </div>
-															 
-															</div>
-															</li>
-													</ul>
-												</div>
+														
+														
 
-											</div>
-										</td>
-										<div>
 
-										</tr>
-										<% end %>	
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div align="center">
-							<%= will_paginate @proyectos %>
-						</div>
-					</section>			
-				</section>
-				<div>
-					
-				</div>	
