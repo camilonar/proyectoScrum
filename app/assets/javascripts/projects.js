@@ -19,7 +19,7 @@
 			  }
 			}
 
-	$(document).ready(function() {
+	$(document).on('turbolinks:load', function() {
     // Configure/customize these variables.
     var showChar = 190;  // How many characters are shown by default
     var ellipsestext = "...";
