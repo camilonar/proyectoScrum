@@ -20,9 +20,11 @@ end
 def create
 	@proyecto = current_user.proyectos.new(proyecto_params)
 	if @proyecto.save
+        flash[:notice] = "Proyecto creado exitosamente"
     	redirect_to projects_path
     else 
        #mofifico paola
+      flash[:alert] = "No se pudo crear el proyecto"
       render 'new'
     end
 end
@@ -34,6 +36,7 @@ end
 def destroy
     @proyecto=Proyecto.find(params[:id])
     @proyecto.destroy()
+    flash[:notice] = "Proyecto eliminado exitosamente"
     redirect_to "/projects"
 end
 
@@ -41,8 +44,10 @@ def update
     @proyecto= Proyecto.find(params[:id])
 
     if @proyecto.update(proyecto_params)
+        flash[:notice] = "Proyecto actualizado exitosamente"
         redirect_to  '/projects'
     else
+        flash[:alert] = "No se pudo actualizar el proyecto"
         render :edit
     end
 end
