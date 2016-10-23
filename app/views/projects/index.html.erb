@@ -82,9 +82,55 @@
 														:action => 'edit', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
 													</li>
 
-													<li>
-														<%= button_to "Eliminar" ,{:controller => :projects,
-															:action => 'destroy', :id => proyecto.id }, :method => "post" , class:"largePadding"%>
+													<li>	
+															<div class="container">
+															  <!-- Trigger the modal with a button -->
+															<button type="button" align="right" class="button" data-toggle="modal" data-target="#myModal">Eliminar</button>
+															 <!-- Modal -->
+															 
+															<div class="modal fade" id="myModal" role="dialog">
+															 
+															<div class="modal-dialog">
+															      <!-- Modal content-->
+															 
+															<div class="modal-content">
+															 
+															<div class="modal-header">
+
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															 
+															<h4 class="modal-title">  Eliminar</h4>
+															 
+															</div>
+															 
+															<div class="modal-body">
+															       <h1> Seguro desea eliminar este proyecto ?  </h1>
+															</div>											 
+															          <div class="modal-footer">
+
+															          <%= button_to "Eliminar" ,{:controller => :projects,
+															:action => 'destroy', :id => proyecto.id }, :method => "post" , class:"button" 
+															      %>
+															      
+
+															          <button type="button"  class="button" data-dismiss="modal">Cancelar</button>
+
+															    
+
+															          
+
+															        </div>
+															 
+															      </div>
+															 
+															    </div>
+															 
+															  </div>
+															 
+															</div>
+
+
+
 														</li>
 													</ul>
 												</div>
