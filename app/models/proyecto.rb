@@ -1,5 +1,6 @@
 class Proyecto < ActiveRecord::Base
 	belongs_to :user
+	has_many :miembros
 
 	has_attached_file :photo
 	#validates_attachment :photo, dimensions: { height: 30, width: 30 }

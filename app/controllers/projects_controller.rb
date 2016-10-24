@@ -1,10 +1,16 @@
 class ProjectsController < ApplicationController
 layout "user"
 before_action :authenticate_user!
+require 'will_paginate/array' #Esto permite paginar con Arrays
 
 #Se visualiza la lista de proyectos
 def index
-	@proyectos = current_user.proyectos.paginate(:page => params[:page], :per_page => 10)
+    @proyectos = current_user.proyectos
+    @miembros = current_user.miembros
+    @miembros.each do |miembro|
+        @proyectos = @proyectos + [miembro.proyecto]
+    end
+    @proyectos = @proyectos.paginate(:page => params[:page], :per_page => 10)
     
 end
 
