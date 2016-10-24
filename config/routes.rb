@@ -24,7 +24,8 @@ Rails.application.routes.draw do
    get 'projects/new' => 'projects#new'
    
    #TODO:Andres
-   post 'proyects/miembrosp' => 'projects#miembros'
+   get 'projects/details/miembros' => 'projects#miembros'
+   post 'projects/details/miembros' => 'projects#miembros'
    
 
    post 'projects/index' => 'projects#index' #TODO: modificar ruta cuando se creen los servicios de editar y eliminar

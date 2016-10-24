@@ -6,7 +6,7 @@
 					<table cellspacing="0" cellpadding="0" border="1" width="500" >
 
 
-						<tr>
+					<tr>
     				<th>   Imagen de perfil</th>	
     				<th>Detalles usuario</th>
     				<th>Rol Desempeñado<th>
@@ -14,7 +14,7 @@
 
 			  		</tr>
 
-						<tbody>									
+						<div class="row">							
 							<% for user in @miembros %>
 							 <%iduser=user.user_id
 								 miembro= User.find(iduser)%>	
@@ -35,7 +35,7 @@
 	  							<td> <button type="button"  class="button" data-dismiss="modal">Eliminar <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button></td>
 							</tr>
 							<% end %>										
-						</tbody>
+						</div>
 					</table>
 				</div>
 	</section>			
