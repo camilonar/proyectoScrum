@@ -4,3 +4,7 @@
 .morelink {
     display: block;
 }
+
+img.top {
+    vertical-align: text-top;
+}

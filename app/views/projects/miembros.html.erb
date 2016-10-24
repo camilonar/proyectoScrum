@@ -1,41 +1,74 @@
 	 
-<h2 align="center">Miembros del proyecto</h2>
+<br/><h2 align="center">Miembros del proyecto</h2>
 
-	<section>
-	 <div  style="width:60%; height:450px; overflow:auto; margin:0 auto 0 auto;">
-					<table cellspacing="0" cellpadding="0" border="1" width="500" >
+	
+	<%if @miembros.size==0%>
+		<h3 align="center">Ups! , esto parece muy vacio. Puedes empezar por <strong><em>conformar un equipo de trabajo</em></strong></h3> 
+		
+		<%else%>
+				<%proyecto=Proyecto.find(@miembros.first.proyecto_id)%>
+				
+				<%if !proyecto.nil?%>
+				   
+				  
+				    	<section>
+						 <div  style="width:60%; margin:0 auto 0 auto;">
+								 <h4>Miembros asociados al proyecto  '<%=proyecto.proy_nombre%>' :</h4>
+									<br/>
+									<table cellspacing="0" cellpadding="0"  width="500" >
+
+															
+									<tr>
+					    				<th>Imagen de perfil</th>	
+					    				<th>Detalles usuario</th>
+					    				<th>Rol Desempeñado</th>
+					    				 <%if current_user.id==proyecto.user_id%>
+					    					<th align="center">Opciones</th>
+					    				<%end%>
+							  		</tr>
+
+												
+									<% for user in @miembros %>
+										<%iduser=user.user_id
+										 miembro= User.find(iduser)%>	
+					  					
+										<tr>
+												<td>
+												<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+												</td>
+												
+												<td class="largePadding styleIcon"><p><%=miembro.nombres %>	
+					  								 <%=miembro.apellidos%></p>
+					  								<em><%=miembro.email%></em>	
+					  							</td>
+					  							<td style="padding-top: 0px;"><%rol=Rol.find(user.rol_id) %>	
+					  							<%=rol.rol_nombre%>    	
+					  							</td>
+					  							
+					  							 <%if current_user.id==proyecto.user_id%>
+							  							<td>
+								  							<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
+								  							 <button type="button"  class="button" data-dismiss="modal">Eliminar <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
+							  							 </td>
+					  							 <%end%>
+										</tr>
+										<% end %>										
+									
+									</table>
+									 <br/>
+										<div align="center">
+											<%= will_paginate @miembros %>
+										</div>
+								</div>
+							</section>	
+
+							
+							
+				    
+				<%end%>
+				
+		<%end%>
 
 
-					<tr>
-    				<th>   Imagen de perfil</th>	
-    				<th>Detalles usuario</th>
-    				<th>Rol Desempeñado<th>
-    				<th>Opciones<th>
 
-			  		</tr>
-
-						<div class="row">							
-							<% for user in @miembros %>
-							 <%iduser=user.user_id
-								 miembro= User.find(iduser)%>	
-	  					
-							<tr>
-								<td>
-								<%=image_tag("profile_placeholder.png", :class => "profileImage")%>
-								</td>
-								<td class="largePadding styleIcon"><p>Nombre: <%=miembro.nombres %>	
-	  								<%=miembro.apellidos%></p>
-	  								<p>Correo:<%=miembro.email%></p>	
-	  							</td>
-	  							<td style="padding-top: 0px;"><%rol=Rol.find(user.rol_id) %>	
-	  							<%=rol.rol_nombre%>    
-	  								
-	  							</td>
-	  							<td> <button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button></td>
-	  							<td> <button type="button"  class="button" data-dismiss="modal">Eliminar <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button></td>
-							</tr>
-							<% end %>										
-						</div>
-					</table>
-				</div>
-	</section>			
+	

@@ -66,7 +66,8 @@ end
 #Se permitira ver en detalle los miembors de un proyecto.
 def miembros
     @q = params[:id]
-    @miembros=Miembro.where(:proyecto_id => @q)
+    @miembros=Miembro.where(:proyecto_id => @q).paginate(:page => params[:page], :per_page => 5)
+
 end
 
 #  mostrar Inforacion relacionada al miembro
