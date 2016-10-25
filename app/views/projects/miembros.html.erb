@@ -1,9 +1,12 @@
 	 
 <br/><h2 align="center">Miembros del proyecto</h2>
 
+
 	
 	<%if @miembros.size==0%>
-		<h3 align="center">Ups! , esto parece muy vacio. Puedes empezar por <strong><em>conformar un equipo de trabajo</em></strong></h3> 
+		<h3 align="center">No hay Información Relacionada a  Miembros del Equipo. Puedes empezar por <strong><em>Agregar un Miembro</em></strong></h3> 
+
+
 		
 		<%else%>
 				<%proyecto=Proyecto.find(@miembros.first.proyecto_id)%>
@@ -14,6 +17,97 @@
 				    	<section>
 						 <div  style="width:60%; margin:0 auto 0 auto;">
 								 <h4>Miembros asociados al proyecto  '<%=proyecto.proy_nombre%>' :</h4>
+								 <h4> Id del proyecto:  <%=@miembros.first.proyecto_id%> </h4>
+                                          
+
+									    <!--Modificando Pao-->
+                                          <head>
+												  <title>Bootstrap Example</title>
+												  <meta charset="utf-8">
+												  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+												</head>
+												<body>
+												 
+												<div class="container">
+												 
+												 
+												  <!-- Trigger the modal with a button -->
+												<button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>
+												 <!-- Modal -->
+												 
+												<div class="modal fade" id="myModal" role="dialog">
+												 
+												<div class="modal-dialog">
+												      <!-- Modal content-->
+												 
+												<div class="modal-content">
+												 
+												<div class="modal-header">
+
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												 
+												<h4 class="modal-title">  Nuevo Miembro</h4>
+												 
+												</div>
+												 
+												<div class="modal-body">
+
+                                                   <%= form_for @miembro do |m| %>
+          
+                                                          <%=m.text_field :proyecto_id, value:@miembros.first.proyecto_id %>
+													      <br>   
+													        <% correos={}%>
+													        <% @nombre_correos.each do |correo|%>
+													        <%correos[correo.email]=correo.id%>
+													        <%end%>
+													        <%lista=correos.sort%>
+													        <%=m.label :" seleccione el Correo Electrónico:"%>
+													        <%=m.select :user_id, lista%>
+													        <br>
+
+
+													        <% nombres_rol={}%>
+													        <% @nombre_roles.each do |rol|%>
+													        <%nombres_rol[rol.rol_nombre]=rol.id%>
+													        <%end%>
+													        <%lista=nombres_rol.sort%>
+													        <%=m.label :" seleccione el Rol:"%>
+													        <%=m.select :rol_id, lista%>
+													       <br>
+   
+   
+												</div>
+												 
+												 
+												          <div class="modal-footer">
+
+												           <%=m.submit "Agregar", class:"button" %>
+
+												          <button type="button"  class="button" data-dismiss="modal">Registrar</button> 
+
+												          <% end %>
+												        </div>
+												 
+												      </div>
+												 
+												    </div>
+												 
+												  </div>
+												 
+												</div>
+												 
+												 
+												</body>
+
+
+                                         <!-- Termina de Modificar Paola-->
+
+
+
+
+
+								
 									<br/>
 									<table cellspacing="0" cellpadding="0"  width="500" >
 

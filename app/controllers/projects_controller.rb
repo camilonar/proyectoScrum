@@ -67,8 +67,26 @@ end
 def miembros
     @q = params[:id]
     @miembros=Miembro.where(:proyecto_id => @q).paginate(:page => params[:page], :per_page => 5)
+   
+    @miembro = Miembro.new  #crea un nuevo articulo que no se guarda en la base de datos, solo esta en memoria. (hay toca mandarle el array)
+    @nombre_roles=Rol.all()
+    @nombre_correos= User.all()
+
 
 end
+
+def create
+        @miembro=Miembro.new(miembro_params)
+        if @miembro.save
+            flash[:notice] = "Miembro Registrado exitosamente"
+            redirect_to  '/projects/details/miembros'
+        else
+            @nombre_roles=Rol.all()
+            render :miembros
+
+        end
+        
+    end
 
 #  mostrar Inforacion relacionada al miembro
 
@@ -76,7 +94,11 @@ end
 #Parametros en la creacion de un proyecto
 def proyecto_params
       params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado, :proy_fechainicio, :proy_fechafinalizacion)
-    end
+end
+
+def miembro_params
+        params.require(:miembro).permit(:user_id, :proyecto_id, :rol_id)
+end
 
 
 end 
