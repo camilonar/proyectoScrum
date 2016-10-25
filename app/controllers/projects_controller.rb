@@ -75,29 +75,12 @@ def miembros
 
 end
 
-def create
-        @miembro=Miembro.new(miembro_params)
-        if @miembro.save
-            flash[:notice] = "Miembro Registrado exitosamente"
-            redirect_to  '/projects/details/miembros'
-        else
-            @nombre_roles=Rol.all()
-            render :miembros
-
-        end
-        
-    end
-
 #  mostrar Inforacion relacionada al miembro
 
 
 #Parametros en la creacion de un proyecto
 def proyecto_params
       params.require(:proyecto).permit(:proy_nombre, :proy_descripcion, :photo, :proy_estado, :proy_fechainicio, :proy_fechafinalizacion)
-end
-
-def miembro_params
-        params.require(:miembro).permit(:user_id, :proyecto_id, :rol_id)
 end
 
 

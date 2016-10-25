@@ -19,7 +19,7 @@ class MiembrosController < ApplicationController
 		@miembro=Miembro.new(miembro_params)
 		#articulo.valid? || articulo.invalid? devuelven booleanos de la pregunta, es una forma de preguntar antes de guardar.
 		if @miembro.save
-			redirect_to @miembro
+			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
 			@nombre_roles=Rol.all()
 			render :new
