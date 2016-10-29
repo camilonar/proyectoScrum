@@ -44,9 +44,10 @@ Rails.application.routes.draw do
    get 'miembros/index' =>'miembros#index'
    #get 'miembros/editar' =>'miembros#editar'
    get 'miembros/registrar' =>'miembros#registrar'
+   post 'miembros/:id'=>'miembros#destroy'
    post 'miembros/index' =>'miembros#index'
    post 'miembros/registrar' =>'miembros#registrar'
-
+   
    get 'project/details' => 'projects#details'
 
    

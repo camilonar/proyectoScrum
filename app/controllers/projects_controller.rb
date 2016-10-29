@@ -67,13 +67,15 @@ end
 def miembros
     @q = params[:id]
     @miembros=Miembro.where(:proyecto_id => @q).paginate(:page => params[:page], :per_page => 5)
-   
+    @usuarios=User.all()
     @miembro = Miembro.new  #crea un nuevo articulo que no se guarda en la base de datos, solo esta en memoria. (hay toca mandarle el array)
     @nombre_roles=Rol.all()
     @nombre_correos= User.all()
 
 
 end
+
+
 
 #  mostrar Inforacion relacionada al miembro
 

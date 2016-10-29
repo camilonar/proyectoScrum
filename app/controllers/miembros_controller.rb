@@ -54,7 +54,8 @@ class MiembrosController < ApplicationController
 	def destroy
 		 @miembro=Miembro.find(params[:id])
 		 @miembro.destroy()
-		 redirect_to "/miembros"
+		 flash[:notice] = "Miembro del equipo de trabajo Exitosamente"
+		 redirect_to projects_details_miembros_path(:id => params[:proyecto_id] )
     end
 
 

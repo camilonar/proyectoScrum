@@ -1,8 +1,10 @@
 	 
 <br/><h2 align="center">Miembros del proyecto</h2>
 
+	
 
 	<%proyecto=Proyecto.find(@q)%>
+	
 	<%if @miembros.size==0%>
 		<h3 align="center">No hay Información relacionada a  Miembros del Equipo. <br /> Puedes empezar por <button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button></h3> 
 
@@ -11,16 +13,22 @@
 		<%else%>
 				
 				<%if !proyecto.nil?%>
-				   
-				  
-				    	<section>
+											   
+				   	<section>
 						 <div  style="width:60%; margin:0 auto 0 auto;">
 								 <h4>Miembros asociados al proyecto  '<%=proyecto.proy_nombre%>' :</h4>
 									<div align="right">
+									
+
+
 									<button type="button" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>
 									</div>
+
+
+
+
 									<br/>
-									<table cellspacing="0" cellpadding="0"  width="500" >
+						<table cellspacing="0" cellpadding="0"  width="500" >
 
 															
 									<tr>
@@ -32,34 +40,87 @@
 					    				<%end%>
 							  		</tr>
 
+
+
+						<% for user in @miembros %>
+							
+							 <%userAdmin= User.find(proyecto.user_id)
+								 if proyecto.user_id==userAdmin.id%>
+								
+											<tr>
+													<td>
+													<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+													</td>
+													
+													<td class="largePadding styleIcon"><p><%=userAdmin.nombres %>	
+						  								 <%=userAdmin.apellidos%> <%=image_tag("adminicon.png" ,:class=>"top")%></p> 
+						  								<em><%=userAdmin.email%></em>
+
+						  							</td>
+						  							
+						  							<td style="padding-top: 0px;">
+						  							
+						  							<p><%rol=Rol.find(user.rol_id) %>	
+						  							<%=rol.rol_nombre%></p>
+						  							<p><em class="textoAzul"><strong class="textoAzul">(Administrador)</strong></em></p>
+						  							</td>
+
+						  							<td>
+											  			<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
+														 <button type="button"  class="button" data-dismiss="modal" disabled>Eliminar  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
+
+
+
+										  			</td>
+
+							  			     </tr>
+									<%break%>										
+								<%end%>
+
+								
+			 					
+						<%end%>	
 												
 									<% for user in @miembros %>
+										
+
+
 										<%iduser=user.user_id
-										 miembro= User.find(iduser)%>	
+										 miembro= User.find(iduser)%>
+
+										 <%if miembro.id!=proyecto.user_id%>
 					  					
-										<tr>
-												<td>
-												<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
-												</td>
-												
-												<td class="largePadding styleIcon"><p><%=miembro.nombres %>	
-					  								 <%=miembro.apellidos%></p>
-					  								<em><%=miembro.email%></em>	
-					  							</td>
-					  							<td style="padding-top: 0px;"><%rol=Rol.find(user.rol_id) %>	
-					  							<%=rol.rol_nombre%>    	
-					  							</td>
-					  							
-					  							 <%if current_user.id==proyecto.user_id%>
-							  							<td>
-								  							<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
-								  							 <button type="button"  class="button" data-dismiss="modal">Eliminar <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
-							  							 </td>
-					  							 <%end%>
-										</tr>
-										<% end %>										
+												<tr>
+														<td>
+														<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+														</td>
+														
+														<td class="largePadding styleIcon"><p><%=miembro.nombres %>	
+							  								 <%=miembro.apellidos%></p>
+							  								<em><%=miembro.email%></em>	
+							  							</td>
+							  							<td style="padding-top: 0px;"><%rol=Rol.find(user.rol_id) %>	
+							  							<%=rol.rol_nombre%>    	
+							  							</td>
+							  							
+							  							 <%if current_user.id==proyecto.user_id%>
+											  					<td>
+												  					<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
+												  							
+												  									
+		 																
+
+																	<%= link_to "Eliminar",{:controller => :miembros,
+		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id}, class: "confirm-delete button styleIcon",  :method => "delete" %>
+												  				</td>
+															
+									  							
+							  							 <%end%>
+												</tr>
+											<% end %>
+								<% end %>										
 									
-									</table>
+						</table>
 									 <br/>
 										<div align="center">
 											<!--Elimino paginacion debido a error con javascript, que impide agregar miembros cuando se cambia de página, a menos que se haga F5 <%= will_paginate @miembros %>-->
@@ -154,3 +215,39 @@
 
 
                                          <!-- Termina de Modificar Paola-->
+
+
+
+ 															<!-- Modal Andres-->
+															 
+															<div class="modal fade" id="eliminarMiembroModal" role="dialog">
+															 
+															<div class="modal-dialog">
+															      <!-- Modal content-->
+															 
+															<div class="modal-content">
+															 
+															<div class="modal-header">
+
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															 
+															<h4 class="modal-title">  Eliminar</h4>
+															 
+															</div>
+															 
+															<div class="modal-body">
+															       <h1> Seguro desea eliminar este miembro del proyecto ?  </h1>
+															</div>											 
+															          <div class="modal-footer">
+																	       	<a href="#" id="btnYes" class="btn danger">Si</a>
+
+																		      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+
+															        </div>
+															 
+															      </div>
+															 
+															    </div>
+															 
+															  </div>
+															  <!--Acaba modificar Andres-->
