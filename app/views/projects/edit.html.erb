@@ -14,7 +14,11 @@
 	   			
 					<div align="center" style="margin:0 auto 0 auto;" class="container 50%">
                         <div style="text-align:center" >
-							 <%=image_tag("logo_proyecto.png", id:"img_prev",:class => 'logoImage')%>
+							    <% if @proyecto.photo.exists?%>
+					              <%= image_tag @proyecto.photo.url ,:class => "logoImage top", :id => "img_prev"%>
+					            <% else %>
+					              <%=image_tag("logo_proyecto.png", :class => "logoImage top", :id => "img_prev")%>
+					          <% end %>
 							<div>
 							<a onclick="chooseFile()" class="button">Subir Logo<%= image_tag("ic_insert_photo_white.png", :class => "iconImage")%></a>	
 							</div>

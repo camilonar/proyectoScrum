@@ -49,7 +49,11 @@
 								
 											<tr>
 													<td>
-													<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+													<% if userAdmin.photo.exists?%>
+														<%= image_tag userAdmin.photo.url ,:class => "profileImage top"%>
+													<% else %>
+														<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+													<% end %>
 													</td>
 													
 													<td class="largePadding styleIcon"><p><%=userAdmin.nombres %>	
@@ -67,7 +71,7 @@
 
 						  							<td>
 											  			<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
-														 <button type="button"  class="button" data-dismiss="modal" disabled>Eliminar  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
+														 <button type="button"  class="button" data-dismiss="modal" disabled>Remover  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
 
 
 
@@ -92,7 +96,11 @@
 					  					
 												<tr>
 														<td>
+														<% if miembro.photo.exists?%>
+														<%= image_tag miembro.photo.url ,:class => "profileImage top"%>
+													<% else %>
 														<%=image_tag("profile_placeholder.png", :class => "profileImage top")%>
+													<% end %>
 														</td>
 														
 														<td class="largePadding styleIcon"><p><%=miembro.nombres %>	
@@ -111,7 +119,11 @@
 		 																
 
 																	<%= link_to "Eliminar",{:controller => :miembros,
-		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id}, class: "confirm-delete button styleIcon",  :method => "delete" %>
+		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id},  :method => "delete" do %>
+		     														<div class= "confirm-delete button styleIcon">
+		     															Remover <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+		     														</div>
+		     														<% end %>
 												  				</td>
 															
 									  							

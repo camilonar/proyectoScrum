@@ -16,6 +16,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
+     session[:return_to] = request.referer if request.get?
      super
    end
 
@@ -23,6 +24,10 @@ class User::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
+
+   def after_update_path_for(resource)
+     session[:return_to]
+    end
 
   # DELETE /resource
   # def destroy
