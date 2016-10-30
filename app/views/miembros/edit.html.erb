@@ -1,1 +1,57 @@
-<%=render "miembros/form" %>
+<section id="three" class="wrapper style1 special" >
+        <div align="center" style="margin:0 auto 0 auto;" class="container 50%">
+        <section class="box " style="margin:0 auto 0 auto">
+          <header class="major">
+
+           <h3>Editar Miembro</h3>
+            
+          </header>
+
+            
+          <%= form_for :miembro, :html => { :multipart => true, method: :put } do |m| %>
+        
+                              <div class="hidden_element">
+                              <%=m.text_field :proyecto_id, value:@q  %>
+                              </div>
+                               <div>
+                                <!--probando -->
+
+
+                              <%= m.text_field :proyecto_id, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, class:"item" %>
+                               
+                               </div>
+
+                               <div>
+                               
+                              <%= m.text_field :user_id, autofocus: true ,:required => true, class:"item" %>
+                               
+                               </div>
+
+                                <div>
+                                
+                                 <% nombres_rol={}%>
+                                <% @nombre_roles.each do |rol|%>
+                                <%nombres_rol[rol.rol_nombre]=rol.id%>
+                                <%end%>
+                                <%lista=nombres_rol.sort%>
+                                <%=m.label :" seleccione el Rol:"%>
+                                <%=m.select :rol_id, lista%>
+
+                               </div>
+
+                                
+
+
+
+              <div class="actions"> 
+                <%= button_tag("Guardar", :class => "button special big styleIcon") do %>
+                Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+                <% end %>
+              </div>
+
+       <% end %>
+         
+        </div>
+
+        </section>
+ </section>

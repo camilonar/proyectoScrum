@@ -40,6 +40,10 @@ Rails.application.routes.draw do
    
    resources:miembros
 
+   get 'miembros/edit' => 'miembros#edit' 
+   post 'miembros/:id/edit' => 'miembros#edit'
+   put 'miembros/:id/edit' => 'miembros#update'
+
 
    get 'miembros/index' =>'miembros#index'
    #get 'miembros/editar' =>'miembros#editar'

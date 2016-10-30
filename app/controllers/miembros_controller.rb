@@ -15,22 +15,28 @@ class MiembrosController < ApplicationController
 
 
 
+
 	def create
 		@miembro=Miembro.new(miembro_params)
 		#articulo.valid? || articulo.invalid? devuelven booleanos de la pregunta, es una forma de preguntar antes de guardar.
 		if @miembro.save
+			flash[:notice] = "El Miembro  se ha Agregado Exitosamente al Equipo de Trabajo"
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
+			flash[:alert] = "El Miembro no se ha Agregado Exitosamente al Equipo de Trabajo "
 			@nombre_roles=Rol.all()
 			render :new
 		end
 		
 	end
 
+
+
     
-    def edit
-	   @nombre_roles=Rol.all()
-	   @miembro = Miembro.find(params[:id]) 
+   def edit
+      
+       @miembro = Miembro.find(params[:id]) 
+       @nombre_roles=Rol.all()
 	   
 	end
 
@@ -40,12 +46,15 @@ class MiembrosController < ApplicationController
 		@miembro=Miembro.find(params[:id])
 
 		if @miembro.update(miembro_params)
-			redirect_to @miembro
+		    flash[:notice] = "El Miembro  se ha Actualizado  Exitosamente "
+			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
+			flash[:notice] = "El Miembro  No se pudo Actualizar "
 			render :edit
 		end
 
     end
+
     
     def show
        @miembro=Miembro.find(params[:id])
