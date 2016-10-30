@@ -1,5 +1,5 @@
 class User::RegistrationsController < Devise::RegistrationsController
-  layout "user", only: [:edit] #Cambiar el layout
+  layout "user", only: [:edit, :update] #Cambiar el layout
   
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
@@ -21,9 +21,9 @@ class User::RegistrationsController < Devise::RegistrationsController
    end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+     super
+   end
 
    def after_update_path_for(resource)
      session.delete(:return_to) || projects_path #TODO: revisar la ruta

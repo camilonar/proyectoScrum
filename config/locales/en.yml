@@ -19,5 +19,33 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
+
 en:
+  activerecord:
+    attributes:
+      user:
+        #TODO: traducir campos
+        email: ""
+        current_password: ""
+        password: ""
+        password_confirmation: ""
+    errors:
+      models:
+        user:
+          attributes:
+            #TODO: traducir errores
+            email: 
+              blank: "El correo electrónico no puede estar vacío"
+              taken: "El correo electrónico ya se encuentra registrado"
+            password:
+              invalid: "Nueva contraseña inválida"
+              confirmation: "Las contraseñas no coinciden"
+              too_short: "es muy corta (el mínimo es %{count} caracteres)"
+            current_password:
+              blank: "La contraseña actual no puede estar vacía "
+              invalid: "La contraseña actual es incorrecta"
+            password_confirmation:
+              invalid: "Las contraseñas no coinciden"
+              confirmation: "Las contraseñas no coinciden"
   hello: "Hello world"

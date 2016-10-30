@@ -9,7 +9,7 @@ en:
     failure:
       already_authenticated: "Ya ha sido identificado."
       inactive: "su cuenta aún no ha sido activada."
-      invalid: "%{authentication_keys} o contraseña inválidos."
+      invalid: "Email o contraseña inválidos."
       locked: "Su cuenta ha sido bloqueada."
       not_found_in_database: "Correo o contraseña inválidos."
       timeout: "su sesión ha expirado, por favor identifíquese de nuevo para continuar."
@@ -38,7 +38,7 @@ en:
       signed_up_but_locked: "Se ha registrado correctamente, pero no ha podido iniciar sesión porque su cuenta está bloqueada."
       signed_up_but_unconfirmed: "Se le ha enviado un mensaje con un enlace de confirmación. Por favor visite el enlace para activar su cuenta."
       update_needs_confirmation: "Ha actualizado su cuenta correctamente, sin embargo necesitamos verificar su nueva cuenta de correo. Por favor revise su correo electrónico y visite el enlace para finalizar la confirmación de su nueva dirección de correo electrónico."
-      updated: "Ha actualizado tu cuenta correctamente."
+      updated: "Ha actualizado su cuenta correctamente."
     sessions:
       signed_in: "Ha iniciado sesión satisfactoriamente."
       signed_out: "Ha cerrado la sesión satisfactoriamente."
