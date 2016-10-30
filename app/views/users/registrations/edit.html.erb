@@ -2,6 +2,9 @@
         <div align="center" style="margin:0 auto 0 auto;" class="container 50%">
         <section class="box " style="margin:0 auto 0 auto">
 
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Esperando confirmación para: <%= resource.unconfirmed_email %></div>
+  <% end %>
 
 <h2>Editar Perfil</h2>
 
@@ -23,12 +26,20 @@
      <br>        
   <div class="field">
     <%= f.label :email, "Correo electrónico" %>
-    <%= f.email_field :email, autofocus: true %><br />
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Esperando confirmación para: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <%= f.label :"Nombre" , class:" item"%> 
+  <div class=" flex-container" ><br/>
+    <%= f.text_field :nombres, autofocus: true ,placeholder:"Nombre(s)" ,:required => true, style:" text-align: center;" , class:"item" %>
+    <%= f.text_field :apellidos, autofocus: true ,placeholder:"Apellido(s)",:required => true, style:" text-align: center;" ,class:"item" %>
+    
+  </div>
+  <%= f.label :"Apodo" , class:" item"%> 
+  
+  <div class="flex-container" ><br/>
+    <%= f.text_field :apodo, autofocus: true ,placeholder:"Apodo" ,style:" text-align: center; ", class:"item"%>
+  </div>
 
   <%= f.label :"Nueva Contraseña" , class:" item"%> <i>(´Dejar vacío si no se desea cambiarla)</i>
   <div class="flex-container"><br/>
@@ -45,7 +56,7 @@
 
   <div class="field">
     <%= f.label :current_password, "Contraseña actual" %> <i>(Tu contraseña actual es necesaria para confirmar los cambios)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Contraseña actual" %>
+    <%= f.password_field :current_password, autocomplete: "off", style:" text-align: center; ", placeholder: "Contraseña actual" %>
   </div> <br />
 
   <div class="actions">

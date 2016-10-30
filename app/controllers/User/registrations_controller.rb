@@ -26,7 +26,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
 
    def after_update_path_for(resource)
-     session[:return_to]
+     session.delete(:return_to) || projects_path #TODO: revisar la ruta
     end
 
   # DELETE /resource
