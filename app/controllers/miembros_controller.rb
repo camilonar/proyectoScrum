@@ -37,6 +37,7 @@ class MiembrosController < ApplicationController
       
        @miembro = Miembro.find(params[:id]) 
        @nombre_roles=Rol.all()
+       @nombre_correos= User.all()
 	   
 	end
 

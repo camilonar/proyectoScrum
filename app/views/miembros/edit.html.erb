@@ -11,21 +11,28 @@
           <%= form_for :miembro, :html => { :multipart => true, method: :put } do |m| %>
         
                               <div class="hidden_element">
-                              <%=m.text_field :proyecto_id, value:@q  %>
+                               <%= m.text_field :proyecto_id, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, class:"item" %>
+
                               </div>
-                               <div>
-                                <!--probando -->
+                         
 
+                           <div>
 
-                              <%= m.text_field :proyecto_id, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, class:"item" %>
+                              
                                
-                               </div>
-
-                               <div>
+                            <br>   
+                            <% correos={}%>
+                            <% @nombre_correos.each do |correo|%>
+                            <%correos[correo.email]=correo.id%>
+                            <%end%>
+                            <%lista=correos.sort%>
+                            <%=m.label :"Correo Electrónico:"%>
+                            <%=m.select :user_id, lista%>
+                            
+                            <br>
                                
-                              <%= m.text_field :user_id, autofocus: true ,:required => true, class:"item" %>
                                
-                               </div>
+                          </div>
 
                                 <div>
                                 
@@ -38,9 +45,6 @@
                                 <%=m.select :rol_id, lista%>
 
                                </div>
-
-                                
-
 
 
               <div class="actions"> 
