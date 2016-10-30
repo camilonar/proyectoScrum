@@ -27,7 +27,10 @@
                             <%end%>
                             <%lista=correos.sort%>
                             <%=m.label :"Correo Electrónico:"%>
-                            <%=m.select :user_id, lista%>
+                            <div>
+                              <%=m.select :user_id,  lista%>
+                            </div>
+                            
                             
                             <br>
                                

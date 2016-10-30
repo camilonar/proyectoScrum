@@ -71,6 +71,7 @@
 
 						  							<td>
 											  			<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
+
 														 <button type="button"  class="button" data-dismiss="modal" disabled>Remover  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
 
 
@@ -112,7 +113,8 @@
 							  							</td>
 							  							
 							  							 <%if current_user.id==proyecto.user_id%>
-											  					<td>
+											  			
+											  			<td>
 												  				
 
 															 <%= button_to edit_miembro_path(:id => user.id) ,{:controller => :miembros,
@@ -124,11 +126,7 @@
 		 																
 
 																	<%= link_to "Eliminar",{:controller => :miembros,
-		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id},  :method => "delete" do %>
-		     														<div class= "button largePadding ">
-		     															Remover <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
-		     														</div>
-		     														<% end %>
+		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id}, class: "confirm-delete button styleIcon",  :method => "delete" %>
 												  				</td>
 															
 									  							
