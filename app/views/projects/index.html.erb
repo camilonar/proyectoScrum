@@ -63,11 +63,9 @@ $('#btnYes').click(function() {
 					<table id="tabla">
 						<tbody>									
 							<% for proyecto in @proyectos %>
-							<tr>
-								
+							<tr>								
 								<td>
-									<div class="row">
-										
+									<div class="row">										
 										<div class="8u 12u$(4)">
 											<div>
 												<%= link_to  project_details_path(:id => proyecto.id) do %>
@@ -91,30 +89,30 @@ $('#btnYes').click(function() {
 												<% end %>
 											</div>
 										</div>
-
-										<div class="3u 8u$(4)" style="float:right">
-										   <%if current_user.id = proyecto.user_id%>
-											<ul class="actions fit">
-												<li>
-													<%= button_to edit_project_path(:id => proyecto.id) ,{:controller => :projects,
-														:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
-														Editar<%= image_tag("ic_edit_white.png", :class => "iconImage")%>
-													<% end %>
-													</li>
-
+										<% if can? :update, proyecto %>
+											<div class="3u 8u$(4)" style="float:right">
+											   <%if current_user.id = proyecto.user_id%>
+												<ul class="actions fit">
 													<li>
-												
+														<%= button_to edit_project_path(:id => proyecto.id) ,{:controller => :projects,
+															:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
+															Editar<%= image_tag("ic_edit_white.png", :class => "iconImage")%>
+														<% end %>
+														</li>
 
-														<a href="" class="confirm-delete button styleIcon" data-id="<%= proyecto.id %>">Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%>
-														</a>
+														<li>
+													
+
+															<a href="" class="confirm-delete button styleIcon" data-id="<%= proyecto.id %>">Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+															</a>
 
 
-												      </li>														
-													</ul>
-													<%end%>
-												</div>
-
+													      </li>														
+														</ul>
+														<%end%>
 											</div>
+										<% end %>
+										</div>
 										</td>
 										<div>
 										</tr>
