@@ -45,7 +45,7 @@
 						<% for user in @miembros %>
 							
 							 <%userAdmin= User.find(proyecto.user_id)
-								 if proyecto.user_id==userAdmin.id%>
+								 if user.user_id==userAdmin.id%>
 								
 											<tr>
 													<td>
@@ -70,7 +70,12 @@
 						  							</td>
 
 						  							<td>
-											  			<button type="button"  class="button" data-dismiss="modal">Editar Rol<%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
+											  			
+											  			
+															 <%= link_to edit_miembro_path(:id => user.id) ,{:controller => :miembros,
+																:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
+																Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%>
+															<% end %>
 
 														 <button type="button"  class="button" data-dismiss="modal" disabled>Remover  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
 
@@ -117,7 +122,7 @@
 											  			<td>
 												  				
 
-															 <%= button_to edit_miembro_path(:id => user.id) ,{:controller => :miembros,
+															 <%= link_to edit_miembro_path(:id => user.id) ,{:controller => :miembros,
 																:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 																Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%>
 															<% end %>
@@ -183,6 +188,9 @@
 												<div class="modal-body">
 
                                                    <%= form_for @miembro do |m| %>
+
+
+
           												  <div class="hidden_element">
                                                           <%=m.text_field :proyecto_id, value:@q  %>
                                                           </div>

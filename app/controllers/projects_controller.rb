@@ -27,6 +27,8 @@ def create
 	@proyecto = current_user.proyectos.new(proyecto_params)
 	if @proyecto.save
         flash[:notice] = "Proyecto creado exitosamente"
+
+        #TODO: crear miembro administrador y guardarlo (el que ha iniciado sesion)
     	redirect_to projects_path
     else 
        #mofifico paola

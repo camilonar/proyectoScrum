@@ -7,10 +7,8 @@ class MiembrosController < ApplicationController
     end
  
 	def new
-
-		@miembro = Miembro.new  #crea un nuevo articulo que no se guarda en la base de datos, solo esta en memoria. (hay toca mandarle el array)
-		@nombre_roles=Rol.all()
-		@nombre_correos= User.all()
+		#TODO: modificar la ruta que se renderiza
+		redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 	end
 
 
@@ -23,18 +21,15 @@ class MiembrosController < ApplicationController
 			flash[:notice] = "El Miembro  se ha Agregado Exitosamente al Equipo de Trabajo"
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
-			flash[:alert] = "El Miembro no se ha Agregado Exitosamente al Equipo de Trabajo "
+			flash[:alert] = "El Miembro no se ha Agregado al Equipo de Trabajo "
 			@nombre_roles=Rol.all()
-			render :new
+			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		end
 		
 	end
 
 
-
-    
    def edit
-      
        @miembro = Miembro.find(params[:id]) 
        @nombre_roles=Rol.all()
        @nombre_correos= User.all()
@@ -42,7 +37,6 @@ class MiembrosController < ApplicationController
 	end
 
    
-  
     def update
 		@miembro=Miembro.find(params[:id])
 
@@ -50,8 +44,8 @@ class MiembrosController < ApplicationController
 		    flash[:notice] = "El Miembro  se ha Actualizado  Exitosamente "
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
-			flash[:notice] = "El Miembro  No se pudo Actualizar "
-			render :edit
+			flash[:alert] = "El Miembro  No se pudo Actualizar "
+			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		end
 
     end
