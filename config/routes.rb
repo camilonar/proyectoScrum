@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :roles
   #Sin esto se toman los controladores de devise por defecto
    
   resources :projects

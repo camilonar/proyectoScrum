@@ -37,12 +37,10 @@ end
 
 def edit
     @proyecto= Proyecto.find(params[:id])
-    authorize! :edit, @proyecto
 end
 
 def destroy
     @proyecto=Proyecto.find(params[:id])
-    authorize! :destroy, @proyecto
     @proyecto.destroy()
     flash[:notice] = "Proyecto eliminado exitosamente"
     redirect_to "/projects"
