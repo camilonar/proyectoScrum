@@ -5,7 +5,9 @@ require 'will_paginate/array' #Esto permite paginar con Arrays
 
 #Se visualiza la lista de proyectos
 def index
-    @proyectos = current_user.proyectos
+    #Esta línea ya no es necesaria porque el administrador se agrega como Scrum Master
+    #@proyectos = current_user.proyectos
+    @proyectos = []
     @miembros = current_user.miembros
     @miembros.each do |miembro|
         @proyectos = @proyectos + [miembro.proyecto]
@@ -26,10 +28,17 @@ end
 def create
 	@proyecto = current_user.proyectos.new(proyecto_params)
 	if @proyecto.save
+        @miembro = @proyecto.miembros.new(:proyecto_id => @proyecto.id, :user_id => current_user.id, :rol_id => 1)
+        if @miembro.save
         flash[:notice] = "Proyecto creado exitosamente"
 
         #TODO: crear miembro administrador y guardarlo (el que ha iniciado sesion)
     	redirect_to projects_path
+        else 
+            #mofifico paola
+            flash[:alert] = "No se pudo crear el proyecto"
+            render 'new'
+        end
     else 
        #mofifico paola
       flash[:alert] = "No se pudo crear el proyecto"

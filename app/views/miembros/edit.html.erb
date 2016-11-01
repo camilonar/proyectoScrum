@@ -14,12 +14,7 @@
                                <%= m.text_field :proyecto_id, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, class:"item" %>
 
                               </div>
-                         
-
-                           <div>
-
-                              
-                               
+                           <div> 
                             <br>   
                             <% correos={}%>
                             <% @nombre_correos.each do |correo|%>
@@ -30,12 +25,8 @@
                             <div>
                               <%=m.select :user_id,  lista%>
                             </div>
-                            
-                            
-                            <br>
-                               
-                               
-                          </div>
+                         <br>
+                       </div>
 
                                 <div>
                                 
@@ -49,7 +40,7 @@
 
                                </div>
 
-
+              <br />                    
               <div class="actions"> 
                 <%= button_tag("Guardar", :class => "button special big styleIcon") do %>
                 Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
