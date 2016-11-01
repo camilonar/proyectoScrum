@@ -12,6 +12,7 @@
         
                               <div class="hidden_element">
                                <%= m.text_field :proyecto_id, autofocus: true ,placeholder:"Nombre Proyecto " ,:required => true, class:"item" %>
+                               <%=m.text_field :user_id, :readonly => true%>
 
                               </div>
                            <div> 
@@ -23,7 +24,8 @@
                             <%lista=correos.sort%>
                             <%=m.label :"Correo Electrónico:"%>
                             <div>
-                              <%=m.select :user_id,  lista%>
+                              <!--<input type="text" value="<%= @miembro.user.email%>" readonly="true" />-->
+                              <p><%= @miembro.user.email%></p>
                             </div>
                          <br>
                        </div>
