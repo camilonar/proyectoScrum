@@ -80,8 +80,6 @@
 
 														 <button type="button"  class="button largePadding styleIcon" data-dismiss="modal" disabled>Remover  <%= image_tag("ic_delete_white.png", :class => "iconImage")%></button>
 
-
-
 										  			</td>
 
 							  			     </tr>
@@ -125,9 +123,9 @@
 																:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 																Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%>
 															<% end %>
-
-																	<%= link_to "Remover",{:controller => :miembros,
-		     														:action =>'destroy', :id => user.id  , :proyecto_id =>proyecto.id , :rol_id => rol.id}, class: "confirm-delete button styleIcon",  :method => "delete" %>
+																	<%= button_to miembros_destroy_path(:id => user.id, :proyecto_id =>proyecto.id) ,{:controller => :miembros, :action =>'destroy', class: "confirm-delete button styleIcon"}, :method => "delete" do %>
+																	Remover <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+																	<% end %>
 		     											<% else %>
 		     												 <button type="button"  class="button largePadding styleIcon" data-dismiss="modal" disabled>Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
 

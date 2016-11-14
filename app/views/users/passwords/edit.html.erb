@@ -1,3 +1,6 @@
+<section id="three" class="wrapper style1 special" >
+        <div align="center" style="margin:0 auto 0 auto;" class="container 50%">
+        <section class="box " style="margin:0 auto 0 auto">
 <h2>Cambiar contraseña</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -5,21 +8,24 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.label :password, "Nueva contraseña" %><br />
+    <%= f.label :password, "Nueva contraseña" %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
     <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+  </div><br />
 
   <div class="field">
-    <%= f.label :password_confirmation, "Confirmar nueva contraseña" %><br />
+    <%= f.label :password_confirmation, "Confirmar nueva contraseña" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  </div> <br />
 
   <div class="actions">
     <%= f.submit "Cambiar mi contraseña" %>
   </div>
 <% end %>
 
+</section>
 <%= render "users/shared/links" %>
+</div>
+</section>

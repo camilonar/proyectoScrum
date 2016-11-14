@@ -240,6 +240,12 @@
 		width: 100%;
 	}
 
+	select {
+	    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #f3f3f3;;
+	    -webkit-appearance: none;
+	    background-position: 97%;
+	}
+
 		input[type="text"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
@@ -1275,4 +1281,9 @@ body {
 
 .styleIcon {
 	padding: 0 0.5em;
+}
+
+/*Así el button_to no se muestra en otra línea*/
+.button_to {
+	display: inline;
 }
