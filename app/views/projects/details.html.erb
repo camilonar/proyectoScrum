@@ -1,18 +1,141 @@
+ 
+<style type="text/css">
+
+.left {float: left;}
+.right {float: right;}
+
+.clear,.clearer {clear: both;}
+.clearer {
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+}
+
+
+/*
+	Example specifics
+------------------------------------------------------------------- */
+
+
+/* Columns */
+
+.column {
+	margin-left: 2%;
+	width: 32%;
+}
+
+.column.first {margin-left: 0;}
+
+
+/* Sortable items */
+
+.sortable-list {
+	list-style: none;
+	min-height: 60px;
+	background-color: #dfdfdf;
+}
+
+
+.backlog-table ul{
+   list-style: none;
+}
+
+
+.backlog-table .sortable-item{
+    border-bottom: 1px solid #dad9d9;
+    cursor: move;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    position: relative
+    font-size: .9rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: .5rem 0 .5rem .5rem;
+    text-align: left;
+    width: 100%;
+
+}
+
+.sprint-table .sortable-item{
+  border-bottom: 1px solid #dad9d9;
+    cursor: move;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    position: relative
+   
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: .5rem 0 .5rem .5rem;
+    text-align: left;
+    width: 100%;
+
+} 
+
+
+
+/* Item placeholder (visual helper) */
+
+.placeholder {
+	background-color: #BFB;
+	border: 1px dashed #666;
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+.sprint-table,.backlog-table li:hover{
+
+	background-color: #bcbcbc;
+}
+
+</style>
+
+
+
  <script>
-  $( function() {
-    $( "#accordion" ).accordion();
-  } );
-  </script>
+$(document).ready(function() {
+ $( "#accordion" ).accordion();
+
+ 
+$(' .sortable-list').sortable({
+		connectWith: ' .sortable-list',
+		placeholder: 'placeholder',
+		receive	 : function(ev, ui) {
+			console.log("nuevo elemento recibido ");
+			$("#accordion").accordion( "refresh" );
+		}
+
+	});
+
+
+
+
+	});
+</script>
+
+
+
+
+
 
 <Section id="main" class="wrapper">
 				<header class="major">
 				  
-					<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>
-
-					
+					<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>	
 				</header>
+
 				<div class= "container">
+				
 					<div class="row">
+					
 					<div class="8u 12u(3)">
 						<% if @proyecto.photo.exists?%>
 							<%= image_tag @proyecto.photo.url ,:class => 'logoImage float_left '%>
@@ -29,96 +152,71 @@
 															Equipo de Trabajo
 														<% end %>
 						</div>
+					
 
-						<div class="table-wrapper">
-							<h2>Backlog</h2>
 
-							<table id="tabla">
-								<tbody>									
-									<tr>
-										<td>
-											<h1>Historia 1 </h1>
-										</td>	
-									</tr>						
-									<tr>
-										<td>
-											<h1>Historia 2 </h1>
-										</td>		
-									</tr>
-									<tr>
-										<td>
-											<h1>Historia 3 </h1>
-										</td>	
-									</tr>						
-									<tr>
-										<td>
-											<h1>Historia 4 </h1>
-										</td>		
-									</tr>
-									<tr>
-										<td>
-											<h1>Historia 5 </h1>
-										</td>	
-									</tr>						
-									<tr>
-										<td>
-											<h1>Historia 6 </h1>
-										</td>		
-									</tr>
-									</tbody>
-							</table>
+					<h2>Backlog</h2>
+									
+							
+								<div class="backlog-table"  >
+
+									<ul class="sortable-list" style="padding-left: 0px;">
+										<li class="sortable-item">Historia 1</li>
+										<li class="sortable-item">Historia 2</li>
+										<li class="sortable-item">Historia 3</li>
+										<li class="sortable-item">Historia 4</li>
+										<li class="sortable-item">Historia 5</li>
+										<li class="sortable-item">Historia 6</li>
+										<li class="sortable-item">Historia 7</li>
+										<li class="sortable-item">Historia 8</li>
+										<li class="sortable-item">Historia 9</li>
+
+									</ul>
+								</div>
+
+								
+
 						</div>
-					</div>
 
 					<div class="4u 12u(3)">
-					<div class="table-wrapper">
 						<h2>Sprints</h2>
-						<div id="accordion">
-							  <h3>Sprint 1</h3>
-							  <div>
-							    
-							    <ul>
-							      <li>List item one</li>
-							      <li>List item two</li>
-							      <li>List item three</li>
-							    </ul>
-							  </div>
+						<div id="accordion" class="sprint-table">
+							  <h3 >Sprint 1</h3>
+							  		<div>
+									<ul class="sortable-list">
+										
+
+									</ul>
+								  </div>
 							  <h3>Sprint 2</h3>
 							  <div>
-							    
-							    <ul>
-							      <li>List item one</li>
-							      <li>List item two</li>
-							      <li>List item three</li>
-							    </ul>
-							  </div>
+									<ul class="sortable-list">
+										
+
+									</ul>
+								  </div>
 							  <h3>Sprint 3</h3>
 							  <div>
-							    
-							    <ul>
-							      <li>List item one</li>
-							      <li>List item two</li>
-							      <li>List item three</li>
-							    </ul>
-							  </div>
+									<ul class="sortable-list">
+										
+
+									</ul>
+								  </div>
 							  <h3>Sprint 4</h3>
 							  <div>
-							   
-							    <ul>
-							      <li>List item one</li>
-							      <li>List item two</li>
-							      <li>List item three</li>
-							    </ul>
-							  </div>
+									<ul class="sortable-list">
+										
+
+									</ul>
+								  </div>
 						</div>
-
-						
-					</div>
 			   </div>
+			   		</div>
+
+
+
+ 
+
 			</div>
-
-		 </div>
+	</section>
 						
-
-
-</Section>

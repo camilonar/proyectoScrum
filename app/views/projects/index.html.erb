@@ -85,15 +85,20 @@ $('#btnYes').click(function() {
 											<div>
 												Estado:
 												<% if proyecto.proy_estado=="Abierto"%>
+												
 												<h4 style="color:#3cadd4;"> <%= proyecto.proy_estado%> </h4>
+
 												<% else %>
+												
 												<h4 style="color:#E82C1D;"> <%= proyecto.proy_estado%> </h4>
+
+
 												<% end %>
 											</div>
 										</div>
 
 										<div class="3u 8u$(4)" style="float:right">
-										   <%if current_user.id == proyecto.user_id%>
+										   <%if current_user.id = proyecto.user_id%>
 											<ul class="actions fit">
 												<li>
 													<%= button_to edit_project_path(:id => proyecto.id) ,{:controller => :projects,
@@ -103,14 +108,13 @@ $('#btnYes').click(function() {
 													</li>
 
 													<li>
-												
-
+											
 														<a href="" class="confirm-delete button styleIcon" data-id="<%= proyecto.id %>">Eliminar<%= image_tag("ic_delete_white.png", :class => "iconImage")%>
 														</a>
 
 
 												      </li>														
-													</ul>
+												</ul>
 													<%end%>
 												</div>
 
