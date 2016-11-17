@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "UTF-8";
 @import url(font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Raleway:700,400);
 
@@ -1286,4 +1286,36 @@ body {
 /*Así el button_to no se muestra en otra línea*/
 .button_to {
 	display: inline;
+}
+
+/*Clases para mostrar que una fecha es válida o inválida*/
+input.invalid, textarea.invalid{
+	border: 2px solid #B0302F;
+}
+
+input.valid, textarea.valid{
+	border: 2px solid border-color: #3cadd4;
+}
+
+/*Clases que permiten mostrar y ocultar errores*/
+.error{
+	display: none;
+	margin-left: 10px;
+}		
+
+.error_show{
+	color: red;
+	margin-left: 10px;
+}
+
+/*Mensaje de información*/
+
+.isa_info{
+margin: 10px 0px;
+padding:12px;
+}
+
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
 }

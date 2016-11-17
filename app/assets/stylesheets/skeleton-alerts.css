@@ -8,9 +8,9 @@
 }
 
 .alert-success {
-    background-color: #D5F5E3;
+    background-color: #DFF2BF;
     border-left-color: #2ECC71;
-    color: #2ECC71;
+    color: #4F8A10;
 }
 
 .alert-info {
@@ -26,7 +26,7 @@
 }
 
 .alert-error {
-    background-color: #F2D7D5;
+    background-color: #FFBABA;
     border-left-color: #C0392B;
-    color: #C0392B;
+    color: #D8000C;
 }

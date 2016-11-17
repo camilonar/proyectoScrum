@@ -4,7 +4,7 @@
 	   <header class="major">
 	   	<h2>Editar Proyecto</h2>
 	   </header>	
-	   		<%= form_for :proyecto, :html => { :multipart => true, method: :put } do |f| %>
+	   		<%= form_for :proyecto, :html => { :multipart => true, :id => "proyecto", method: :put } do |f| %>
 	   			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
 	   			 <div class="form-group hidden_element">
@@ -20,7 +20,7 @@
 					              <%=image_tag("logo_proyecto.png", :class => "logoImage top", :id => "img_prev")%>
 					          <% end %>
 							<div>
-							<a onclick="chooseFile()" class="button">Subir Logo<%= image_tag("ic_insert_photo_white.png", :class => "iconImage")%></a>	
+							<a onclick="chooseFile()" class="button">Cambiar Logo<%= image_tag("ic_insert_photo_white.png", :class => "iconImage")%></a>	
 							</div>
 						 </div>
 						 <br>
@@ -29,10 +29,11 @@
 						<%= f.text_area :proy_descripcion, rows:9, autofocus: true ,placeholder:"Descripcion " ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>	
 						<div class=" flex-container" >
-						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
 						<p style="padding: 13px;">hasta</p> 
-						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker" %>
-						</div>	 	    
+						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
+						</div>
+						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>	 	    
 							<%lista1=["Abierto","Cerrado"]%>
 							<%=f.label :proy_estado, "Estado: "%> <%=f.select :proy_estado, lista1, :required => true, style:"width: 50%;"%>
 					</div>	
@@ -65,7 +66,7 @@
 		</div>
             <br>
 			<div class="actions">	
-    			<%= button_tag("Guardar", :class => "button special big styleIcon") do %>
+    			<%= button_tag("Guardar", :class => "button special big styleIcon", :id =>"submit") do %>
     			Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
     			<% end %>
   			</div>

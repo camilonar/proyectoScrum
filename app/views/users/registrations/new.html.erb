@@ -21,14 +21,13 @@
   
   <div class="flex-container" ><br/>
     <%= f.text_field :apodo, autofocus: true ,placeholder:"Apodo" ,style:" text-align: center; ", class:"item"%>
+    <span class="form_hint">Formato correcto: "sucorreo@correo.com"</span>
   </div>
 
 
   <%= f.label :email, "Correo electrónico:" , class:"textoBlanco item"%> 
   <div class="flex-container"><br/>
      <%= f.email_field :email ,placeholder:"Correo electrónico" ,:required => true,style:" text-align: center; ", class:"item" , pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"%>
-
-      <span class="form_hint">Formato correcto: "sucorreo@correo.com"</span>
   </div>
 
    <%= f.label :"Contraseña:" , class:"textoBlanco item"%> 

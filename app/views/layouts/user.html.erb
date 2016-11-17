@@ -24,7 +24,7 @@
 						<% if user_signed_in? %>
 						   <li><%= current_user.email %></li	>
 
-						  <li><%= link_to 'Proyectos', '/projects', :class => 'navbar-link' %></li>
+						  <li><%= link_to 'Mis Proyectos', '/projects', :class => 'navbar-link' %></li>
 
 						  <li><%= link_to 'Editar Perfil', edit_user_registration_path, :class => 'navbar-link' %> |
 
@@ -47,7 +47,7 @@
 						<% if notice %>
   						<p class="alert alert-success" id="flash" style=" position: absolute; z-index: 20;"><%= notice %></p>
 						<% end %>
-						<% if alert %>
+						<% if alert && alert!="Ya ha sido identificado." %>
 						  <p class="alert alert-error" id="flash" style=" position: absolute; z-index: 20;"><%= alert %></p>
 						<% end %>
 						<%= yield %>

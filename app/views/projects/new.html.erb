@@ -3,7 +3,7 @@
 	   <header class="major">
 	   	<h2>Nuevo Proyecto</h2>
 	   </header>	
-	   		<%= form_for :proyecto, :html => { :multipart => true } do |f| %>
+	   		<%= form_for :proyecto, :html => { :multipart => true, id:"proyecto" } do |f| %>
 	   			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
 	   			 <div class="form-group hidden_element">
@@ -23,10 +23,11 @@
 						<%= f.text_area :proy_descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>	
 						<div class=" flex-container" >
-						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker" %>
+						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true  %>
 						<p style="padding: 13px;">hasta</p> 
-						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker" %>
-						</div>	    
+						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true  %>
+						</div>
+						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>	    
 					</div>	
 					
 
@@ -133,7 +134,7 @@
 		
             <br>
 			<div class="actions"><br/>
-    			<%= f.submit "Crear", class: "special big" %>
+    			<%= f.submit "Crear", class: "special big", id:"submit" %>
   			</div>
 		<%end %>
 	</div>

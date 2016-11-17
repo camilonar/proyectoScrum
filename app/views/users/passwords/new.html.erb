@@ -1,13 +1,14 @@
 <section id="three" class="wrapper style1 special" >
         <div align="center" style="margin:0 auto 0 auto;" class="container 50%">
         <section class="box " style="margin:0 auto 0 auto">
-<h2>¿Olvidaste tu contraseña?</h2>
+<h2>¿Olvidó su contraseña?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
+
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Introduzca su correo electrónico: " %>
     <%= f.email_field :email, autofocus: true %>
   </div> <br />
 
