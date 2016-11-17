@@ -9,8 +9,8 @@ module DeviseHelper
 
     html = <<-HTML
     <div id="error_explanation">
-      <h2>Ocurrieron los siguientes errores: </h2>
-      <ul>#{messages}</ul>
+      <h3 class="textoBlanco">Ocurrieron los siguientes errores: </h3>
+      <h5 class="textoBlanco" align="center">#{messages}</h5>
     </div>
     HTML
 

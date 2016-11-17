@@ -85,6 +85,7 @@
     }
 
 
+
 .contact_form input:focus + .form_hint {
     display: inline;
 }
@@ -93,6 +94,12 @@
     background: #3cadd4;
 }
 
+.contact_form input:valid + .form_hint {
+    background: #3cadd4;
+}
     .contact_form input:required:valid + .form_hint::before {
+        color: #3cadd4;
+    }
+ .contact_form input:valid + .form_hint::before {
         color: #3cadd4;
     }

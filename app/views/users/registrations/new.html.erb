@@ -1,27 +1,32 @@
 <section id="main" class="wrapper style1 special claseRegistro" >
   <div  align="center" style="margin:0 auto 0 auto " class="container 50% contact_form">
  
-    <%= devise_error_messages! %>
+  
               <header class="major">
                 <h2 align="center"  class="textoBlanco">Registro</h2>
                 <p class="textoBlanco">Creará una cuenta de usuario en ScrumMaster , por favor complete los siguientes campos : </p>
-                 <em class="textoBlanco">Recuerde que los campos con (*) son obligatorios</em>
+                 <em class="textoBlanco">Recuerde que los campos con (<font color="red">*</font>) son obligatorios</em>
+
+                  <div align="center">
+                     
+                     <br/><%= devise_error_messages! %>
+                 </div>
               </header>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
  <%= f.label :"Nombre:" , class:"textoBlanco item"%> 
   <div class=" flex-container" ><br/>
-    <%= f.text_field :nombres, autofocus: true ,placeholder:"Nombre(s) " ,:required => true, style:" text-align: center;" , class:"item" %>
+    <%= f.text_field :nombres, autofocus: true ,placeholder:"Nombre(s) " ,:required => true, style:" text-align: center;" , class:"item" ,pattern:"^([a-zA-Zñáéíóú]+[\s]*)+[a-zA-Zñáéíóú]+$" %>
    
-    <%= f.text_field :apellidos, autofocus: true ,placeholder:"Apellido(s)",:required => true ,style:" text-align: center;" ,class:"item" %>
+    <%= f.text_field :apellidos, autofocus: true ,placeholder:"Apellido(s)",:required => true ,style:" text-align: center;" ,class:"item",pattern:"^([a-zA-Zñáéíóú]+[\s]*)+[a-zA-Zñáéíóú]+$" %>
     
   </div>
   <%= f.label :"Apodo:" , class:"textoBlanco item"%> 
   
   <div class="flex-container" ><br/>
     <%= f.text_field :apodo, autofocus: true ,placeholder:"Apodo" ,style:" text-align: center; ", class:"item"%>
-    <span class="form_hint">Formato correcto: "sucorreo@correo.com"</span>
+    <span class="form_hint">Un apodo con el cual usted se sienta identificado</span>
   </div>
 
 
@@ -45,6 +50,7 @@
     
     <%= f.submit "Registrarse" %>
   </div>
+ 
 <% end %>
 
 
