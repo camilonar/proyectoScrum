@@ -33,7 +33,7 @@
 .sortable-list {
 	list-style: none;
 	min-height: 60px;
-	background-color: #dfdfdf;
+	 background-color: #3cadd4;
 }
 
 
@@ -42,42 +42,15 @@
 }
 
 
-.backlog-table .sortable-item{
-    border-bottom: 1px solid #dad9d9;
+
+.sortable-item{
+  border-bottom: 1px solid #515050;
     cursor: move;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    position: relative
-    font-size: .9rem;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: .5rem 0 .5rem .5rem;
+color: white;    
+    padding: .3rem 0 .3rem .3rem;
     text-align: left;
     width: 100%;
-
-}
-
-.sprint-table .sortable-item{
-  border-bottom: 1px solid #dad9d9;
-    cursor: move;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    position: relative
-   
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: .5rem 0 .5rem .5rem;
-    text-align: left;
-    width: 100%;
-
+   background-color: #3cadd4;
 } 
 
 
@@ -85,7 +58,7 @@
 /* Item placeholder (visual helper) */
 
 .placeholder {
-	background-color: #BFB;
+	background-color: grey;
 	border: 1px dashed #666;
 	height: 25px;
 	margin-bottom: 5px;
@@ -105,9 +78,10 @@ $(document).ready(function() {
  $( "#accordion" ).accordion();
 
  
-$(' .sortable-list').sortable({
-		connectWith: ' .sortable-list',
+$('.sortable-list').sortable({
+		connectWith: '.sortable-list',
 		placeholder: 'placeholder',
+
 		receive	 : function(ev, ui) {
 			console.log("nuevo elemento recibido ");
 			$("#accordion").accordion( "refresh" );
@@ -158,19 +132,93 @@ $(' .sortable-list').sortable({
 					<h2>Backlog</h2>
 									
 							
+								
 								<div class="backlog-table"  >
+									<div class="row">
+												<div class="6u 12u(3)">
+												<h1>Historias de usuario </h1>
+												</div>
+										</div>
 
-									<ul class="sortable-list" style="padding-left: 0px;">
-										<li class="sortable-item">Historia 1</li>
-										<li class="sortable-item">Historia 2</li>
-										<li class="sortable-item">Historia 3</li>
-										<li class="sortable-item">Historia 4</li>
-										<li class="sortable-item">Historia 5</li>
-										<li class="sortable-item">Historia 6</li>
-										<li class="sortable-item">Historia 7</li>
-										<li class="sortable-item">Historia 8</li>
-										<li class="sortable-item">Historia 9</li>
-
+									<ul class="sortable-list" >
+										
+										<li class="sortable-item">
+											<div class="row">
+												<div class="6u 12u(3)">
+												<p>Historia 1 </p>
+												</div>
+												<div class="6u 12u(3)">
+												<div class="row">
+												<%= image_tag("ic_delete_white.png")%>
+												<%= image_tag("ic_edit_white.png")%>
+												<p>ESTADO</p>
+												<p>Puntos 8</p>
+												</div>
+												</div>
+											</div>
+										</li>
+										
+										<li class="sortable-item">
+											<div class="row">
+												<div class="6u 12u(3)">
+												<p>Historia 2 </p>
+												</div>
+												<div class="6u 12u(3)">
+												<div class="row">
+												<%= image_tag("ic_delete_white.png")%>
+												<%= image_tag("ic_edit_white.png")%>
+												<p>ESTADO</p>
+												<p>Puntos 8</p>
+												</div>
+												</div>
+											</div>
+										</li>
+										<li class="sortable-item">
+											<div class="row">
+												<div class="6u 12u(3)">
+												<p>Historia 3 </p>
+												</div>
+												<div class="6u 12u(3)">
+												<div class="row">
+												<%= image_tag("ic_delete_white.png")%>
+												<%= image_tag("ic_edit_white.png")%>
+												<p>ESTADO</p>
+												<p>Puntos 8</p>
+												</div>
+												</div>
+											</div>
+										</li>
+										<li class="sortable-item">
+											<div class="row">
+												<div class="6u 12u(3)">
+												<p>Historia 4 </p>
+												</div>
+												<div class="6u 12u(3)">
+												<div class="row">
+												<%= image_tag("ic_delete_white.png")%>
+												<%= image_tag("ic_edit_white.png")%>
+												<p>ESTADO</p>
+												<p>Puntos 8</p>
+												</div>
+												</div>
+											</div>
+										</li>
+										<li class="sortable-item">
+											<div class="row">
+												<div class="6u 12u(3)">
+												<p>Historia 5 </p>
+												</div>
+												<div class="6u 12u(3)">
+												<div class="row">
+												<%= image_tag("ic_delete_white.png")%>
+												<%= image_tag("ic_edit_white.png")%>
+												<p>ESTADO</p>
+												<p>Puntos 8</p>
+												</div>
+												</div>
+											</div>
+										</li>
+										
 									</ul>
 								</div>
 
