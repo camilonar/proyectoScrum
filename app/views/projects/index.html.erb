@@ -56,7 +56,12 @@ $('#btnYes').click(function() {
 			<%= link_to new_project_path, class: "button styleIcon" do %>
 			Crear Proyecto<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 			<% end %><br></div>
-			Filtrar:<input type="text" name="buscarProyecto" id="buscarProyecto" onkeyup="filtrar()" value="" placeholder="Escriba el proyecto">
+			<% if @proyectos.size==0%>
+				<%= image_tag "/assets/proyectosVacios.jpg" %>
+			<% else %>												
+				Filtrar:<input type="text" name="buscarProyecto" id="buscarProyecto" onkeyup="filtrar()" value="" placeholder="Escriba el proyecto">
+			<% end %>
+			
 			<br>
 			<br>						
 		</div>
