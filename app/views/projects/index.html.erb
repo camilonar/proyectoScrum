@@ -89,8 +89,8 @@ $('#btnYes').click(function() {
 												<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
 												<% end %>
 												<% end %>
-												<strong><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong>
-												<br>
+												<div class="nombre_proyecto">
+												<strong ><%= link_to proyecto.proy_nombre, project_details_path(:id => proyecto.id) %></strong></div>
 												<span class="more"><%= proyecto.proy_descripcion%></span>
 											</div>
 											<br>
@@ -98,20 +98,20 @@ $('#btnYes').click(function() {
 												Estado:
 												<% if proyecto.proy_estado=="Abierto"%>
 												
-												<h4 style="color:#3cadd4;"> <%= proyecto.proy_estado%> </h4>
+												<strong style="color:#3cadd4;"> <%= proyecto.proy_estado%> </strong>
 
 												<% else %>
 												
-												<h4 style="color:#E82C1D;"> <%= proyecto.proy_estado%> </h4>
+												<strong style="color:#E82C1D;"> <%= proyecto.proy_estado%> </strong>
 
 
 												<% end %>
 											</div>
 										</div>
 
-										<div class="3u 8u$(4)" style="float:right">
+										<div class="3u 8u$(4)" style="float:right; display:table; align-items: center;">
 										   <%if current_user.id = proyecto.user_id%>
-											<ul class="actions fit">
+											<ul class="actions fit" style="margin-top: 1em;">
 												<li>
 													<%= button_to edit_project_path(:id => proyecto.id) ,{:controller => :projects,
 														:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>

@@ -541,8 +541,8 @@
 		display: inline-block;
 		position: relative;
 		max-width: 40%;
-		width: 150px;
-		height: 150px;
+		width: 120px;
+		height: 120px;
 		padding: 1em 1.5em 1em 1.5em;
 		top: 0.25em;
 	}
@@ -1318,4 +1318,10 @@ padding:12px;
 .isa_info {
     color: #00529B;
     background-color: #BDE5F8;
+}
+
+/*Clase para mostrar el nombre del proyecto*/
+.nombre_proyecto{
+	padding-top: 0.9em;
+	font-size: 130%;
 }
