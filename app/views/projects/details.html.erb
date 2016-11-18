@@ -127,7 +127,7 @@ $('.sortable-list').sortable({
 						<div>
 						<h1><%= @proyecto.proy_nombre %></h1>
 						<p><%= @proyecto.proy_descripcion %></p>
-						  <h1>Hola aqui mostrare los miembros del proyecto!</h1>
+						  <h1>Hola aquí mostraré los miembros del proyecto!</h1>
 						<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
 															:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 															Equipo de Trabajo

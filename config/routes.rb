@@ -37,7 +37,7 @@ Rails.application.routes.draw do
    post 'projects/:id' => 'projects#destroy'
    
    #TODO: paola
-   delete '/miembros/:id' => 'miembros#destroy', as: 'miembros_destroy'
+   #delete '/miembros/:id' => 'miembros#destroy', as: 'miembros_destroy'
    resources:miembros
 
    get 'miembros/edit' => 'miembros#edit' 

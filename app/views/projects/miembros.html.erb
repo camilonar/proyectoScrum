@@ -1,12 +1,52 @@
-	 
-<br/><h2 align="center">Miembros del proyecto</h2>
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
 
-	
+$('#eliminarMiembroModal').on('show', function() {
+    var id = $(this).data('id'),
+        removeBtn = $(this).find('.danger');
+})
+
+
+$('.confirm-delete').on('click', function(e) {
+    e.preventDefault();
+
+    var id = $(this).data('id');
+    proyecto_id = $(this).data('proyecto');
+   	$('#eliminarMiembroModal').data('id', id);
+   	$('#eliminarMiembroModal').modal('show');
+});
+
+$('#btnYes').click(function() {
+    // handle deletion here
+  	var id = $('#eliminarMiembroModal').data('id');
+
+   $.ajax(
+{
+  url : '/miembros/'+id+"?proyecto_id="+proyecto_id,
+  type: "POST",
+})
+  .done(function(data) {
+    $("#respuesta").html(data);
+  })
+  .fail(function(data) {
+    
+  })
+  .always(function(data) {
+   
+  });  	
+});
+});
+
+</script>
+
+
+<div class="supreme-container">	 
+<br/><h2 align="center">Miembros del proyecto</h2>
 
 	<%proyecto=Proyecto.find(@q)%>
 	
 	<%if @miembros.size==0%>
-		<h3 align="center">No hay Información relacionada a  Miembros del Equipo. <br /> Puedes empezar por <button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button></h3> 
+		<h3 align="center">No hay Información relacionada a Miembros del Equipo. <br /> Puedes empezar por <button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button></h3> 
 
 
 		
@@ -123,9 +163,8 @@
 																:action => 'edit', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 																Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%>
 															<% end %>
-																	<%= button_to miembros_destroy_path(:id => user.id, :proyecto_id =>proyecto.id) ,{:controller => :miembros, :action =>'destroy', class: "confirm-delete button styleIcon"}, :method => "delete" do %>
-																	Remover <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
-																	<% end %>
+																	<a href="" class="confirm-delete button styleIcon" data-id="<%= user.id %>" data-proyecto="<%= proyecto.id %>" data-target="#eliminarMiembroModal">Remover <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+																	</a>
 		     											<% else %>
 		     												 <button type="button"  class="button largePadding styleIcon" data-dismiss="modal" disabled>Editar Rol <%= image_tag("ic_edit_white.png", :class => "iconImage")%></button>
 
@@ -151,7 +190,7 @@
 				<%end%>
 				
 		<%end%>
-
+</div>
 
 
 	<!--Modificando Pao-->
