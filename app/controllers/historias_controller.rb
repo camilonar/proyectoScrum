@@ -12,7 +12,7 @@ end
 #Se crea un proyecto
 def create
 	  @historia = Historiausuario.new(proyecto_params)
-	  if @proyecto.save
+	  if @historia.save
         flash[:notice] = "Historia creada satisfactoriamente"
     else 
       flash[:alert] = "No se puede crear la historia"
