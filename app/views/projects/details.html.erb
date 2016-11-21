@@ -122,17 +122,14 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<Section id="main" class="wrapper">
-	<header class="major">
-
-		<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>	
-	</header>
+<section id="main" class="wrapper">
 
 	<div class= "container">
 
 		<div class="row">
 
 			<div class="8u 12u(3)">
+			<div class="row">
 				<% if @proyecto.photo.exists?%>
 				<%= image_tag @proyecto.photo.url ,:class => 'logoImage float_left '%>
 				<%else %>
@@ -142,34 +139,35 @@
 				<div>
 					<h1><%= @proyecto.proy_nombre %></h1>
 					<p><%= @proyecto.proy_descripcion %></p>
-					<h1>Hola aquí mostraré los miembros del proyecto!</h1>
 					<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
 						:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 						Equipo de Trabajo
 						<% end %>
 					</div>
+			</div>
 					
-
-
-					<h2>Backlog</h2>
-					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#product-modal">
-						Agregar Historia de usuario
+			<br />
+			<div class="row">
+					<h2>Backlog &ensp;</h2>
+					<button class="button largePadding styleIcon" data-toggle="modal" data-target="#product-modal">
+						Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 					</button> 
 					<%= render "historias/new" %>
-					
+			</div>		
 					<div class="backlog-table"  >
-						<div class="row">
-							<div class="6u 12u(3)">
-								<h1>Historias de usuario </h1>
+
+							<div class="isa_info">
+    							<i class="fa fa-info-circle"></i>
+    							Aquí encontrarás las Historias de Usuario de la pila de este proyecto
 							</div>
-						</div>
+	
 
 						<ul class="sortable-list" >
-
+						<% (1..5).each do |i| %>
 							<li class="sortable-item">
 								<div class="row">
 									<div class="6u 12u(3)">
-										<p>Historia 1 </p>
+										<p>Historia <%= i %> </p>
 									</div>
 									<div class="6u 12u(3)">
 										<div class="row">
@@ -181,103 +179,28 @@
 									</div>
 								</div>
 							</li>
-
-							<li class="sortable-item">
-								<div class="row">
-									<div class="6u 12u(3)">
-										<p>Historia 2 </p>
-									</div>
-									<div class="6u 12u(3)">
-										<div class="row">
-											<%= image_tag("ic_delete_white.png")%>
-											<%= image_tag("ic_edit_white.png")%>
-											<p>ESTADO</p>
-											<p>Puntos 8</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="sortable-item">
-								<div class="row">
-									<div class="6u 12u(3)">
-										<p>Historia 3 </p>
-									</div>
-									<div class="6u 12u(3)">
-										<div class="row">
-											<%= image_tag("ic_delete_white.png")%>
-											<%= image_tag("ic_edit_white.png")%>
-											<p>ESTADO</p>
-											<p>Puntos 8</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="sortable-item">
-								<div class="row">
-									<div class="6u 12u(3)">
-										<p>Historia 4 </p>
-									</div>
-									<div class="6u 12u(3)">
-										<div class="row">
-											<%= image_tag("ic_delete_white.png")%>
-											<%= image_tag("ic_edit_white.png")%>
-											<p>ESTADO</p>
-											<p>Puntos 8</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="sortable-item">
-								<div class="row">
-									<div class="6u 12u(3)">
-										<p>Historia 5 </p>
-									</div>
-									<div class="6u 12u(3)">
-										<div class="row">
-											<%= image_tag("ic_delete_white.png")%>
-											<%= image_tag("ic_edit_white.png")%>
-											<p>ESTADO</p>
-											<p>Puntos 8</p>
-										</div>
-									</div>
-								</div>
-							</li>
+							<% end %>
 
 						</ul>
 					</div>
 				</div>
 
 				<div class="4u 12u(3)">
+				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#modal-sprint">
+						Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
+					</button> 
 					<h2>Sprints</h2>
+					
 					<div id="accordion" class="sprint-table">
-						<h3 >Sprint 1</h3>
+					<% (1..4).each do |i| %>
+						<h3 >Sprint <%= i %></h3>
 						<div>
 							<ul class="sortable-list">
 
 
 							</ul>
 						</div>
-						<h3>Sprint 2</h3>
-						<div>
-							<ul class="sortable-list">
-
-
-							</ul>
-						</div>
-						<h3>Sprint 3</h3>
-						<div>
-							<ul class="sortable-list">
-
-
-							</ul>
-						</div>
-						<h3>Sprint 4</h3>
-						<div>
-							<ul class="sortable-list">
-
-
-							</ul>
-						</div>
+					<% end %>
 					</div>
 				</div>
 			</div>

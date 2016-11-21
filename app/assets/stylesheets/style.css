@@ -1247,6 +1247,11 @@
 		float: left;
 	}
 
+/*Elemento que flota a la derecha*/
+	.float_right {
+		float: right;
+	}
+
 /*Evita que se cree un espacio en blanco al usar el Modal*/
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
     padding-right: 0px !important;
