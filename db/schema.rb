@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121142816) do
+ActiveRecord::Schema.define(version: 20161121230243) do
 
   create_table "historiausuarios", force: :cascade do |t|
     t.string   "His_Nombre"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 20161121142816) do
     t.text     "rol_nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sprints", force: :cascade do |t|
+    t.text     "sprint_nombre"
+    t.date     "sprint_fechainicio"
+    t.date     "sprint_fechafinalizacion"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|

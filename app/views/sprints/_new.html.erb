@@ -1,0 +1,36 @@
+<div id="sprint-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h2>Nuevo Sprint</h2>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+			<div class="modal-body">
+				<%= form_for :sprint, :html => { :multipart => true, id:"sprint" } do |f| %>
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<div class="contact_form" style="text-align:center">  
+						
+							<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<div class=" flex-container" >
+							<%= f.text_field :sprint_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
+							<p style="padding: 13px;">hasta</p> 
+							<%= f.text_field :sprint_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
+							</div>
+							<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>
+					</div>    
+				<div class="modal-footer">
+				<div class="actions"><br/>
+					<%= f.submit "Crear", class: "special big", id:"submit" %>
+				</div>
+			</div>
+			<% end %>
+			</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -8,7 +8,7 @@
 					<h2>Nueva Historia</h2>
 				</header>
 			</div>
-			<section id="one" class="wrapper " style="background-color:#e3e3e9">
+			<section id="one"  style="background-color:#e3e3e9">
 			<div class="modal-body">
 				<%= form_for :historia, :html => { :multipart => true, id:"historia" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -21,7 +21,6 @@
 							<%= f.text_field :His_Prioridad, autofocus: true ,placeholder:"Prioridad" ,:required => true, style:"background-color:white;" , class:"item" %>
 							<br>
 							<%= f.text_field :His_Esfuerzo, autofocus: true ,placeholder:"Esfuerzo" ,:required => true, style:"background-color:white;" , class:"item" %>
-							<br>     
 						
 					</div>    
 				<div class="modal-footer">
@@ -29,10 +28,11 @@
 					<%= f.submit "Crear", class: "special big", id:"submit" %>
 				</div>
 			</div>
+				<% end %>
 			</div>
 			</section>
 
-			<% end %>
+			
 
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

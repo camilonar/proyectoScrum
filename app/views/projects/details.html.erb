@@ -137,8 +137,11 @@
 				<% end %>
 
 				<div>
-					<h1><%= @proyecto.proy_nombre %></h1>
+				<div class="nombre_proyecto">
+					<strong><%= @proyecto.proy_nombre %></strong>
+				</div>
 					<p><%= @proyecto.proy_descripcion %></p>
+					<br />
 					<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
 						:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
 						Equipo de Trabajo
@@ -147,12 +150,12 @@
 			</div>
 					
 			<br />
+			<br />
 			<div class="row">
 					<h2>Backlog &ensp;</h2>
 					<button class="button largePadding styleIcon" data-toggle="modal" data-target="#product-modal">
 						Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-					</button> 
-					<%= render "historias/new" %>
+					</button> 		
 			</div>		
 					<div class="backlog-table"  >
 
@@ -186,7 +189,7 @@
 				</div>
 
 				<div class="4u 12u(3)">
-				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#modal-sprint">
+				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#sprint-modal">
 						Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 					</button> 
 					<h2>Sprints</h2>
@@ -206,3 +209,6 @@
 			</div>
 		</div>
 	</section>
+
+<%= render "historias/new" %>
+<%= render "sprints/new" %>

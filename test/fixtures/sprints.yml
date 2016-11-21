@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sprint_nombre: MyText
+  sprint_fechainicio: 
+  sprint_fechafinalizacion: 
+
+two:
+  sprint_nombre: MyText
+  sprint_fechainicio: 
+  sprint_fechafinalizacion: 
