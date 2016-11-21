@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  His_Nombre: MyString
+  His_Descripcion: MyText
+  His_Prioridad: 1
+  His_Esfuerzo: 1
+  proyecto_id: 
+
+two:
+  His_Nombre: MyString
+  His_Descripcion: MyText
+  His_Prioridad: 1
+  His_Esfuerzo: 1
+  proyecto_id: 

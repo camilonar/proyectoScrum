@@ -1,101 +1,101 @@
  
 <style type="text/css">
 
-.left {float: left;}
-.right {float: right;}
+	.left {float: left;}
+	.right {float: right;}
 
-.clear,.clearer {clear: both;}
-.clearer {
-	display: block;
-	font-size: 0;
-	height: 0;
-	line-height: 0;
-}
+	.clear,.clearer {clear: both;}
+	.clearer {
+		display: block;
+		font-size: 0;
+		height: 0;
+		line-height: 0;
+	}
 
-.ui-sortable {
-	margin: 0;
-	padding: 0;
-}
-#accordion .ui-accordion-content { padding: 0; }
+	.ui-sortable {
+		margin: 0;
+		padding: 0;
+	}
+	#accordion .ui-accordion-content { padding: 0; }
 
 /*
 	Example specifics
-------------------------------------------------------------------- */
+	------------------------------------------------------------------- */
 
 
-/* Columns */
+	/* Columns */
 
-.column {
-	margin-left: 2%;
-	width: 32%;
-}
+	.column {
+		margin-left: 2%;
+		width: 32%;
+	}
 
-.column.first {margin-left: 0;}
-
-
-/* Sortable items */
-
-.sortable-list {
-	overflow: auto;
-	list-style: none;
-	min-height: 60px;
-	 background-color: #3cadd4;
-}
+	.column.first {margin-left: 0;}
 
 
-.backlog-table ul{
-   list-style: none;
-}
+	/* Sortable items */
+
+	.sortable-list {
+		overflow: auto;
+		list-style: none;
+		min-height: 60px;
+		background-color: #3cadd4;
+	}
 
 
-
-.sortable-item{
-  border-bottom: 1px solid #515050;
-    cursor: move;
-color: white;    
-    padding: .3rem 0 .3rem .3rem;
-    text-align: left;
-    width: 100%;
-   background-color: #3cadd4;
-} 
+	.backlog-table ul{
+		list-style: none;
+	}
 
 
 
-/* Item placeholder (visual helper) */
+	.sortable-item{
+		border-bottom: 1px solid #515050;
+		cursor: move;
+		color: white;    
+		padding: .3rem 0 .3rem .3rem;
+		text-align: left;
+		width: 100%;
+		background-color: #3cadd4;
+	} 
 
-.placeholder {
-	background-color: grey;
-	border: 1px dashed #666;
-	height: 25px;
-	margin-bottom: 5px;
-}
 
-.sprint-table,.backlog-table li:hover{
 
-	background-color: #bcbcbc;
-}
+	/* Item placeholder (visual helper) */
+
+	.placeholder {
+		background-color: grey;
+		border: 1px dashed #666;
+		height: 25px;
+		margin-bottom: 5px;
+	}
+
+	.sprint-table,.backlog-table li:hover{
+
+		background-color: #bcbcbc;
+	}
 
 </style>
 
 
 
- <script>
-$(document).ready(function() {
- $( "#accordion" ).accordion({
- 	heightStyle: "content" 
- });
+<script>
+	$(document).ready(function() {
+		$( "#accordion" ).accordion({
+			heightStyle: "content" 
+		});
 
- 
-$('.sortable-list').sortable({
-		connectWith: '.sortable-list',
-		placeholder: 'placeholder',
 
-		receive	 : function(ev, ui) {
-			console.log("nuevo elemento recibido ");
-			$("#accordion").accordion( "refresh" );
-		}
+		$('.sortable-list').sortable({
+			connectWith: '.sortable-list',
+			placeholder: 'placeholder',
 
-	});
+			receive	 : function(ev, ui) {
+				console.log("nuevo elemento recibido ");
+				$("#accordion").accordion( "refresh" );
+			}
+
+		});
 
 
 
@@ -104,175 +104,201 @@ $('.sortable-list').sortable({
 </script>
 
 
-
-
-
+<div id="product-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h2>Nuevo Historia</h2>
+				</header>
+			</div>
+			<section id="one" class="wrapper " style="background-color:#e3e3e9">
+				<%= form_for :historia, :html => { :multipart => true, id:"historia" } do |f| %>
+				<div class="modal-body">
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<div class="container  contact_form" style="text-align:left">   
+						<div align="center" style="margin:0 auto 0 auto;" class="container 50%">
+							<br>
+							<%= f.text_field :His_Nombre, autofocus: true ,placeholder:"Nombre Historia de Usuario" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_area :His_Descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_field :His_Prioridad, autofocus: true ,placeholder:"Prioridad" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_field :His_Esfuerzo, autofocus: true ,placeholder:"Esfuerzo" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>     
+						</div>  
+					</div>    
+				</div>
+			</section>
+			<div class="modal-footer">
+				<div class="actions"><br/>
+					<%= f.submit "Crear", class: "special big", id:"submit" %>
+				</div>
+			</div>
+			<% end %>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <Section id="main" class="wrapper">
-				<header class="major">
-				  
-					<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>	
-				</header>
+	<header class="major">
 
-				<div class= "container">
-				
-					<div class="row">
-					
-					<div class="8u 12u(3)">
-						<% if @proyecto.photo.exists?%>
-							<%= image_tag @proyecto.photo.url ,:class => 'logoImage float_left '%>
-						<%else %>
-						<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
+		<div align="center"><%= link_to "Crear Proyecto" , "/projects/new", class:"button" %><br></div>	
+	</header>
+
+	<div class= "container">
+
+		<div class="row">
+
+			<div class="8u 12u(3)">
+				<% if @proyecto.photo.exists?%>
+				<%= image_tag @proyecto.photo.url ,:class => 'logoImage float_left '%>
+				<%else %>
+				<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
+				<% end %>
+
+				<div>
+					<h1><%= @proyecto.proy_nombre %></h1>
+					<p><%= @proyecto.proy_descripcion %></p>
+					<h1>Hola aquí mostraré los miembros del proyecto!</h1>
+					<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
+						:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
+						Equipo de Trabajo
 						<% end %>
-						
-						<div>
-						<h1><%= @proyecto.proy_nombre %></h1>
-						<p><%= @proyecto.proy_descripcion %></p>
-						  <h1>Hola aquí mostraré los miembros del proyecto!</h1>
-						<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
-															:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
-															Equipo de Trabajo
-														<% end %>
-						</div>
+					</div>
 					
 
 
 					<h2>Backlog</h2>
-									
-							
-								
-								<div class="backlog-table"  >
-									<div class="row">
-												<div class="6u 12u(3)">
-												<h1>Historias de usuario </h1>
-												</div>
+					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#product-modal">
+						Agregar Historia de usuario
+					</button> 
+					<div class="backlog-table"  >
+						<div class="row">
+							<div class="6u 12u(3)">
+								<h1>Historias de usuario </h1>
+							</div>
+						</div>
+
+						<ul class="sortable-list" >
+
+							<li class="sortable-item">
+								<div class="row">
+									<div class="6u 12u(3)">
+										<p>Historia 1 </p>
+									</div>
+									<div class="6u 12u(3)">
+										<div class="row">
+											<%= image_tag("ic_delete_white.png")%>
+											<%= image_tag("ic_edit_white.png")%>
+											<p>ESTADO</p>
+											<p>Puntos 8</p>
 										</div>
-
-									<ul class="sortable-list" >
-										
-										<li class="sortable-item">
-											<div class="row">
-												<div class="6u 12u(3)">
-												<p>Historia 1 </p>
-												</div>
-												<div class="6u 12u(3)">
-												<div class="row">
-												<%= image_tag("ic_delete_white.png")%>
-												<%= image_tag("ic_edit_white.png")%>
-												<p>ESTADO</p>
-												<p>Puntos 8</p>
-												</div>
-												</div>
-											</div>
-										</li>
-										
-										<li class="sortable-item">
-											<div class="row">
-												<div class="6u 12u(3)">
-												<p>Historia 2 </p>
-												</div>
-												<div class="6u 12u(3)">
-												<div class="row">
-												<%= image_tag("ic_delete_white.png")%>
-												<%= image_tag("ic_edit_white.png")%>
-												<p>ESTADO</p>
-												<p>Puntos 8</p>
-												</div>
-												</div>
-											</div>
-										</li>
-										<li class="sortable-item">
-											<div class="row">
-												<div class="6u 12u(3)">
-												<p>Historia 3 </p>
-												</div>
-												<div class="6u 12u(3)">
-												<div class="row">
-												<%= image_tag("ic_delete_white.png")%>
-												<%= image_tag("ic_edit_white.png")%>
-												<p>ESTADO</p>
-												<p>Puntos 8</p>
-												</div>
-												</div>
-											</div>
-										</li>
-										<li class="sortable-item">
-											<div class="row">
-												<div class="6u 12u(3)">
-												<p>Historia 4 </p>
-												</div>
-												<div class="6u 12u(3)">
-												<div class="row">
-												<%= image_tag("ic_delete_white.png")%>
-												<%= image_tag("ic_edit_white.png")%>
-												<p>ESTADO</p>
-												<p>Puntos 8</p>
-												</div>
-												</div>
-											</div>
-										</li>
-										<li class="sortable-item">
-											<div class="row">
-												<div class="6u 12u(3)">
-												<p>Historia 5 </p>
-												</div>
-												<div class="6u 12u(3)">
-												<div class="row">
-												<%= image_tag("ic_delete_white.png")%>
-												<%= image_tag("ic_edit_white.png")%>
-												<p>ESTADO</p>
-												<p>Puntos 8</p>
-												</div>
-												</div>
-											</div>
-										</li>
-										
-									</ul>
+									</div>
 								</div>
+							</li>
 
-								
+							<li class="sortable-item">
+								<div class="row">
+									<div class="6u 12u(3)">
+										<p>Historia 2 </p>
+									</div>
+									<div class="6u 12u(3)">
+										<div class="row">
+											<%= image_tag("ic_delete_white.png")%>
+											<%= image_tag("ic_edit_white.png")%>
+											<p>ESTADO</p>
+											<p>Puntos 8</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="sortable-item">
+								<div class="row">
+									<div class="6u 12u(3)">
+										<p>Historia 3 </p>
+									</div>
+									<div class="6u 12u(3)">
+										<div class="row">
+											<%= image_tag("ic_delete_white.png")%>
+											<%= image_tag("ic_edit_white.png")%>
+											<p>ESTADO</p>
+											<p>Puntos 8</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="sortable-item">
+								<div class="row">
+									<div class="6u 12u(3)">
+										<p>Historia 4 </p>
+									</div>
+									<div class="6u 12u(3)">
+										<div class="row">
+											<%= image_tag("ic_delete_white.png")%>
+											<%= image_tag("ic_edit_white.png")%>
+											<p>ESTADO</p>
+											<p>Puntos 8</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="sortable-item">
+								<div class="row">
+									<div class="6u 12u(3)">
+										<p>Historia 5 </p>
+									</div>
+									<div class="6u 12u(3)">
+										<div class="row">
+											<%= image_tag("ic_delete_white.png")%>
+											<%= image_tag("ic_edit_white.png")%>
+											<p>ESTADO</p>
+											<p>Puntos 8</p>
+										</div>
+									</div>
+								</div>
+							</li>
 
+						</ul>
+					</div>
+				</div>
+
+				<div class="4u 12u(3)">
+					<h2>Sprints</h2>
+					<div id="accordion" class="sprint-table">
+						<h3 >Sprint 1</h3>
+						<div>
+							<ul class="sortable-list">
+
+
+							</ul>
 						</div>
+						<h3>Sprint 2</h3>
+						<div>
+							<ul class="sortable-list">
 
-					<div class="4u 12u(3)">
-						<h2>Sprints</h2>
-						<div id="accordion" class="sprint-table">
-							  <h3 >Sprint 1</h3>
-							  		<div>
-									<ul class="sortable-list">
-										
 
-									</ul>
-								  </div>
-							  <h3>Sprint 2</h3>
-							  <div>
-									<ul class="sortable-list">
-										
-
-									</ul>
-								  </div>
-							  <h3>Sprint 3</h3>
-							  <div>
-									<ul class="sortable-list">
-										
-
-									</ul>
-								  </div>
-							  <h3>Sprint 4</h3>
-							  <div>
-									<ul class="sortable-list">
-										
-
-									</ul>
-								  </div>
+							</ul>
 						</div>
-			   </div>
-			   		</div>
+						<h3>Sprint 3</h3>
+						<div>
+							<ul class="sortable-list">
 
 
+							</ul>
+						</div>
+						<h3>Sprint 4</h3>
+						<div>
+							<ul class="sortable-list">
 
- 
 
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
 	</section>
-						
+
