@@ -11,13 +11,14 @@ end
 
 #Se crea un proyecto
 def create
-	  @historia = Historiausuario.new(proyecto_params)
-	  if @historia.save
-        flash[:notice] = "Historia creada satisfactoriamente"
-    else 
-      flash[:alert] = "No se puede crear la historia"
-      render 'new'
-    end
+	@historia = Historiausuario.new(historia_params)
+	if @historia.save
+		flash[:notice] = "Historia creada satisfactoriamente"
+		redirect_to project_details_path(:id => historia_params[:proyecto_id] )
+	else 
+		flash[:alert] = "No se puede crear la historia"
+		redirect_to project_details_path(:id => historia_params[:proyecto_id] )
+	end
 end
 
 
@@ -25,8 +26,8 @@ end
 
 
 #Parametros en la creacion de un proyecto
-def proyecto_params
-      params.require(:historia).permit(:His_Nombre, :His_Descripcion,:His_Prioridad, :His_Esfuerzo)
+def historia_params
+      params.require(:historia).permit(:His_Nombre, :His_Descripcion,:His_Prioridad, :His_Esfuerzo,:proyecto_id)
 end
 
 
