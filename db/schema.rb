@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121230243) do
+ActiveRecord::Schema.define(version: 20161122024523) do
 
   create_table "historiausuarios", force: :cascade do |t|
     t.string   "His_Nombre"
@@ -64,9 +64,12 @@ ActiveRecord::Schema.define(version: 20161121230243) do
     t.text     "sprint_nombre"
     t.date     "sprint_fechainicio"
     t.date     "sprint_fechafinalizacion"
+    t.integer  "proyecto_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "sprints", ["proyecto_id"], name: "index_sprints_on_proyecto_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

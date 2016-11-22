@@ -2,10 +2,10 @@
 
 one:
   sprint_nombre: MyText
-  sprint_fechainicio: 
-  sprint_fechafinalizacion: 
+  sprint_fechainicio: 2016-11-21
+  sprint_fechafinalizacion: 2016-11-21
 
 two:
   sprint_nombre: MyText
-  sprint_fechainicio: 
-  sprint_fechafinalizacion: 
+  sprint_fechainicio: 2016-11-21
+  sprint_fechafinalizacion: 2016-11-21

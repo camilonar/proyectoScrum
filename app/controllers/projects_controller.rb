@@ -72,6 +72,7 @@ end
 #Se visualizan los detalles de un proyecto
 def details
     @proyecto = Proyecto.find(params[:id])
+    @sprints =@proyecto.sprints
 end
 
 #Se permitira ver en detalle los miembors de un proyecto.

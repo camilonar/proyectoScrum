@@ -176,8 +176,8 @@
 					<h2>Sprints</h2>
 					
 					<div id="accordion" class="sprint-table">
-					<% (1..4).each do |i| %>
-						<h3 >Sprint <%= i %></h3>
+					<% for sprint in @sprints do %>
+						<h3 ><%= sprint.sprint_nombre %></h3>
 						<div>
 							<ul class="sortable-list">
 

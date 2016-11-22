@@ -12,10 +12,10 @@ class SprintsController < ApplicationController
 		@sprint=Sprint.new(sprint_params)
 		if @sprint.save
 			flash[:notice] = "El Sprint se ha creado exitosamente"
-			redirect_to projects_details_path(:id => sprint_params[:proyecto_id] )
+			redirect_to project_details_path(:id => sprint_params[:proyecto_id] )
 		else
 			flash[:alert] = "El Sprint no ha podido ser creado"
-			redirect_to projects_details_path(:id => sprint_params[:proyecto_id] )
+			redirect_to project_details_path(:id => sprint_params[:proyecto_id] )
 		end
 	end
 

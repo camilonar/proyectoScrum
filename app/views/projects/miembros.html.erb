@@ -48,29 +48,18 @@ $('#btnYes').click(function() {
 	<%if @miembros.size==0%>
 		<h3 align="center">No hay Información relacionada a Miembros del Equipo. <br /> Puedes empezar por <button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button></h3> 
 
-
-		
 		<%else%>
-				
-				<%if !proyecto.nil?%>
-											   
+				<%if !proyecto.nil?%>						   
 				   	<section>
 						 <div  style="width:60%; margin:0 auto 0 auto;">
 								 <h4>Miembros asociados al proyecto  '<%=proyecto.proy_nombre%>' :</h4>
 									<div align="right">
-									
-
-
-									<button type="button" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>
+				<button type="button" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>
 									</div>
-
-
-
 
 									<br/>
 						<table cellspacing="0" cellpadding="0"  width="500" >
-
-															
+												
 									<tr>
 					    				<th>Imagen de perfil</th>	
 					    				<th>Detalles usuario</th>
@@ -125,9 +114,6 @@ $('#btnYes').click(function() {
 							  			     </tr>
 									<%break%>										
 								<%end%>
-
-								
-			 					
 						<%end%>	
 												
 									<% for user in @miembros %>
@@ -191,7 +177,6 @@ $('#btnYes').click(function() {
 				
 		<%end%>
 </div>
-
 
 	<!--Modificando Pao-->
                                           <head>
