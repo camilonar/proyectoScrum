@@ -23,9 +23,10 @@
 						<%= f.text_area :proy_descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>	
 						<div class=" flex-container" >
-						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true  %>
+						<%= f.text_field :proy_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true,
+						value: DateTime.now.strftime('%Y-%m-%d')  %>
 						<p style="padding: 13px;">hasta</p> 
-						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true  %>
+						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true, value: (Time.now + (60 * 60 * 24 * 7 * 16)).strftime('%Y-%m-%d')   %>
 						</div>
 						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>	    
 											<div>

@@ -108,13 +108,31 @@
 	<div class= "container">
 
 		<div class="row">
+		<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
+				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#sprint-modal">
+						Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
+					</button> 
+					<h2>Sprints</h2>
+					
+					<div id="accordion" class="sprint-table">
+					<% for sprint in @sprints do %>
+						<h3 ><%= sprint.sprint_nombre %></h3>
+						<div>
+							<ul class="sortable-list">
 
-			<div class="8u 12u(3)">
+
+							</ul>
+						</div>
+					<% end %>
+					</div>
+				</div>
+
+			<div class="9u 12u(2)">
 			<div class="row">
 				<% if @proyecto.photo.exists?%>
-				<%= image_tag @proyecto.photo.url ,:class => 'logoImage float_left '%>
+				<%= image_tag @proyecto.photo.url ,:class => 'logoImage', style: "margin-left: 1.6em;" %>
 				<%else %>
-				<%= image_tag("logo_proyecto.png",:class => 'logoImage float_left')%>
+				<%= image_tag("logo_proyecto.png",:class => 'logoImage')%>
 				<% end %>
 
 				<div>
@@ -166,25 +184,6 @@
 							<% end %>
 
 						</ul>
-					</div>
-				</div>
-
-				<div class="4u 12u(3)">
-				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#sprint-modal">
-						Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-					</button> 
-					<h2>Sprints</h2>
-					
-					<div id="accordion" class="sprint-table">
-					<% for sprint in @sprints do %>
-						<h3 ><%= sprint.sprint_nombre %></h3>
-						<div>
-							<ul class="sortable-list">
-
-
-							</ul>
-						</div>
-					<% end %>
 					</div>
 				</div>
 			</div>
