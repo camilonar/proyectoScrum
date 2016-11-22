@@ -8,31 +8,31 @@
 				</header>
 			</div>
 			<section id="one"  style="background-color:#e3e3e9">
-				<div class="modal-body">
-					<%= form_for :sprint, :url => url_for(:controller => 'sprints', :action => 'create'), :html => { :multipart => true, id:"sprint" } do |f| %>
+			<div class="modal-body">
+				<%= form_for :sprint, :url => url_for(:controller => 'sprints', :action => 'create'), :html => { :multipart => true, id:"sprint" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
-						<div class="hidden_element">
-							<%=f.text_field :proyecto_id, value:@proyecto.id  %>
-						</div>
-						<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
-						<br>
-						<div class=" flex-container" >
+							 <div class="hidden_element">
+                                <%=f.text_field :proyecto_id, value:@proyecto.id  %>
+                             </div>
+							<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<div class=" flex-container" >
 							<%= f.text_field :sprint_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
 							<p style="padding: 13px;">hasta</p> 
 							<%= f.text_field :sprint_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
-						</div>
-						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>
+							</div>
+							<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>
 					</div>    
-					<div class="modal-footer">
-						<div class="actions">
-							<%= button_to sprint_create_path(:id => @proyecto.id) ,{:class => "button special big" }, type:"button", :method => :post do %>
-							Crear<%= image_tag("ic_save_white.png", :class => "iconImage")%>
-							<% end %>
-						</div>
-					</div>
-					<% end %>
+				<div class="modal-footer">
+				<div class="actions">
+				<%= button_to sprint_create_path(:id => @proyecto.id) ,{:class => "button special big" }, type:"button", :method => :post do %>
+														Crear<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+													<% end %>
 				</div>
+			</div>
+			<% end %>
+			</div>
 			</section>
 
 		</div><!-- /.modal-content -->

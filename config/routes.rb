@@ -55,7 +55,6 @@ Rails.application.routes.draw do
    get 'project/details' => 'projects#details'
 
    post 'projects/sprints/new' => 'sprints#create', as: 'sprint_create' 
-   post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
     
 

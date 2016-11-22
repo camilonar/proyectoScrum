@@ -9,31 +9,27 @@
 				</header>
 			</div>
 			<section id="one"  style="background-color:#e3e3e9">
-				<div class="modal-body">
-					<%= form_for :historia,:url => url_for(:controller => 'historias', :action => 'create'),:html => { :multipart => true, id:"historia" } do |f| %>
+			<div class="modal-body">
+				<%= form_for :historia, :html => { :multipart => true, id:"historia" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
-						<div class="hidden_element">
-							<%=f.text_field :proyecto_id, value:@proyecto.id  %>
-						</div>
-						<%= f.text_field :His_Nombre, autofocus: true ,placeholder:"Nombre Historia de Usuario" ,:required => true, style:"background-color:white;" , class:"item" %>
-						<br>
-						<%= f.text_area :His_Descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
-						<br>
-						<%= f.text_field :His_Prioridad, autofocus: true ,placeholder:"Prioridad" ,:required => true, style:"background-color:white;" , class:"item" %>
-						<br>
-						<%= f.text_field :His_Esfuerzo, autofocus: true ,placeholder:"Esfuerzo" ,:required => true, style:"background-color:white;" , class:"item" %>
+						
+							<%= f.text_field :His_Nombre, autofocus: true ,placeholder:"Nombre Historia de Usuario" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_area :His_Descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_field :His_Prioridad, autofocus: true ,placeholder:"Prioridad" ,:required => true, style:"background-color:white;" , class:"item" %>
+							<br>
+							<%= f.text_field :His_Esfuerzo, autofocus: true ,placeholder:"Esfuerzo" ,:required => true, style:"background-color:white;" , class:"item" %>
 						
 					</div>    
-					<div class="modal-footer">
-						<div class="actions">
-							<%= button_to historia_create_path(:id => @proyecto.id) ,{:class => "button special big" }, type:"button", :method => :post do %>
-							Crear<%= image_tag("ic_save_white.png", :class => "iconImage")%>
-							<% end %>
-						</div>
-					</div>
-					<% end %>
+				<div class="modal-footer">
+				<div class="actions">
+					<%= f.submit "Crear", class: "special big", id:"submit" %>
 				</div>
+			</div>
+				<% end %>
+			</div>
 			</section>
 
 			
