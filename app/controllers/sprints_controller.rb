@@ -7,6 +7,9 @@ class SprintsController < ApplicationController
 		@sprint = Sprint.new
 	end 
 
+	def taskboard
+		
+	end
 	#Se crea un sprint
 	def create
 		@sprint=Sprint.new(sprint_params)

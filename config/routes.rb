@@ -57,6 +57,7 @@ Rails.application.routes.draw do
    post 'projects/sprints/new' => 'sprints#create', as: 'sprint_create' 
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
+   get 'taskboard' => 'sprints#taskboard'
     
 
 

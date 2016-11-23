@@ -1,0 +1,295 @@
+ 
+<style type="text/css">
+
+	.left {float: left;}
+	.right {float: right;}
+
+	.clear,.clearer {clear: both;}
+	.clearer {
+		display: block;
+		font-size: 0;
+		height: 0;
+		line-height: 0;
+	}
+
+	.ui-sortable {
+		margin: 0;
+		padding: 0;
+	}
+	#accordion .ui-accordion-content { padding: 0; }
+
+/*
+	Example specifics
+	------------------------------------------------------------------- */
+
+
+	/* Columns */
+
+	.column {
+		margin-left: 2%;
+		width: 32%;
+	}
+
+	.column.first {margin-left: 0;}
+
+
+	/* Sortable items */
+
+	.sortable-list {
+		overflow: auto;
+		list-style: none;
+		min-height: 60px;
+		background-color: #3cadd4;
+	}
+
+
+	.backlog-table ul{
+		list-style: none;
+	}
+
+
+
+	.sortable-item{
+		border-bottom: 1px solid #515050;
+		cursor: move;
+		color: white;  
+		height: 50px;  
+		padding: .3rem 0 .3rem .3rem;
+		text-align: center;
+		width: 100%;
+		background-color: #3cadd4;
+	} 
+
+
+
+	/* Item placeholder (visual helper) */
+
+	.placeholder {
+		background-color: grey;
+		border: 1px dashed #666;
+		height: 25px;
+		margin-bottom: 5px;
+	}
+
+	.sprint-table,.backlog-table li:hover{
+
+		background-color: #bcbcbc;
+	}
+
+.boardColumn {
+    display: table-cell;
+    overflow: auto;
+}
+
+	.scrollTabla {
+	     overflow:scroll;
+	     overflow-x: hidden;
+	     height:500px;
+	    
+	}
+	
+}
+</style>
+
+
+
+<script>
+	$(document).ready(function() {
+		$( "#accordion" ).accordion({
+			heightStyle: "content" 
+		});
+
+
+		$('.sortable-list').sortable({
+			connectWith: '.sortable-list',
+			placeholder: 'placeholder',
+
+			receive	 : function(ev, ui) {
+				console.log("nuevo elemento recibido ");
+				$("#accordion").accordion( "refresh" );
+			}
+
+		});
+
+
+
+
+	});
+</script>
+
+
+
+
+<div class="supreme-container">
+<section id="main" class="wrapper">
+	<header class="major">
+		<h2>Tablero de Tareas</h2>
+	</header>
+
+
+	<div class= "container">
+			<div class="isa_info">
+	    		<i class="fa fa-info-circle"></i>
+	    			Tareas creadas para realizar el sprint 'inserar aqui el sprint'
+				</div>
+				</br>
+
+
+		   <div class="scrollTabla">
+				<table class="tablaTareas table table-hover" width="500" >
+					
+				<%for k in 1..2%>
+					<tr>
+
+						<td align="left" valign="top">
+							<table align="top">
+									
+								
+									<tr>
+							    		<th>Historia de Usuario</th>
+									</tr>	
+
+								
+									<tr>
+									<td>
+										<p>HOO<%=k%></p>
+									</td>
+									
+
+									</tr>
+							</table>
+						</td>
+						
+
+						<td>
+							<table align="top">
+							
+								<tr>
+						    
+						    		<th>Nueva</th>
+						
+								</tr>	
+							
+								<tr>
+								<td>
+							
+								<ul class="sortable-list">							
+										<% for i in 1..3 %>
+											<li class="sortable-item">
+													<div class="row" style="float:top">
+															<div >
+																<p align="center">tarea<%=i%></p>
+															</div>					
+													</div>
+											</li>
+										<% end %>
+								</ul>
+							
+								</td>
+								</tr>						
+							</table>
+						</td>
+						
+						<td>
+							<table align="top">
+								
+								<tr>
+						    
+						    		<th>En proceso</th>
+								
+								</tr>
+								
+								<tr>
+								<td>
+							
+								<ul class="sortable-list">							
+										<% for i in 1..3%>
+											<li class="sortable-item">
+													<div class="row">
+															<div>
+																<p>tareasd<%=i%></p>
+															</div>					
+													</div>
+											</li>
+										<% end %>
+								</ul>
+							
+								</td>
+								</tr>						
+							</table>
+						</td>
+
+						<td>
+							<table align="top">
+								
+								<tr>
+						    
+						    		<th>Lista para Test</th>
+								
+								</tr>
+								
+								<tr>
+								<td>
+							
+								<ul class="sortable-list">							
+										<% for i in 1..3%>
+											<li class="sortable-item">
+													<div class="row" style="float:top">
+															<div >
+																<p>tareasd : <%=i%></p>
+															</div>					
+													</div>
+											</li>
+										<% end %>
+								</ul>
+							
+								</td>
+								</tr>						
+							</table>
+						</td>
+						<td>
+							<table align="top">
+								
+								<tr>
+						    
+						    		<th>Terminada</th>
+						
+								</tr>	
+							
+								<tr>
+								<td>
+							
+								<ul class="sortable-list">							
+										<% for i in 1..3%>
+											<li class="sortable-item">
+													<div class="row" style="float:top">
+															<div >
+																<p>tareasd : <%=i%></p>
+															</div>					
+													</div>
+											</li>
+										<% end %>
+								</ul>
+							
+								</td>
+								</tr>						
+							</table>
+						</td>
+						
+					</tr>
+
+					<%end%>
+
+
+
+				</table>
+
+			</div>
+			
+				
+		</div>
+
+
+
+	</section>
+</div>
