@@ -108,68 +108,68 @@
 	<div class= "container">
 
 		<div class="row">
-		<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
+			<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
 				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#sprint-modal">
-						Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-					</button> 
-					<h2>Sprints</h2>
-					
-					<div id="accordion" class="sprint-table">
+					Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
+				</button> 
+				<h2>Sprints</h2>
+
+				<div id="accordion" class="sprint-table">
 					<% for sprint in @sprints do %>
-						<h3 ><%= sprint.sprint_nombre %></h3>
-						<div>
-							<ul class="sortable-list">
+					<h3 ><%= sprint.sprint_nombre %></h3>
+					<div>
+						<ul class="sortable-list">
 
 
-							</ul>
-						</div>
-					<% end %>
+						</ul>
 					</div>
+					<% end %>
 				</div>
+			</div>
 
 			<div class="9u 12u(2)">
-			<div class="row">
-				<% if @proyecto.photo.exists?%>
-				<%= image_tag @proyecto.photo.url ,:class => 'logoImage', style: "margin-left: 1.6em;" %>
-				<%else %>
-				<%= image_tag("logo_proyecto.png",:class => 'logoImage')%>
-				<% end %>
+				<div class="row">
+					<% if @proyecto.photo.exists?%>
+					<%= image_tag @proyecto.photo.url ,:class => 'logoImage', style: "margin-left: 1.6em;" %>
+					<%else %>
+					<%= image_tag("logo_proyecto.png",:class => 'logoImage')%>
+					<% end %>
 
-				<div>
-				<div class="nombre_proyecto">
-					<strong><%= @proyecto.proy_nombre %></strong>
-				</div>
-					<p><%= @proyecto.proy_descripcion %></p>
-					<br />
-					<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
-						:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
-						Equipo de Trabajo<%= image_tag("ic_people_white.png", :class => "iconImage")%>
-						<% end %>
+					<div>
+						<div class="nombre_proyecto">
+							<strong><%= @proyecto.proy_nombre %></strong>
+						</div>
+						<p><%= @proyecto.proy_descripcion %></p>
+						<br />
+						<%= button_to projects_details_miembros_path(:id => @proyecto.id) ,{:controller => :projects,
+							:action => 'miembros', :class => "button largePadding styleIcon" }, type:"button", :method => "get" do %>
+							Equipo de Trabajo<%= image_tag("ic_people_white.png", :class => "iconImage")%>
+							<% end %>
+						</div>
 					</div>
-			</div>
 					
-			<br />
-			<br />
-			<div class="row">
-					<h2>Backlog &ensp;</h2>
-					<button class="button largePadding styleIcon" data-toggle="modal" data-target="#product-modal">
-						Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-					</button> 		
-			</div>		
+					<br />
+					<br />
+					<div class="row">
+						<h2>Backlog &ensp;</h2>
+						<button class="button largePadding styleIcon" data-toggle="modal" data-target="#product-modal">
+							Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
+						</button> 		
+					</div>		
 					<div class="backlog-table"  >
 
-							<div class="isa_info">
-    							<i class="fa fa-info-circle"></i>
-    							Aquí encontrarás las Historias de Usuario de la pila de este proyecto
-							</div>
-	
+						<div class="isa_info">
+							<i class="fa fa-info-circle"></i>
+							Aquí encontrarás las Historias de Usuario de la pila de este proyecto
+						</div>
 
-						<ul class="sortable-list" >
-						<% (1..5).each do |i| %>
+
+						<ul class="sortable-list" >							
+							<% for historia in @historias do %>
 							<li class="sortable-item">
 								<div class="row">
 									<div class="6u 12u(3)">
-										<p>Historia <%= i %> </p>
+										<p><%=historia.His_Nombre%></p>
 									</div>
 									<div class="6u 12u(3)">
 										<div class="row">
@@ -182,7 +182,6 @@
 								</div>
 							</li>
 							<% end %>
-
 						</ul>
 					</div>
 				</div>
@@ -190,5 +189,5 @@
 		</div>
 	</section>
 
-<%= render "historias/new" %>
-<%= render "sprints/new" %>
+	<%= render "historias/new" %>
+	<%= render "sprints/new" %>

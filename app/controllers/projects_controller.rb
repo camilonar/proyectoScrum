@@ -73,6 +73,7 @@ end
 def details
     @proyecto = Proyecto.find(params[:id])
     @sprints =@proyecto.sprints
+    @historias=@proyecto.historiausuarios
 end
 
 #Se permitira ver en detalle los miembors de un proyecto.
