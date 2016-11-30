@@ -226,6 +226,9 @@ function display(msg) {
 				<div id="accordion" class="sprint-table">
 					<% for sprint in @sprints do %>
 					<h3 style="height: 40px;"><%= sprint.sprint_nombre %>
+						<%= link_to sprint_delete_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+						<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+						<% end %>
 						<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
 						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
 						<% end %>

@@ -45,6 +45,20 @@ class SprintsController < ApplicationController
 	    end
 	end
 
+	def delete
+		@sprint = Sprint.find(params[:id])
+		respond_to do |format|               
+   			format.js{render layout: false}
+  		end
+	end
+
+	def destroy
+	    @sprint=Sprint.find(params[:id])
+	    @sprint.destroy()
+	    flash[:notice] = "Sprint eliminado exitosamente"
+	    redirect_to project_details_path(:id => params[:proyecto_id] )
+	end
+
 	#Parametros en la creacion de un sprint
 def sprint_params
       params.require(:sprint).permit(:sprint_nombre, :sprint_fechainicio,:sprint_fechafinalizacion, :proyecto_id)

@@ -84,3 +84,29 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <% end %>
+
+<% if type==3 %>
+	<div id="sprint-modal-edit" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h2>Eliminar Sprint</h2>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+				<div class="modal-body">
+				<p>¿Está seguro de que desea eliminar el <%= @sprint.sprint_nombre %>?</p>
+				<br />
+				<a href="#" data-dismiss="modal" aria-hidden="true" class="button secondary">No</a>
+					<%= link_to sprint_destroy_path(:id => @sprint.id, :proyecto_id => @sprint.proyecto.id),  class:"button styleIcon float_right", :method => :post do %>
+						Si <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+						<% end %>
+				</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

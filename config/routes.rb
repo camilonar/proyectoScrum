@@ -57,6 +57,8 @@ Rails.application.routes.draw do
    get 'projects/sprints/new_sprint' => 'sprints#new', as: 'sprint_new'
    post 'projects/sprints/new' => 'sprints#create', as: 'sprint_create'
    post 'sprints/edit' => 'sprints#update', as: 'sprint_update' 
+   get 'sprints/delete' => 'sprints#delete', as: 'sprint_delete' 
+   post 'sprints/destroy' => 'sprints#destroy', as: 'sprint_destroy' 
    get  'projects/sprints/change' => 'sprints#edit', as: 'sprint_edit'
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
