@@ -60,6 +60,9 @@ Rails.application.routes.draw do
    get 'sprints/delete' => 'sprints#delete', as: 'sprint_delete' 
    post 'sprints/destroy' => 'sprints#destroy', as: 'sprint_destroy' 
    get  'projects/sprints/change' => 'sprints#edit', as: 'sprint_edit'
+   get  'sprints/change_state' => 'sprints#show_change_state', as: 'sprint_change_state'
+   post  'sprints/update_state' => 'sprints#change_state',as: 'sprint_update_state'
+
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
    get 'taskboard' => 'sprints#taskboard'

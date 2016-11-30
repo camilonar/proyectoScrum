@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122024523) do
+ActiveRecord::Schema.define(version: 20161130053413) do
 
   create_table "historiausuarios", force: :cascade do |t|
     t.string   "His_Nombre"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161122024523) do
     t.integer  "proyecto_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.boolean  "sprint_estado"
   end
 
   add_index "sprints", ["proyecto_id"], name: "index_sprints_on_proyecto_id"

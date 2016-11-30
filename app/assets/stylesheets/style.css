@@ -1347,13 +1347,29 @@ padding:12px;
 .iconImageSmall {
 	padding-left: 0;
 	align: align-center;
-	max-width: 60%;
+	max-width: 70%;
 	max-height: 90%;
 	width: 20px;
 	height: 20px;
 }
 
-.modalPersonalizado {
-	position: absolute;
-	line-height: 2.75em;
+/*Cabecera del acordeón*/
+.ui-accordion-header{
+	background: #383b43;
+}
+
+.styleIconMedium {
+	padding: 0.2 0.3em;
+}
+
+.iconImageMedium {
+	float: right;
+	padding-left: 0;
+	margin-left: 8px;
+	padding-top: 0.5em;
+	align: align-center;
+	max-width: 60%;
+	max-height: 90%;
+	width: 32px;
+	height: 40px;
 }

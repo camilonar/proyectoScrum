@@ -59,8 +59,21 @@ class SprintsController < ApplicationController
 	    redirect_to project_details_path(:id => params[:proyecto_id] )
 	end
 
+	def show_change_state
+		@sprint=Sprint.find(params[:id])
+		respond_to do |format|               
+   			format.js{render layout: false}
+  		end
+	end
+
+	def change_state
+		@sprint=Sprint.find(params[:id])
+		@sprint.update(:sprint_estado => !@sprint.sprint_estado)
+		flash[:notice] = "Estado del Sprint cambiado exitosamente"
+	    redirect_to project_details_path(:id => params[:proyecto_id] )
+	end
 	#Parametros en la creacion de un sprint
 def sprint_params
-      params.require(:sprint).permit(:sprint_nombre, :sprint_fechainicio,:sprint_fechafinalizacion, :proyecto_id)
+      params.require(:sprint).permit(:sprint_nombre, :sprint_estado, :sprint_fechainicio,:sprint_fechafinalizacion, :proyecto_id)
 end
 end

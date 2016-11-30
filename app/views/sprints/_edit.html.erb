@@ -17,6 +17,7 @@
 					<div class="contact_form" style="text-align:center">  
 						<div class="hidden_element">
 							<%=f.text_field :proyecto_id, value: @sprint.proyecto.id %>
+							<%=f.text_field :sprint_estado, value: @sprint.sprint_estado %>
 						</div>
 						<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
@@ -59,6 +60,7 @@
 					<div class="contact_form" style="text-align:center">  
 						<div class="hidden_element">
 							<%=f.text_field :proyecto_id, value:@id  %>
+							<%=f.text_field :sprint_estado, value: true %>
 						</div>
 						<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
@@ -100,8 +102,42 @@
 				<p>¿Está seguro de que desea eliminar el <%= @sprint.sprint_nombre %>?</p>
 				<br />
 				<a href="#" data-dismiss="modal" aria-hidden="true" class="button secondary">No</a>
-					<%= link_to sprint_destroy_path(:id => @sprint.id, :proyecto_id => @sprint.proyecto.id),  class:"button styleIcon float_right", :method => :post do %>
-						Si <%= image_tag("ic_delete_white.png", :class => "iconImage")%>
+					<%= link_to sprint_destroy_path(:id => @sprint.id, :proyecto_id => @sprint.proyecto.id),  class:"button styleIconMedium float_right", :method => :post do %>
+						Si <%= image_tag("ic_delete_white.png", :class => "iconImageMedium")%>
+						<% end %>
+				</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
+
+<% if type==4 %>
+	<div id="sprint-modal-edit" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<% if @sprint.sprint_estado==true %>
+					<h2>Cancelar Sprint</h2>
+					<% else %>
+					<h2>Reactivar Sprint</h2>
+					<% end %>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+				<div class="modal-body">
+				<% if @sprint.sprint_estado==true %>
+				<p>¿Está seguro de que desea cancelar el <%= @sprint.sprint_nombre %>?</p>
+				<% else %>
+				<p>¿Está seguro de que desea reactivar el <%= @sprint.sprint_nombre %>?</p>
+				<% end %>
+				<br />
+				<a href="#" data-dismiss="modal" aria-hidden="true" class="button secondary">No</a>
+					<%= link_to sprint_update_state_path(:id => @sprint.id, :proyecto_id => @sprint.proyecto.id),  class:"button styleIconMedium float_right", :method => :post do %>
+						Si <%= image_tag("ic_cancel_white.png", :class => "iconImageMedium")%>
 						<% end %>
 				</div>
 			</section>
