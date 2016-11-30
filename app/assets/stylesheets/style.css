@@ -1352,3 +1352,8 @@ padding:12px;
 	width: 20px;
 	height: 20px;
 }
+
+.modalPersonalizado {
+	position: absolute;
+	line-height: 2.75em;
+}

@@ -4,7 +4,7 @@
 /*Validaciones para el proyecto*/
 (function() {
   $(document).on('turbolinks:load', function() {
-    return $(".datepicker").datepicker({
+    $(".datepicker").datepicker({
       dateFormat: 'yy-mm-dd'
     }).on("change", function() {
     	var input1 = $("#proyecto_proy_fechainicio");

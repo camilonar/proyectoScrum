@@ -1,4 +1,113 @@
- 
+<script>
+$(document).on('turbolinks:load', function() {
+	var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    console.log('Mutation type: ' + mutation.type);
+    if ( mutation.type == 'childList' ) {
+      if (mutation.addedNodes.length >= 1) {
+      	$('#sprint-modal-edit').modal('toggle');
+		$('#sprint-modal-edit').modal('show');
+      }
+      else if (mutation.removedNodes.length >= 1) {
+        //window.alert("jojo");
+      }
+    }
+    else if (mutation.type == 'attributes') {
+       //window.alert('jiji');
+    }
+        });   
+});
+  
+var observerConfig = {
+        attributes: true,
+        subtree: true,
+        childList: true,
+        characterData: true
+};
+  
+// Listen to all changes to body and child nodes
+var targetNode = document.getElementById('div_id');
+observer.observe(targetNode, observerConfig);
+});
+
+$('body').on('focus',".datepicker", function(){
+    $(this).datepicker({
+      dateFormat: 'yy-mm-dd'
+    }).on("change", function() {
+    	var input1 = $("#proyecto_proy_fechainicio");
+    	var input2 =  $("#proyecto_proy_fechafinalizacion");
+    	var error_element=$("span", input1.parent().parent());
+    	/*Validaciones del proyecto*/
+    	validarFecha(input1,input2,error_element);
+    	/*Validaciones del sprint*/
+    	input1 = $("#sprint_sprint_fechainicio");
+    	input2 = $("#sprint_sprint_fechafinalizacion");
+    	error_element=$("span", input1.parent().parent());
+    	validarFecha(input1,input2,error_element);
+  });
+});
+
+function validarFecha(input1, input2, error_element){
+	if (input1.val()!="" && input2.val()!="" && input1.val() >= input2.val()){
+    		input1.removeClass("valid").addClass("invalid");
+    		input2.removeClass("valid").addClass("invalid");
+    		error_element.removeClass("error").addClass("error_show"); 
+    	} else {
+    		input1.removeClass("invalid").addClass("valid");
+    		input2.removeClass("invalid").addClass("valid");
+    		error_element.removeClass("error_show").addClass("error");    		
+    	}
+}
+
+function display(msg) {
+    window.alert(msg);
+}
+
+  $(document).on('turbolinks:load', function() {
+	$("#submit").click(function(event){
+		var form_data=$("#proyecto").serializeArray();
+		var error_free=true;
+		//for (var input in form_data){
+			//var str = "#"+form_data[input]['name'];
+			var str = "#proyecto_proy_fechainicio";
+			var element=$(str);
+			var valid=!element.hasClass("invalid");
+			var error_element=$("span", element.parent().parent());
+			if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+			else{error_element.removeClass("error_show").addClass("error");}
+		//}
+		if (!error_free){
+			element.focus();
+			event.preventDefault(); 
+		}
+		else{
+			//alert('No errors: Form will be submitted');
+		}
+	});
+	/*Validación del submit del sprint*/
+	$("#submit-sprint").click(function(event){
+		var form_data=$("#sprint").serializeArray();
+		var error_free=true;
+		//for (var input in form_data){
+			//var str = "#"+form_data[input]['name'];
+			var str = "#sprint_sprint_fechainicio";
+			var element=$(str);
+			var valid=!element.hasClass("invalid");
+			var error_element=$("span", element.parent().parent());
+			if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+			else{error_element.removeClass("error_show").addClass("error");}
+		//}
+		if (!error_free){
+			element.focus();
+			event.preventDefault(); 
+		}
+		else{
+			//alert('No errors: Form will be submitted');
+		}
+	});
+	}).call(this);
+
+</script> 
 <style type="text/css">
 
 	.left {float: left;}
@@ -106,10 +215,10 @@
 <section id="main" class="wrapper">
 
 	<div class= "container">
-
+		
 		<div class="row">
 			<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
-				<%= link_to sprint_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon float_right", "data-toggle"=>"modal", "data-target"=>"#sprint-modal" do %>
+				<%= link_to sprint_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon float_right" do %>
 					Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 				<% end %>
 				<h2>Sprints</h2>
@@ -117,7 +226,7 @@
 				<div id="accordion" class="sprint-table">
 					<% for sprint in @sprints do %>
 					<h3 style="height: 40px;"><%= sprint.sprint_nombre %>
-						<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right", "data-toggle"=>"modal", "data-target"=>"#sprint-modal-edit" do %>
+						<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
 						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
 						<% end %>
 					</h3>
@@ -203,4 +312,5 @@
 
 	<%= render "historias/new" %>
 
-	<div id="div_id"></div>
+	<div id="div_id">
+	</div>
