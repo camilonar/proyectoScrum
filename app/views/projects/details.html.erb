@@ -109,14 +109,18 @@
 
 		<div class="row">
 			<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
-				<button class="button largePadding styleIcon float_right" data-toggle="modal" data-target="#sprint-modal">
+				<%= link_to sprint_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon float_right", "data-toggle"=>"modal", "data-target"=>"#sprint-modal" do %>
 					Agregar<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-				</button> 
+				<% end %>
 				<h2>Sprints</h2>
 
 				<div id="accordion" class="sprint-table">
 					<% for sprint in @sprints do %>
-					<h3 ><%= sprint.sprint_nombre %></h3>
+					<h3 style="height: 40px;"><%= sprint.sprint_nombre %>
+						<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right", "data-toggle"=>"modal", "data-target"=>"#sprint-modal-edit" do %>
+						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+						<% end %>
+					</h3>
 					<div>
 						<ul class="sortable-list">
 
@@ -126,7 +130,7 @@
 					<% end %>
 				</div>
 
-				
+			<br />	
 			<%= link_to taskboard_path, class: "button styleIcon" do %>
 			TaskBoard<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 			<% end %>
@@ -198,4 +202,5 @@
 	</section>
 
 	<%= render "historias/new" %>
-	<%= render "sprints/new" %>
+
+	<div id="div_id"></div>

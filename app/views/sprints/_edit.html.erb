@@ -1,0 +1,84 @@
+<% if type==1 %>
+<div id="sprint-modal-edit" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h2>Editar Sprint</h2>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+				<div class="modal-body">
+					<%= form_for :sprint, :url => sprint_update_path(:id => @sprint.id), :html => { :multipart => true, :id => "sprint"} do |f| %>
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<div class="contact_form" style="text-align:center">  
+						<div class="hidden_element">
+							<%=f.text_field :proyecto_id, value: @sprint.proyecto.id %>
+						</div>
+						<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<br>
+						<div class=" flex-container" >
+							<%= f.text_field :sprint_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
+							<p style="padding: 13px;">hasta</p> 
+							<%= f.text_field :sprint_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
+						</div>
+						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>
+					</div>    
+					<div class="modal-footer">
+						<div class="actions">
+							<%= button_to sprint_update_path(:id => @sprint.id) ,{:class => "button special big" }, type:"button", :method => :post do %>
+							Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+							<% end %>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
+<% if type==2 %>
+	<div id="sprint-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h2>Nuevo Sprint</h2>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+				<div class="modal-body">
+					<%= form_for :sprint, :url => url_for(:controller => 'sprints', :action => 'create'), :html => { :multipart => true, id:"sprint" } do |f| %>
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<div class="contact_form" style="text-align:center">  
+						<div class="hidden_element">
+							<%=f.text_field :proyecto_id, value:@id  %>
+						</div>
+						<%= f.text_field :sprint_nombre, autofocus: true ,placeholder:"Nombre del Sprint" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<br>
+						<div class=" flex-container" >
+							<%= f.text_field :sprint_fechainicio, placeholder:"Fecha de inicio", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true, value: DateTime.now.strftime('%Y-%m-%d') %>
+							<p style="padding: 13px;">hasta</p> 
+							<%= f.text_field :sprint_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true, value: (Time.now + (60 * 60 * 24 * 7 * 2)).strftime('%Y-%m-%d')  %>
+						</div>
+						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>
+					</div>    
+					<div class="modal-footer">
+						<div class="actions">
+							<%= button_to sprint_create_path(:id => @id) ,{:class => "button special big" }, type:"button", :method => :post do %>
+							Crear<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+							<% end %>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

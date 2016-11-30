@@ -54,7 +54,10 @@ Rails.application.routes.draw do
    
    get 'project/details' => 'projects#details'
 
-   post 'projects/sprints/new' => 'sprints#create', as: 'sprint_create' 
+   get 'projects/sprints/new_sprint' => 'sprints#new', as: 'sprint_new'
+   post 'projects/sprints/new' => 'sprints#create', as: 'sprint_create'
+   post 'sprints/edit' => 'sprints#update', as: 'sprint_update' 
+   get  'projects/sprints/change' => 'sprints#edit', as: 'sprint_edit'
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
    get 'taskboard' => 'sprints#taskboard'
