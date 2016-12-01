@@ -39,6 +39,22 @@ $('#btnYes').click(function() {
 
 </script>
 
+<script type="text/javascript">
+
+(function() {
+  $(document).on('turbolinks:load',function() {
+  $('select#miembro_user_id').select2({
+    placeholder: "Choose a person",
+    llaowClear: true,
+    language: "es",
+
+  });
+});
+}).call(this);
+
+
+</script>
+
 
 <div class="supreme-container">	 
 <br/><h2 align="center">Miembros del proyecto</h2>
@@ -215,15 +231,18 @@ $('#btnYes').click(function() {
           												  <div class="hidden_element">
                                                           <%=m.text_field :proyecto_id, value:@q  %>
                                                           </div>
-													      <br>   
-													        <% correos={}%>
-													        <% @nombre_correos.each do |correo|%>
-													        <%correos[correo.email]=correo.id%>
+													      <br> 
+
+													         <% nombres_user={}%>
+													        <% @nombre_correos.each do |u|%>
+													        <%nombres_user[u.email]=u.id%>
 													        <%end%>
-													        <%lista=correos.sort%>
-													        <%=m.label :" seleccione el Correo Electrónico:"%>
-													        <%=m.select :user_id, lista%>
-													        <br>
+													        <%lista=nombres_user.sort%>
+													        <%=m.label :" seleccione el  correo del Usuario:"%>
+													        <%=m.select :user_id, lista, {}, {:class => "selectCorreo"}%>
+													       <br>
+													       <br>
+  
 
 
 													        <% nombres_rol={}%>
@@ -236,7 +255,7 @@ $('#btnYes').click(function() {
 													       <br>
    
    
-												</div>
+												          </div>
 												 
 												 
 												          <div class="modal-footer">
