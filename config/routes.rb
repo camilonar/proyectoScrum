@@ -63,6 +63,7 @@ Rails.application.routes.draw do
    get  'sprints/change_state' => 'sprints#show_change_state', as: 'sprint_change_state'
    post  'sprints/update_state' => 'sprints#change_state',as: 'sprint_update_state'
 
+   get 'historias/new' => 'historias#new', as: "historia_new" 
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
    
    get 'taskboard' => 'sprints#taskboard'

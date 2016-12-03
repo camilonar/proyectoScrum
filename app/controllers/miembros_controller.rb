@@ -18,10 +18,10 @@ class MiembrosController < ApplicationController
 		@miembro=Miembro.new(miembro_params)
 		#articulo.valid? || articulo.invalid? devuelven booleanos de la pregunta, es una forma de preguntar antes de guardar.
 		if @miembro.save
-			flash[:notice] = "El Miembro  se ha Agregado Exitosamente al Equipo de Trabajo"
+			flash[:notice] = "El Miembro  se ha agregado exitosamente al equipo de trabajo"
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
-			flash[:alert] = "El Miembro no se ha Agregado al Equipo de Trabajo "
+			flash[:alert] = "El Miembro no se ha agregado al equipo de trabajo "
 			@nombre_roles=Rol.all()
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		end
@@ -41,10 +41,10 @@ class MiembrosController < ApplicationController
 		@miembro=Miembro.find(params[:id])
 
 		if @miembro.update(miembro_params)
-		    flash[:notice] = "El Miembro  se ha Actualizado  Exitosamente "
+		    flash[:notice] = "El Miembro se ha actualizado exitosamente "
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		else
-			flash[:alert] = "El Miembro  No se pudo Actualizar "
+			flash[:alert] = "El Miembro no se pudo actualizar "
 			redirect_to projects_details_miembros_path(:id => miembro_params[:proyecto_id] )
 		end
 
@@ -58,7 +58,7 @@ class MiembrosController < ApplicationController
 	def destroy
 		 @miembro=Miembro.find(params[:id])
 		 @miembro.destroy()
-		 flash[:notice] = "Miembro del equipo de trabajo eliminado Exitosamente"
+		 flash[:notice] = "Miembro del equipo de trabajo eliminado exitosamente"
 		 redirect_to projects_details_miembros_path(:id => params[:proyecto_id] )
     end
 

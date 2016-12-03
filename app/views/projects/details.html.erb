@@ -5,8 +5,8 @@ $(document).on('turbolinks:load', function() {
     console.log('Mutation type: ' + mutation.type);
     if ( mutation.type == 'childList' ) {
       if (mutation.addedNodes.length >= 1) {
-      	$('#sprint-modal-edit').modal('toggle');
-		$('#sprint-modal-edit').modal('show');
+      	$('#modal').modal('toggle');
+		$('#modal').modal('show');
       }
       else if (mutation.removedNodes.length >= 1) {
         //window.alert("jojo");
@@ -285,9 +285,9 @@ function display(msg) {
 					<br />
 					<div class="row">
 						<h2>Backlog &ensp;</h2>
-						<button class="button largePadding styleIcon" data-toggle="modal" data-target="#product-modal">
+						<%= link_to historia_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon" do %>
 							Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-						</button> 		
+						<% end %>	
 					</div>		
 					<div class="backlog-table"  >
 
@@ -321,8 +321,6 @@ function display(msg) {
 			</div>
 		</div>
 	</section>
-
-	<%= render "historias/new" %>
 
 	<div id="div_id">
 	</div>

@@ -7,6 +7,10 @@ before_action :authenticate_user!
 #Se visualiza la vista de crear un proyecto
 def new
 	@historia = Historiausuario.new
+	@proyecto = Proyecto.find(params[:id])
+		respond_to do |format|               
+   			format.js{render layout: false}
+  		end
 end 
 
 #Se crea un proyecto
