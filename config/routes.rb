@@ -65,6 +65,10 @@ Rails.application.routes.draw do
 
    get 'historias/new' => 'historias#new', as: "historia_new" 
    post 'projects/historias/new' => 'historias#create', as: 'historia_create' 
+   get  'historias/change' => 'historias#edit', as: 'historia_edit'
+   post 'historias/edit' => 'historias#update', as: 'historia_update' 
+   get 'historias/delete' => 'historias#delete', as: 'historia_delete' 
+   post 'historias/destroy' => 'historias#destroy', as: 'historia_destroy' 
    
    get 'taskboard' => 'sprints#taskboard'
     

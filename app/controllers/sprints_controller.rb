@@ -40,7 +40,7 @@ class SprintsController < ApplicationController
 	        flash[:notice] = "Sprint actualizado exitosamente"
 	        redirect_to  project_details_path(:id => sprint_params[:proyecto_id] )
 	    else
-	        flash[:alert] = "No se pudo actualizar el proyecto"
+	        flash[:alert] = "No se pudo actualizar el sprint"
 	         redirect_to  project_details_path(:id => sprint_params[:proyecto_id] )
 	    end
 	end

@@ -306,10 +306,14 @@ function display(msg) {
 									</div>
 									<div class="6u 12u(3)">
 										<div class="row">
-											<%= image_tag("ic_delete_white.png")%>
-											<%= image_tag("ic_edit_white.png")%>
 											<p>ESTADO</p>
-											<p>Puntos 8</p>
+											<p>Esfuerzo: <%= historia.His_Esfuerzo %></p>
+											<%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+						<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+						<% end %>
+						<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+						<% end %>
 										</div>
 									</div>
 								</div>
