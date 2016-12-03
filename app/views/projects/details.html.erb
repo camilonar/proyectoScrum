@@ -247,17 +247,16 @@ function display(msg) {
 
 
 						</ul>
+						<div style="text-align: center; background-color: #383b43; padding: 1em;" class="special">
+							<%= link_to taskboard_path, class: "button styleIcon" do %>
+								TaskBoard
+							<% end %>
+						</div>
 					</div>
 					<% end %>
 				</div>
 
 			<br />	
-			<%= link_to taskboard_path, class: "button styleIcon" do %>
-			TaskBoard<%= image_tag("ic_add_white.png", :class => "iconImage")%>
-			<% end %>
-
-
-
 			</div>
 
 			<div class="9u 12u(2)">
@@ -300,9 +299,9 @@ function display(msg) {
 						<ul class="sortable-list" >							
 							<% for historia in @historias do %>
 							<li class="sortable-item">
-								<div class="row">
+								<div class="row" style="padding-left: 1em; padding-right: 1em;">
 									<div class="6u 12u(3)">
-										<p><%=historia.His_Nombre%></p>
+										<strong style="color: white;"><%=historia.His_Nombre%></strong>
 									</div>
 									<div class="6u 12u(3)">
 										<div class="row">
