@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
    has_many :proyectos
+   has_many :tareas
    has_many :miembros
 
    has_attached_file :photo

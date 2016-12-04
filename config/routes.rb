@@ -3,6 +3,8 @@ Rails.application.routes.draw do
    
   resources :projects
 
+  resources :tareas
+
   devise_for :users, controllers: { 
       sessions: 'user/sessions',
       passwords: 'user/passwords',
@@ -38,7 +40,7 @@ Rails.application.routes.draw do
    
    #TODO: paola
    #delete '/miembros/:id' => 'miembros#destroy', as: 'miembros_destroy'
-   resources:miembros
+   resources :miembros
 
    get 'miembros/edit' => 'miembros#edit' 
    post 'miembros/:id/edit' => 'miembros#edit'

@@ -1,0 +1,5 @@
+class TareasController < ApplicationController
+
+
+
+end 
