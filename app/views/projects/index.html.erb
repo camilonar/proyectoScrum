@@ -4,7 +4,9 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <script type="text/javascript">
+
 $(document).on('turbolinks:load', function() {
+
 $('#myModal').on('show', function() {
     var id = $(this).data('id'),
         removeBtn = $(this).find('.danger');
@@ -17,6 +19,8 @@ $('.confirm-delete').on('click', function(e) {
     var id = $(this).data('id');
    $('#myModal').data('id', id).modal('show');
 });
+
+
 
 $('#btnYes').click(function() {
     // handle deletion here

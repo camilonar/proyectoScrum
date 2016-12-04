@@ -94,13 +94,24 @@
 
 
 <script>
-	$(document).ready(function() {
-		$( "#accordion" ).accordion({
+
+$(document).on('turbolinks:load', function() {
+
+
+
+	$('.new-task').on('click', function(e) {
+    e.preventDefault();
+    $('#myModal').modal('show');
+	});
+
+
+
+	$( "#accordion" ).accordion({
 			heightStyle: "content" 
 		});
 
 
-		$('.sortable-list').sortable({
+    	$('.sortable-list').sortable({
 			connectWith: '.sortable-list',
 			placeholder: 'placeholder',
 
@@ -113,8 +124,10 @@
 
 
 
+});
 
-	});
+
+
 </script>
 
 
@@ -153,6 +166,11 @@
 									<tr>
 									<td>
 										<p>HOO<%=k%></p>
+										
+										<a href="" class="new-task button styleIcon" >Nueva Tarea<%= image_tag("ic_add_white.png", :class => "iconImage")%>
+										</a>
+
+										
 									</td>
 									
 
@@ -293,3 +311,39 @@
 
 	</section>
 </div>
+
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+															 
+															<div class="modal-dialog">
+															      <!-- Modal content-->
+															 
+															<div class="modal-content">
+															 
+															<div class="modal-header">
+
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															 
+															<h4 class="modal-title">  Eliminar</h4>
+															 
+															</div>
+															 
+															<div class="modal-body">
+															       <h1> Seguro desea eliminar este proyecto ?  </h1>
+															</div>											 
+															          <div class="modal-footer">
+																	       	<a href="#" id="btnYes" class="btn danger">Si</a>
+
+																		      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
+
+															        </div>
+															 
+ 		</div>
+															 
+	</div>
+															 
+ </div>
+														

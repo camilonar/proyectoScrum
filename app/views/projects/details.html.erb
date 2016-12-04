@@ -1,5 +1,6 @@
 <script>
 $(document).on('turbolinks:load', function() {
+	
 	var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     console.log('Mutation type: ' + mutation.type);
@@ -284,9 +285,11 @@ function display(msg) {
 					<br />
 					<div class="row">
 						<h2>Backlog &ensp;</h2>
+
 						<%= link_to historia_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon" do %>
 							Agregar Historia de usuario<%= image_tag("ic_add_white.png", :class => "iconImage")%>
 						<% end %>	
+
 					</div>		
 					<div class="backlog-table"  >
 
@@ -324,6 +327,8 @@ function display(msg) {
 			</div>
 		</div>
 	</section>
+
+
 
 	<div id="div_id">
 	</div>

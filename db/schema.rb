@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130053413) do
+ActiveRecord::Schema.define(version: 20161204005822) do
 
   create_table "historiausuarios", force: :cascade do |t|
     t.string   "His_Nombre"
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 20161130053413) do
   end
 
   add_index "sprints", ["proyecto_id"], name: "index_sprints_on_proyecto_id"
+
+  create_table "tareas", force: :cascade do |t|
+    t.string  "Asunto"
+    t.string  "Descripcion"
+    t.string  "Estado"
+    t.integer "Estimacion"
+    t.integer "sprint_id"
+  end
+
+  add_index "tareas", ["sprint_id"], name: "index_tareas_on_sprint_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
