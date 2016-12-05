@@ -5,7 +5,7 @@ class CreateSprints < ActiveRecord::Migration
       t.date :sprint_fechainicio
       t.date :sprint_fechafinalizacion
       t.references :proyecto, index: true, foreign_key: true
-
+    
       t.timestamps null: false
     end
   end

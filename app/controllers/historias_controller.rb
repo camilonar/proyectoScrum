@@ -14,6 +14,8 @@ def new
 end 
 
 #Se crea un proyecto
+
+
 def create
 	@historia = Historiausuario.new(historia_params)
 	if @historia.save
@@ -25,12 +27,14 @@ def create
 	end
 end
 
+
 def edit
 		@historia = Historiausuario.find(params[:id])
 		respond_to do |format|               
    			format.js{render layout: false}
   		end
 	end
+
 
 	def update
 	    @historia= Historiausuario.find(params[:id])
@@ -43,6 +47,7 @@ def edit
 	         redirect_to  project_details_path(:id => historia_params[:proyecto_id] )
 	    end
 	end
+
 
 	def delete
 		@historia = Historiausuario.find(params[:id])
@@ -64,7 +69,7 @@ def edit
 
 #Parametros en la creacion de un proyecto
 def historia_params
-      params.require(:historia).permit(:His_Nombre, :His_Descripcion,:His_Prioridad, :His_Esfuerzo,:proyecto_id)
+      params.require(:historia).permit(:His_Nombre, :His_Descripcion,:His_Prioridad, :His_Esfuerzo,:proyecto_id,:sprint_id)
 end
 
 

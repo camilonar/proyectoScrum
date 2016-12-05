@@ -6,7 +6,6 @@ class CreateHistoriausuarios < ActiveRecord::Migration
       t.integer :His_Prioridad
       t.integer :His_Esfuerzo
       t.references :proyecto, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end
