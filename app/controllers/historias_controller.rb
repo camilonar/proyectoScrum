@@ -13,6 +13,8 @@ def new
   		end
 end 
 
+
+
 #Se crea un proyecto
 
 
@@ -49,8 +51,25 @@ def edit
 	end
 
 
+
+	def updatesprint
+		@historia = Historiausuario.find(params[:id])
+
+		if (params.has_key?(:sprint_id))
+          @historia.update(sprint_id: params[:sprint_id])
+      	else
+		 @historia.update(sprint_id: nil)
+	 	end 
+	      render json: @historia.to_json
+
+	end 
+
+
+
+
 	def delete
 		@historia = Historiausuario.find(params[:id])
+		
 		respond_to do |format|               
    			format.js{render layout: false}
   		end

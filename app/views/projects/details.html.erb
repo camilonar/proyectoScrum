@@ -201,8 +201,58 @@ function display(msg) {
 			placeholder: 'placeholder',
 
 			receive	 : function(ev, ui) {
-				console.log("nuevo elemento recibido ");
+				
+				var idSprint = $(this).data("id");
+				var idHistoria = $(ui.item).data("id");
+				console.log("historia de usuario :"+idHistoria+" recibida en sprint :"+idSprint);
+
+
+				if(idSprint=="backlog"){
+
+				$.ajax(
+				{
+				  url : '/historias/editsprint',
+				  type: "POST",
+				  data : {id:idHistoria}
+				})
+				  .done(function(data) {
+				    $("#respuesta").html(data);
+				  })
+				  .fail(function(data) {
+				    
+				  })
+				  .always(function(data) {
+				   
+				  });
+
+
+				}else{
+
+				
+				$.ajax(
+				{
+				  url : '/historias/editsprint',
+				  type: "POST",
+				  data : {id:idHistoria,sprint_id:idSprint}
+				})
+				  .done(function(data) {
+				    $("#respuesta").html(data);
+				  })
+				  .fail(function(data) {
+				    
+				  })
+				  .always(function(data) {
+				   
+				  });
+
+				}
+
+
 				$("#accordion").accordion( "refresh" );
+
+
+
+
 			}
 
 		});
@@ -226,34 +276,60 @@ function display(msg) {
 
 				<div id="accordion" class="sprint-table">
 					<% for sprint in @sprints do %>
-					<% if sprint.sprint_estado==true %>
-					<h3 style="height: 40px; color: #DDDDDD; ">
-					<% else %>
-					<h3 style="height: 40px; background: #E82C1D; ">
-					<% end %>
-
-					<%= sprint.sprint_nombre %>
-						<%= link_to sprint_change_state_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
-						<%= image_tag("ic_cancel_white.png", :class => "iconImageSmall")%>
+						
+						<% if sprint.sprint_estado==true %>
+						<h3 style="height: 40px; color: #DDDDDD; ">
+						<% else %>
+						<h3 style="height: 40px; background: #E82C1D; ">
 						<% end %>
-						<%= link_to sprint_delete_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
-						<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
-						<% end %>
-						<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
-						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
-						<% end %>
-					</h3>
-					<div>
-						<ul class="sortable-list">
 
-
-						</ul>
-						<div style="text-align: center; background-color: #383b43; padding: 1em;" class="special">
-							<%= link_to taskboard_path, class: "button styleIcon" do %>
-								TaskBoard
+						<%= sprint.sprint_nombre %>
+							<%= link_to sprint_change_state_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+							<%= image_tag("ic_cancel_white.png", :class => "iconImageSmall")%>
 							<% end %>
+							<%= link_to sprint_delete_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+							<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+							<% end %>
+							<%= link_to sprint_edit_path(:id => sprint.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+							<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+							<% end %>
+						</h3>
+						<div>
+							<ul class="sortable-list" data-id="<%= sprint.id %>">
+
+							 
+							 <% for historia in sprint.historiausuarios do %>
+								<li class="sortable-item" data-id="<%=historia.id%>">
+									<div class="row" style="padding-left: 1em; padding-right: 1em;">
+										<div class="6u 12u(3)">
+											<strong style="color: white;"><%=historia.His_Nombre%></strong>
+										</div>
+										<div class="6u 12u(3)">
+											<div class="row">
+												<p>ESTADO</p>
+												<p>Esfuerzo: <%= historia.His_Esfuerzo %></p>
+												<%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+								<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+								<% end %>
+								<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+								<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+								<% end %>
+												</div>
+										</div>
+									</div>
+								</li>
+							  <% end %>
+
+
+
+							</ul>
+
+							<div style="text-align: center; background-color: #383b43; padding: 1em;" class="special">
+								<%= link_to taskboard_path, class: "button styleIcon" do %>
+									TaskBoard
+								<% end %>
+							</div>
 						</div>
-					</div>
 					<% end %>
 				</div>
 
@@ -299,27 +375,33 @@ function display(msg) {
 						</div>
 
 
-						<ul class="sortable-list" >							
-							<% for historia in @historias do %>
-							<li class="sortable-item">
-								<div class="row" style="padding-left: 1em; padding-right: 1em;">
-									<div class="6u 12u(3)">
-										<strong style="color: white;"><%=historia.His_Nombre%></strong>
-									</div>
-									<div class="6u 12u(3)">
-										<div class="row">
-											<p>ESTADO</p>
-											<p>Esfuerzo: <%= historia.His_Esfuerzo %></p>
-											<%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
-						<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
-						<% end %>
-						<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
-						<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
-						<% end %>
+						<ul class="sortable-list" data-id="backlog" >							
+						<% for historia in @historias do %>
+
+							<% if historia.sprint_id.nil? %>
+								<li class="sortable-item" data-id="<%=historia.id%>">
+									<div class="row" style="padding-left: 1em; padding-right: 1em;">
+										<div class="6u 12u(3)">
+											<strong style="color: white;"><%=historia.His_Nombre%></strong>
+										</div>
+										<div class="6u 12u(3)">
+											<div class="row">
+												<p>ESTADO</p>
+												<p>Esfuerzo: <%= historia.His_Esfuerzo %></p>
+												<%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+							<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+							<% end %>
+							<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+							<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+							<% end %>
+											</div>
 										</div>
 									</div>
-								</div>
-							</li>
+								</li>
+
+								<% end %>
+
+
 							<% end %>
 						</ul>
 					</div>
