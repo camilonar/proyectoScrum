@@ -4,18 +4,18 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<header class="major">
-					<h2>Crear Tarea</h2>
+					<h2>Editar Tarea</h2>
 				</header>
 			</div>
 			<section id="one"  style="background-color:#e3e3e9">
 				<div class="modal-body">
-					<%= form_for :tarea,:url => url_for(:controller => 'tareas', :action => 'create'),:html => { :multipart => true, id:"tarea" } do |f| %>
+					<%= form_for :tarea,:url => tarea_update_path(:id => @tarea.id),:html => { :multipart => true, id:"tarea" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
 						<div class="hidden_element">
-							<%=f.text_field :sprint_id, value:@id  %>
-							<% if @historia_id != nil %>
-							<%=f.text_field :historiausuario_id, value:@historia_id  %>
+							<%=f.text_field :sprint_id, value:@tarea.sprint_id  %>
+							<% if @tarea.historiausuario_id != nil %>
+							<%=f.text_field :historiausuario_id, value:@tarea.historiausuario_id  %>
 							<% end %>
 						</div>
 						<%= f.text_field :Asunto, autofocus: true ,placeholder:"Asunto de la tarea" ,:required => true, style:"background-color:white;" , class:"item" %>
@@ -31,8 +31,8 @@
 					</div>    
 					<div class="modal-footer">
 						<div class="actions">
-							<%= button_to tarea_create_path(:id => @id) ,{:class => "button special big" }, type:"button", :method => :post do %>
-							Crear<%= image_tag("ic_save_white.png", :class => "iconImage")%>
+							<%= button_to tarea_update_path(:id => @tarea.id) ,{:class => "button special big" }, type:"button", :method => :post do %>
+							Guardar<%= image_tag("ic_save_white.png", :class => "iconImage")%>
 							<% end %>
 						</div>
 					</div>

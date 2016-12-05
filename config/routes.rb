@@ -3,8 +3,6 @@ Rails.application.routes.draw do
    
   resources :projects
 
-  resources :tareas
-
   devise_for :users, controllers: { 
       sessions: 'user/sessions',
       passwords: 'user/passwords',
@@ -79,7 +77,10 @@ Rails.application.routes.draw do
    get 'taskboard' => 'sprints#taskboard'
    get 'tareas/new' => 'tareas#new', as: "tarea_new" 
    post 'projects/tareas/new' => 'tareas#create', as: 'tarea_create' 
-    
+   get  'tareas/change' => 'tareas#edit', as: 'tarea_edit'
+   post 'tareas/edit' => 'tareas#update', as: 'tarea_update' 
+   get 'tareas/delete' => 'tareas#delete', as: 'tarea_delete' 
+   post 'tareas/destroy' => 'tareas#destroy', as: 'tarea_destroy' 
 
 
   # Example of regular route:
