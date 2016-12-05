@@ -1,0 +1,23 @@
+<div id="modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<header class="major">
+					<h3>Eliminar Tarea</h3>
+				</header>
+			</div>
+			<section id="one"  style="background-color:#e3e3e9">
+				<div class="modal-body">
+				<p>¿Está seguro de que desea eliminar la Tarea: <%= @tarea.Asunto %>?</p>
+				<br />
+				<a href="#" data-dismiss="modal" aria-hidden="true" class="button secondary">No</a>
+					<%= link_to tarea_destroy_path(:id => @tarea.id, :sprint_id => @tarea.sprint.id),  class:"button styleIconMedium float_right", :method => :post do %>
+						Si <%= image_tag("ic_delete_white.png", :class => "iconImageMedium")%>
+						<% end %>
+				</div>
+			</section>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

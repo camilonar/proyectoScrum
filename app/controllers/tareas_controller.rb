@@ -37,10 +37,10 @@ class TareasController < ApplicationController
 
 	    if @tarea.update(tarea_params)
 	        flash[:notice] = "Tarea actualizada exitosamente"
-	        redirect_to  taskboard_path(:id => tarea_params[:sprint_id] )
+	        redirect_to taskboard_path(:id => tarea_params[:sprint_id] )
 	    else
 	        flash[:alert] = "No se pudo actualizar la tarea"
-	         redirect_to  taskboard_path(:id => tarea_params[:sprint_id] )
+	         redirect_to taskboard_path(:id => tarea_params[:sprint_id] )
 	    end
 	end
 
@@ -55,7 +55,7 @@ class TareasController < ApplicationController
 	    @tarea=Tarea.find(params[:id])
 	    @tarea.destroy()
 	    flash[:notice] = "Tarea eliminada exitosamente"
-	    redirect_to project_details_path(:id => params[:proyecto_id] )
+	     redirect_to taskboard_path(:id => params[:sprint_id] )
 	end
 
 	private 
