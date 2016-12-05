@@ -14,6 +14,7 @@ class SprintsController < ApplicationController
 	def taskboard
 		@sprint=Sprint.find(params[:id])
 		@historias = @sprint.historiausuarios
+		@tareas = @sprint.tareas
 	end
 	#Se crea un sprint
 	def create

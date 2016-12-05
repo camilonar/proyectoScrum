@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204231526) do
+ActiveRecord::Schema.define(version: 20161205005822) do
 
   create_table "historiausuarios", force: :cascade do |t|
     t.string   "His_Nombre"
@@ -80,9 +80,13 @@ ActiveRecord::Schema.define(version: 20161204231526) do
     t.string  "Estado"
     t.integer "Estimacion"
     t.integer "sprint_id"
+    t.integer "historiausuario_id"
+    t.integer "user_id"
   end
 
+  add_index "tareas", ["historiausuario_id"], name: "index_tareas_on_historiausuario_id"
   add_index "tareas", ["sprint_id"], name: "index_tareas_on_sprint_id"
+  add_index "tareas", ["user_id"], name: "index_tareas_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

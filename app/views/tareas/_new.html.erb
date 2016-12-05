@@ -13,7 +13,10 @@
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
 						<div class="hidden_element">
-							<%=f.text_field :sprint, value:@id  %>
+							<%=f.text_field :sprint_id, value:@id  %>
+							<% if @historia_id != nil %>
+							<%=f.text_field :historiausuario_id, value:@historia_id  %>
+							<% end %>
 						</div>
 						<%= f.text_field :Asunto, autofocus: true ,placeholder:"Asunto de la tarea" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
@@ -22,7 +25,7 @@
 						<%= f.text_field :Estimacion, autofocus: true ,placeholder:"Estimación" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
 						<%lista1=["Nueva","En Proceso", "Test", "Terminada"]%>
- 							<%=f.label :Estado, "Estado: "%> <%=f.select :proy_estado, lista1, :required => true, style:"width: 50%;"%>
+ 							<%=f.label :Estado, "Estado: "%> <%=f.select :Estado, lista1, :required => true, style:"width: 50%;"%>
 						
 						
 					</div>    

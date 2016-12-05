@@ -6,6 +6,7 @@ class CreateTarea < ActiveRecord::Migration
       t.string :Estado
       t.integer :Estimacion
       t.references :sprint, index: true, foreign_key: true
+      t.references :historiausuario, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
     end
   end
