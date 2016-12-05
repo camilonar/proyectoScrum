@@ -1,4 +1,6 @@
 class TareasController < ApplicationController
+	layout "user"
+	before_action :authenticate_user!
 
 	def new
 		@tarea = Tarea.new
@@ -27,6 +29,3 @@ class TareasController < ApplicationController
     	params.require(:tarea).permit(:Asunto, :Descripcion, :Estado, :Estimacion, :sprint)
     end
 end
-
-
-end 

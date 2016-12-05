@@ -246,13 +246,7 @@ function display(msg) {
 				  });
 
 				}
-
-
 				$("#accordion").accordion( "refresh" );
-
-
-
-
 			}
 
 		});
@@ -325,7 +319,7 @@ function display(msg) {
 							</ul>
 
 							<div style="text-align: center; background-color: #383b43; padding: 1em;" class="special">
-								<%= link_to taskboard_path, class: "button styleIcon" do %>
+								<%= link_to taskboard_path(:id => sprint.id), class: "button styleIcon" do %>
 									TaskBoard
 								<% end %>
 							</div>

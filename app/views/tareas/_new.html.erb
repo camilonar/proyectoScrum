@@ -9,7 +9,7 @@
 			</div>
 			<section id="one"  style="background-color:#e3e3e9">
 				<div class="modal-body">
-					<%= form_for :tarea,:url => url_for(:controller => 'tarea', :action => 'create'),:html => { :multipart => true, id:"tarea" } do |f| %>
+					<%= form_for :tarea,:url => url_for(:controller => 'tareas', :action => 'create'),:html => { :multipart => true, id:"tarea" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
 						<div class="hidden_element">
@@ -19,9 +19,11 @@
 						<br>
 						<%= f.text_area :Descripcion, rows:3, autofocus: true ,placeholder:"Descripción" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
-						<%= f.text_field :Estado, autofocus: true ,placeholder:"Estado" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<%= f.text_field :Estimacion, autofocus: true ,placeholder:"Estimación" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
-						<%= f.text_field :His_Esfuerzo, autofocus: true ,placeholder:"Estimación" ,:required => true, style:"background-color:white;" , class:"item" %>
+						<%lista1=["Nueva","En Proceso", "Test", "Terminada"]%>
+ 							<%=f.label :Estado, "Estado: "%> <%=f.select :proy_estado, lista1, :required => true, style:"width: 50%;"%>
+						
 						
 					</div>    
 					<div class="modal-footer">
