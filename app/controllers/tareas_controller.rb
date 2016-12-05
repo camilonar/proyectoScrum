@@ -27,3 +27,6 @@ class TareasController < ApplicationController
     	params.require(:tarea).permit(:Asunto, :Descripcion, :Estado, :Estimacion, :sprint)
     end
 end
+
+
+end 
