@@ -33,14 +33,9 @@
 						<p style="padding: 13px;">hasta</p> 
 						<%= f.text_field :proy_fechafinalizacion, placeholder:"Fecha de finalizacion", :required => true, style:"background-color:white;", class:"item datepicker", readonly: true %>
 						</div>
-						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>	 	    
-							
-											<div>
-												Estado:												
-												<strong style="color:#3cadd4;"> Abierto </strong>									
-										
-											</div>
-					
+						
+						<span class="error">La fecha de finalización no puede ser anterior a la de inicio</span>	 	    <%lista1=["Abierto","Cerrado"]%>
+							<%=f.label :proy_estado, "Estado: "%> <%=f.select :proy_estado, lista1, :required => true, style:"width: 50%;"%>
 					</div>	
 
 					<div hidden class="6u 12u$(4)">
