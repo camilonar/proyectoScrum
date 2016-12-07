@@ -58,16 +58,25 @@ $('#btnYes').click(function() {
 
 <div class="supreme-container">	 
 <br/><h2 align="center">Miembros del proyecto</h2>
-
-	<%proyecto=Proyecto.find(@q)%>
 	
+	<%proyecto=Proyecto.find(@q)%>
+
+
 	<%if @miembros.size==0%>
+	 	<div  style="width:60%; margin:0 auto 0 auto;">
+		<%= link_to project_details_path(:id => proyecto.id), class:"button" do %>
+			Backlog
+		<% end %>
+		</div>
 		<h3 align="center">No hay Información relacionada a Miembros del Equipo. <br /> Puedes empezar por <button type="button" align="left" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button></h3> 
 
 		<%else%>
 				<%if !proyecto.nil?%>						   
 				   	<section>
 						 <div  style="width:60%; margin:0 auto 0 auto;">
+						 	<%= link_to project_details_path(:id => proyecto.id), class:"button" do %>
+								Backlog
+							<% end %>
 								 <h4>Miembros asociados al proyecto  '<%=proyecto.proy_nombre%>' :</h4>
 									<div align="right">
 				<button type="button" class="button styleIcon" data-toggle="modal" data-target="#myModal">Agregar Miembro<%= image_tag("ic_add_white.png", :class => "iconImage")%> </button>

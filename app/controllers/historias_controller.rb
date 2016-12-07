@@ -43,10 +43,10 @@ def edit
 
 	    if @historia.update(historia_params)
 	        flash[:notice] = "Historia de usuario actualizada exitosamente"
-	        redirect_to  project_details_path(:id => historia_params[:proyecto_id] )
+	        redirect_to(:back)
 	    else
 	        flash[:alert] = "No se pudo actualizar la Historia de usuario"
-	         redirect_to  project_details_path(:id => historia_params[:proyecto_id] )
+	        redirect_to(:back)
 	    end
 	end
 
@@ -81,7 +81,7 @@ def edit
 	    @historia=Historiausuario.find(params[:id])
 	    @historia.destroy()
 	    flash[:notice] = "Historia de usuario eliminada exitosamente"
-	    redirect_to project_details_path(:id => params[:proyecto_id] )
+	    redirect_to(:back)
 	end
 
 

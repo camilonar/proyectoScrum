@@ -168,9 +168,12 @@ $(document).on('turbolinks:load', function() {
 
 
 	<div class= "container">
+			<%= link_to project_details_path(:id => @sprint.proyecto.id), class:"button" do %>
+				Backlog
+			<% end %>
 			<div class="isa_info">
 	    		<i class="fa fa-info-circle"></i>
-	    			Tareas creadas para realizar el sprint 'insertar aqui el sprint'
+	    			Tareas creadas para realizar el sprint <%= @sprint.sprint_nombre %>
 				</div>
 				</br>
 
@@ -190,7 +193,12 @@ $(document).on('turbolinks:load', function() {
 									
 									<tr>
 									<td align="left" valign="center" style="text-align: center; float: left;">
-										<p><%= historia.His_Nombre %></p>
+										<p><%= historia.His_Nombre %> &ensp; <%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+								<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
+								<% end %>
+								<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+								<%= image_tag("ic_edit_white.png", :class => "iconImageSmall")%>
+								<% end %></p> <br />
 										
 										<%= link_to tarea_new_path(:id => @sprint.id, :historia_id => historia.id),  :remote => true,  class:"button button styleIcon" do %>
 										Nueva Tarea<%= image_tag("ic_add_white.png", :class => "iconImage")%>
@@ -198,10 +206,10 @@ $(document).on('turbolinks:load', function() {
 										
 									</td>
 									<td>
-									<ul class="sortable-list">							
+									<ul class="sortable-list"  style="max-width: 200px;">			
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="Nueva" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item">
+											<li class="sortable-item"  style="max-width: 200px;">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -216,11 +224,11 @@ $(document).on('turbolinks:load', function() {
 										<% end %>
 									</ul>
 									</td>
-									<td>
-									<ul class="sortable-list">							
+									<td >
+									<ul class="sortable-list" style="max-width: 200px;">						
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="En Proceso" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item">
+											<li class="sortable-item" style="max-width: 200px;">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -236,10 +244,10 @@ $(document).on('turbolinks:load', function() {
 									</ul>
 									</td>
 									<td>
-									<ul class="sortable-list">							
+									<ul class="sortable-list"  style="max-width: 200px;">			
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="Test" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item">
+											<li class="sortable-item"  style="max-width: 200px;">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -255,10 +263,10 @@ $(document).on('turbolinks:load', function() {
 									</ul>
 									</td>
 									<td>
-									<ul class="sortable-list">							
+									<ul class="sortable-list"  style="max-width: 200px;">			
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="Completada" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item">
+											<li class="sortable-item"  style="max-width: 200px;">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -280,9 +288,7 @@ $(document).on('turbolinks:load', function() {
 					<%end%>					
 
 				</table>
-
 			</div>
-			
 				
 		</div>
 
