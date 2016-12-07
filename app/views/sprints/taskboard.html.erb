@@ -144,12 +144,38 @@ $(document).on('turbolinks:load', function() {
 		});
 
 
+
+
     	$('.sortable-list').sortable({
 			connectWith: '.sortable-list',
 			placeholder: 'placeholder',
 
 			receive	 : function(ev, ui) {
-				console.log("nuevo elemento recibido ");
+
+				var tareaid = $(ui.item).data("id");
+
+				var historiaId  = $(this).data("id");
+				var estado = $(this).data("estado");
+				console.log("nuevo elemento recibido en la historia "+historiaId+" y estado "+estado);
+
+                 	$.ajax(
+				{
+				  url : '/tareas/edithistoria',
+				  type: "POST",
+				  data : {id:tareaid,historiausuario_id:historiaId,Estado:estado}
+				})
+				  .done(function(data) {
+				    $("#respuesta").html(data);
+				  })
+				  .fail(function(data) {
+				    
+				  })
+				  .always(function(data) {
+				   
+				  });
+
+
+
 				$("#accordion").accordion( "refresh" );
 			}
 
@@ -206,10 +232,10 @@ $(document).on('turbolinks:load', function() {
 										
 									</td>
 									<td>
-									<ul class="sortable-list"  style="max-width: 200px;">			
+									<ul class="sortable-list"  style="max-width: 200px;" data-id="<%= historia.id %>" data-estado="Nueva">			
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="Nueva" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item"  style="max-width: 200px;">
+											<li class="sortable-item"  style="max-width: 200px;" data-id="<%=tarea.id%>" >
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -225,10 +251,10 @@ $(document).on('turbolinks:load', function() {
 									</ul>
 									</td>
 									<td >
-									<ul class="sortable-list" style="max-width: 200px;">						
+									<ul class="sortable-list" style="max-width: 200px;" data-id="<%= historia.id %>" data-estado="En Proceso">						
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="En Proceso" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item" style="max-width: 200px;">
+											<li class="sortable-item" style="max-width: 200px;" data-id="<%=tarea.id%>" >
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -244,10 +270,10 @@ $(document).on('turbolinks:load', function() {
 									</ul>
 									</td>
 									<td>
-									<ul class="sortable-list"  style="max-width: 200px;">			
+									<ul class="sortable-list"  style="max-width: 200px;" data-id="<%= historia.id %>" data-estado="Test">			
 										<% for tarea in @tareas %>
 											<% if tarea.Estado=="Test" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item"  style="max-width: 200px;">
+											<li class="sortable-item"  style="max-width: 200px;" data-id="<%=tarea.id%>">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>
@@ -263,10 +289,10 @@ $(document).on('turbolinks:load', function() {
 									</ul>
 									</td>
 									<td>
-									<ul class="sortable-list"  style="max-width: 200px;">			
+									<ul class="sortable-list"  style="max-width: 200px;" data-id="<%= historia.id %>" data-estado="Terminada">			
 										<% for tarea in @tareas %>
-											<% if tarea.Estado=="Completada" && tarea.historiausuario_id==historia.id %>
-											<li class="sortable-item"  style="max-width: 200px;">
+											<% if tarea.Estado=="Terminada" && tarea.historiausuario_id==historia.id %>
+											<li class="sortable-item"  style="max-width: 200px;" data-id="<%=tarea.id%>">
 													<div class="row" style="float:top;padding-left: 1em; padding-right: 1em;">
 																<p align="center"><%= tarea.Asunto %></p>
 																<%= link_to tarea_delete_path(:id => tarea.id),  :remote => true, class:"button styleIconSmall float_right" do %>

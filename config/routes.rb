@@ -81,6 +81,7 @@ Rails.application.routes.draw do
    post 'tareas/edit' => 'tareas#update', as: 'tarea_update' 
    get 'tareas/delete' => 'tareas#delete', as: 'tarea_delete' 
    post 'tareas/destroy' => 'tareas#destroy', as: 'tarea_destroy' 
+   post 'tareas/edithistoria' => 'tareas#updatehistoria'
 
 
   # Example of regular route:

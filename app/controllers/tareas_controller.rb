@@ -32,9 +32,9 @@ class TareasController < ApplicationController
   		end
 	end
 
+
 	def update
 	    @tarea= Tarea.find(params[:id])
-
 	    if @tarea.update(tarea_params)
 	        flash[:notice] = "Tarea actualizada exitosamente"
 	        redirect_to taskboard_path(:id => tarea_params[:sprint_id] )
@@ -43,6 +43,17 @@ class TareasController < ApplicationController
 	         redirect_to taskboard_path(:id => tarea_params[:sprint_id] )
 	    end
 	end
+
+
+def updatehistoria
+	    @tarea= Tarea.find(params[:id])
+
+	    @tarea.update(historiausuario_id: params[:historiausuario_id], Estado: params[:Estado] )
+
+	    render json: @historia.to_json
+end
+
+
 
 	def delete
 		@tarea = Tarea.find(params[:id])
