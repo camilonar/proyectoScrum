@@ -196,6 +196,29 @@ function display(msg) {
 		});
 
 
+		function actualizarPrioridad(){
+			$( "#backlog-list li " ).each(function(index,element){       		          		    
+	       		    $.ajax(
+					{
+					  url : '/historias/editprioridad',
+					  type: "POST",
+					  data : {id:$(this).data("id"),His_Prioridad:$(this).index()}
+					})
+					  .done(function(data) {
+					    $("#respuesta").html(data);
+					    console.log("cambio de His_Prioridad");
+					  })
+					  .fail(function(data) {
+					    
+					  })
+					  .always(function(data) {
+					   
+					  });       		  
+				
+       		});
+
+		}
+
 		$('.sortable-list').sortable({
 			connectWith: '.sortable-list',
 			placeholder: 'placeholder',
@@ -264,28 +287,7 @@ function display(msg) {
 		    var historiaId = $(ui.item).data("id");
 
 			console.log("la historia Id  "+historiaId+"cambio su posicion a "+posicion);	
-
-			$( "#backlog-list li " ).each(function(index,element){       		   
-       		      
-       		    
-	       		    $.ajax(
-					{
-					  url : '/historias/editprioridad',
-					  type: "POST",
-					  data : {id:$(this).data("id"),His_Prioridad:$(this).index()}
-					})
-					  .done(function(data) {
-					    $("#respuesta").html(data);
-					    console.log("cambio de His_Prioridad");
-					  })
-					  .fail(function(data) {
-					    
-					  })
-					  .always(function(data) {
-					   
-					  });       		  
-				
-       		});
+			actualizarPrioridad();
 
 			}
 

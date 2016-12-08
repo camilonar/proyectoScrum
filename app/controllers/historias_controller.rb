@@ -20,6 +20,9 @@ end
 
 def create
 	@historia = Historiausuario.new(historia_params)
+	 @proyecto = Proyecto.find(historia_params[:proyecto_id])
+     @numhistorias=@proyecto.historiausuarios.count()
+     @historia.update(His_Prioridad: (@numhistorias-1));
 	if @historia.save
 		flash[:notice] = "Historia creada satisfactoriamente"
 		redirect_to project_details_path(:id => historia_params[:proyecto_id] )
@@ -70,7 +73,7 @@ end
 	def updateprioridad
 		@historia = Historiausuario.find(params[:id])
         @historia.update(His_Prioridad: params[:His_Prioridad])
-        
+
 	     render json: @historia.to_json
 	end 
 
