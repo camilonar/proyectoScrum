@@ -199,9 +199,7 @@ function display(msg) {
 		$('.sortable-list').sortable({
 			connectWith: '.sortable-list',
 			placeholder: 'placeholder',
-
 			receive	 : function(ev, ui) {
-				
 				var idSprint = $(this).data("id");
 				var idHistoria = $(ui.item).data("id");
 				console.log("historia de usuario :"+idHistoria+" recibida en sprint :"+idSprint);
@@ -246,7 +244,49 @@ function display(msg) {
 				  });
 
 				}
+
 				$("#accordion").accordion( "refresh" );
+			},
+			change: function( event, ui ) {
+				console.log("ha cambiado ");
+
+			},
+			start: function(evet,ui){
+				var posicion = $(ui.item).index();
+			    var historiaId = $(ui.item).data("id");
+				console.log("la historiaId "+historiaId+"inicio su  posicion en "+posicion);	
+
+			}
+			,
+			stop: function( event, ui ) {
+
+		    var posicion = $(ui.item).index();
+		    var historiaId = $(ui.item).data("id");
+
+			console.log("la historia Id  "+historiaId+"cambio su posicion a "+posicion);	
+
+			$( "#backlog-list li " ).each(function(index,element){       		   
+       		      
+       		    
+	       		    $.ajax(
+					{
+					  url : '/historias/editprioridad',
+					  type: "POST",
+					  data : {id:$(this).data("id"),His_Prioridad:$(this).index()}
+					})
+					  .done(function(data) {
+					    $("#respuesta").html(data);
+					    console.log("cambio de His_Prioridad");
+					  })
+					  .fail(function(data) {
+					    
+					  })
+					  .always(function(data) {
+					   
+					  });       		  
+				
+       		});
+
 			}
 
 		});
@@ -368,7 +408,7 @@ function display(msg) {
 						</div>
 
 
-						<ul class="sortable-list" data-id="backlog" >							
+						<ul id="backlog-list"class="sortable-list" data-id="backlog" >							
 						<% for historia in @historias do %>
 
 							<% if historia.sprint_id.nil? %>

@@ -73,7 +73,7 @@ end
 def details
     @proyecto = Proyecto.find(params[:id])
     @sprints =@proyecto.sprints
-    @historias=@proyecto.historiausuarios
+    @historias=@proyecto.historiausuarios.order(His_Prioridad: :asc)
 end
 
 #Se permitira ver en detalle los miembors de un proyecto.

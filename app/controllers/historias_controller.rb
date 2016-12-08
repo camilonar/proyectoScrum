@@ -30,7 +30,7 @@ def create
 end
 
 
-def edit
+     def edit
 		@historia = Historiausuario.find(params[:id])
 		respond_to do |format|               
    			format.js{render layout: false}
@@ -66,6 +66,13 @@ def edit
 
 	end 
 
+
+	def updateprioridad
+		@historia = Historiausuario.find(params[:id])
+        @historia.update(His_Prioridad: params[:His_Prioridad])
+        
+	     render json: @historia.to_json
+	end 
 
 
 

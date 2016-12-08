@@ -69,6 +69,8 @@ Rails.application.routes.draw do
    post 'historias/edit' => 'historias#update', as: 'historia_update' 
 
    post 'historias/editsprint' => 'historias#updatesprint' 
+   post 'historias/editprioridad' => 'historias#updateprioridad'
+
 
    get 'historias/delete' => 'historias#delete', as: 'historia_delete' 
    post 'historias/destroy' => 'historias#destroy', as: 'historia_destroy' 
