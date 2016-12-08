@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20161205005822) do
 
   add_index "proyectos", ["user_id"], name: "index_proyectos_on_user_id"
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "rols", force: :cascade do |t|
     t.text     "rol_nombre"
     t.datetime "created_at", null: false
@@ -108,9 +115,11 @@ ActiveRecord::Schema.define(version: 20161205005822) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end

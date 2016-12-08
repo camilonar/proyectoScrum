@@ -22,3 +22,5 @@ Proyecto.create(proy_nombre:"Campanario registro",proy_descripcion:"Registra tod
 Rol.create(rol_nombre:"Scrum Master");
 Rol.create(rol_nombre:"Desarrollador");
 Rol.create(rol_nombre:"Product Owner");
+
+Role.create({name: "propietario", description: "Can read and create items. Can update and destroy own items"})
