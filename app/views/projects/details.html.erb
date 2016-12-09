@@ -1,3 +1,4 @@
+<div id="notificacion_especial"></div>
 <script>
 $(document).on('turbolinks:load', function() {
 	
@@ -240,11 +241,11 @@ function display(msg) {
 				  data : {id:idHistoria}
 				})
 				  .done(function(data) {
-				    alert("historia devuelta al backlog");
+				  	$('#notificacion_especial').html("<p class='alert alert-success' id='flash' style=' position: absolute; z-index: 20;width: 100%;'>Historia de Usuario trasladada exitosamente</p>").hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
 				   
 				  })
 				  .fail(function(data) {
-				    
+				    alert("error al devolver la historia");
 				  })
 				  .always(function(data) {
 				   
@@ -261,10 +262,10 @@ function display(msg) {
 				  data : {id:idHistoria,sprint_id:idSprint}
 				})
 				  .done(function(data) {
-					alert("historia asignada al sprint");
+					$('#notificacion_especial').html("<p class='alert alert-success' id='flash' style=' position: absolute; z-index: 20;width: 100%;'>Historia de Usuario asignada al Sprint exitosamente</p>").hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
 				  })
 				  .fail(function(data) {
-				    
+				    alert("error al asignar la historia al sprint");
 				  })
 				  .always(function(data) {
 				   
@@ -302,11 +303,8 @@ function display(msg) {
 
 	});
 </script>
-
 <section id="main" class="wrapper">
-
-	<div class= "container">
-		
+	<div class= "container">	
 		<div class="row">
 			<div class="sidebar 3u 5u(2)" style="padding-top: 1em;padding-right: 1em;">
 				<%= link_to sprint_new_path(:id => @proyecto.id),  :remote => true,  class:"button largePadding styleIcon float_right" do %>
@@ -425,7 +423,6 @@ function display(msg) {
 										</div>
 										<div class="6u 12u(3)">
 											<div class="row">
-												<p>ESTADO</p>
 												<p>Esfuerzo: <%= historia.His_Esfuerzo %></p>
 												<%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
 							<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
