@@ -4,8 +4,22 @@ class TareasController < ApplicationController
 
 	def new
 		@tarea = Tarea.new
+
 		@id = params[:id]
+		
+
 		@historia_id = params[:historia_id]
+		@historia = Historiausuario.find(@historia_id)
+		@proyecto = @historia.proyecto
+		@miembros = @proyecto.miembros
+		@usuariosproyecto = []
+
+		 @miembros.each do |miembro|
+		  @user = User.find(miembro.user_id)
+
+          @usuariosproyecto.push( @user)
+         end
+
 		respond_to do |format|               
    			format.js{render layout: false}
   		end
@@ -14,6 +28,9 @@ class TareasController < ApplicationController
 	def create
 		@tarea=Tarea.new(tarea_params)
 		#articulo.valid? || articulo.invalid? devuelven booleanos de la pregunta, es una forma de preguntar antes de guardar.
+		
+
+        
 		if @tarea.save
 			flash[:notice] = "La tarea se ha creado exitosamente"
 			redirect_to taskboard_path(:id => tarea_params[:sprint_id] )
@@ -27,6 +44,25 @@ class TareasController < ApplicationController
 
 	def edit
 		@tarea = Tarea.find(params[:id])
+
+		if @tarea.user_id != nil
+		@asignado_a = User.find(@tarea.user_id).email
+		else
+		@asignado_a = "No Asignado"
+		end
+
+		@historia_id = @tarea.historiausuario_id
+		@historia = Historiausuario.find(@historia_id)
+		@proyecto = @historia.proyecto
+		@miembros = @proyecto.miembros
+		@usuariosproyecto = []
+      
+		 @miembros.each do |miembro|
+		  @user = User.find(miembro.user_id)
+
+          @usuariosproyecto.push( @user)
+         end
+
 		respond_to do |format|               
    			format.js{render layout: false}
   		end
@@ -71,6 +107,6 @@ end
 
 	private 
     def tarea_params
-    	params.require(:tarea).permit(:Asunto, :Descripcion, :Estado, :Estimacion, :sprint_id, :historiausuario_id, :user)
+    	params.require(:tarea).permit(:Asunto, :Descripcion, :Estado, :Estimacion, :sprint_id, :historiausuario_id, :user_id)
     end
 end

@@ -12,6 +12,7 @@
 					<%= form_for :tarea,:url => tarea_update_path(:id => @tarea.id),:html => { :multipart => true, id:"tarea" } do |f| %>
 					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<div class="contact_form" style="text-align:center">  
+						<p>Asignado a :<%=@asignado_a%><p>
 						<div class="hidden_element">
 							<%=f.text_field :sprint_id, value:@tarea.sprint_id  %>
 							<% if @tarea.historiausuario_id != nil %>
@@ -27,6 +28,15 @@
 						<%lista1=["Nueva","En Proceso", "Test", "Terminada"]%>
  							<%=f.label :Estado, "Estado: "%> <%=f.select :Estado, lista1, :required => true, style:"width: 50%;"%>
 						
+						   <% miembros={"No Asignar"=>nil}%>
+					        <% @usuariosproyecto.each do |miembro|%>
+					        <%miembros[miembro.email]=miembro.id%>
+					        <%end%>
+
+					        <%lista=miembros.sort%>
+
+					        <%=f.label :user_id, "Asignar a : "%> 
+					        <%=f.select :user_id, lista%>
 						
 					</div>    
 					<div class="modal-footer">

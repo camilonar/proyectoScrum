@@ -25,8 +25,24 @@
 						<%= f.text_field :Estimacion, autofocus: true ,placeholder:"Estimación" ,:required => true, style:"background-color:white;" , class:"item" %>
 						<br>
 						<%lista1=["Nueva","En Proceso", "Test", "Terminada"]%>
- 							<%=f.label :Estado, "Estado: "%> <%=f.select :Estado, lista1, :required => true, style:"width: 50%;"%>
-						
+ 							
+ 							<%=f.label :Estado, "Estado: "%> 
+ 							<%=f.select :Estado, lista1, :required => true, style:"width: 50%;"%>
+                            
+							
+							<% miembros={"No Asignar"=>nil}%>
+					        <% @usuariosproyecto.each do |miembro|%>
+					        <%miembros[miembro.email]=miembro.id%>
+					        <%end%>
+
+					        <%lista=miembros.sort%>
+
+					        <%=f.label :user_id, "Asignar a : "%> 
+					        <%=f.select :user_id, lista%>
+
+                
+
+						     
 						
 					</div>    
 					<div class="modal-footer">
