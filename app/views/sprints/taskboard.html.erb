@@ -200,7 +200,7 @@ $(document).on('turbolinks:load', function() {
 			<%= link_to project_details_path(:id => @sprint.proyecto.id), class:"button" do %>
 				Backlog
 			<% end %>
-			<%= link_to link_to "Estadisticas", estadisticas_path, class:"button"%>
+			<%= link_to link_to "Estadísticas", estadisticas_path(:id => @sprint.id), class:"button"%>
 			<div class="isa_info">
 	    		<i class="fa fa-info-circle"></i>
 	    			Tareas creadas para realizar el sprint '<%= @sprint.sprint_nombre %>'

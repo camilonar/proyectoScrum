@@ -114,7 +114,7 @@ $('#btnYes').click(function() {
 										</div>
 
 										<div class="3u 8u$(4)" style="float:right; display:table; align-items: center;">
-										   <%if current_user.id = proyecto.user_id%>
+										   <%if current_user.id == proyecto.user_id%>
 											<ul class="actions fit" style="margin-top: 1em;">
 												<li>
 													<%= button_to edit_project_path(:id => proyecto.id) ,{:controller => :projects,
