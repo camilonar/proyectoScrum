@@ -19,3 +19,4 @@
 //= require preview_image
 //= require jquery-ui
 //= require_tree .
+//= require chartkick
