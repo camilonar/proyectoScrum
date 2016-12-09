@@ -192,7 +192,7 @@ function display(msg) {
 
 <script>
 
-	$(document).ready(function() {
+	$(document).on('turbolinks:load',function() {
 		$( "#accordion" ).accordion({
 			heightStyle: "content" 
 		});

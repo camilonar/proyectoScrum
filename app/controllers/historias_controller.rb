@@ -60,10 +60,10 @@ end
 
 		if (params.has_key?(:sprint_id))
           @historia.update(sprint_id: params[:sprint_id])
-          flash[:notice] = "Historia de usuario asignada exitosamente"
+          #flash[:notice] = "Historia de usuario asignada exitosamente"
       	else
 		 @historia.update(sprint_id: nil)
-		    flash[:notice] = "Historia de usuario asignada exitosamente"
+		    flash[:notice] = "La Historia de Usuario no pudo asignarse al Sprint"
 	 	end 
 	      render json: @historia.to_json
 

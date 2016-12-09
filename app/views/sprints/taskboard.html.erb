@@ -76,13 +76,6 @@ observer.observe(targetNode, observerConfig);
 		background-color: #3cadd4;
 	}
 
-
-	.backlog-table ul{
-		list-style: none;
-	}
-
-
-
 	.sortable-item{
 		border-bottom: 1px solid #515050;
 		cursor: move;
@@ -104,11 +97,6 @@ observer.observe(targetNode, observerConfig);
 		border: 1px dashed #666;
 		height: 25px;
 		margin-bottom: 5px;
-	}
-
-	.sprint-table,.backlog-table li:hover{
-
-		background-color: #bcbcbc;
 	}
 
 .boardColumn {
@@ -228,7 +216,7 @@ $(document).on('turbolinks:load', function() {
 								
 									<tr>
 									<td>
-										<h4>Nombre:<%= historia.His_Nombre %> <%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
+										<h4><%= historia.His_Nombre %> <%= link_to historia_delete_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
 								<%= image_tag("ic_delete_white.png", :class => "iconImageSmall")%>
 								<% end %>
 								<%= link_to historia_edit_path(:id => historia.id),  :remote => true, class:"button styleIconSmall float_right" do %>
