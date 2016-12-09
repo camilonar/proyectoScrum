@@ -77,6 +77,7 @@ Rails.application.routes.draw do
 
   
    get 'taskboard' => 'sprints#taskboard'
+   get 'estadisticas' => 'sprints#estadisticas'
    get 'tareas/new' => 'tareas#new', as: "tarea_new" 
    post 'projects/tareas/new' => 'tareas#create', as: 'tarea_create' 
    get  'tareas/change' => 'tareas#edit', as: 'tarea_edit'
